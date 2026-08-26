@@ -1,0 +1,27 @@
+fixed-point scale = 10^45
+pi in [3.1415926535897932384626433832795028841971, 3.1415926535897932384626433832795028841971]
+method: xi=d; m>=x+k^2; Q<=(x-2)m+x+2
+collision bound: C_p(1/m) <= (2*pi^2/p) H_floor((m-1)/p)
+all decisions use strict positivity of an outward-rounded lower margin
+
+p genus d cap_2401 irr_min_2401 worst_x margin_lower cutoff_1000 cap_at_cutoff cutoff_worst_x cutoff_margin
+11     1 2      190         1010    2401 0.019624155425482        2379           189           2379 0.018726491698983
+  diagnostics: S=2401 predecessor k=190 margin_lo=-0.006199939306836; cutoff predecessor S=2377, k=189, margin_lo=-0.004951693905944
+17     1 2      226          974    2401 0.006340667081541        2459           229           2459 0.006529049546473
+  diagnostics: S=2401 predecessor k=226 margin_lo=-0.010090533481326; cutoff predecessor S=2457, k=229, margin_lo=-0.008025352615359
+19     1 2      237          963    2401 0.013201735527294        2483           241           2483 0.007317408647308
+  diagnostics: S=2401 predecessor k=237 margin_lo=-0.001286123775392; cutoff predecessor S=2481, k=241, margin_lo=-0.005449113903970
+23     2 4      377          823    2401 0.006562285899278        2823           411           2823 0.001284863928348
+  diagnostics: S=2401 predecessor k=377 margin_lo=-0.001645124732339; cutoff predecessor S=2821, k=411, margin_lo=-0.005078294291675
+29     2 4      414          786    2401 0.005457529203788        2921           460           2921 0.002665869748364
+  diagnostics: S=2401 predecessor k=414 margin_lo=-0.000874122111437; cutoff predecessor S=2919, k=460, margin_lo=-0.002074017160389
+31     2 4      425          775    2401 0.002866264645707        2951           475           2951 0.001130365006438
+  diagnostics: S=2401 predecessor k=425 margin_lo=-0.003020247988192; cutoff predecessor S=2949, k=475, margin_lo=-0.003228388192387
+37     2 4      457          743    2401 0.002720591459553        3039           519           3039 0.001665465875035
+  diagnostics: S=2401 predecessor k=457 margin_lo=-0.002088031317269; cutoff predecessor S=3037, k=519, margin_lo=-0.001793732485970
+41     3 6      595          605    2401 0.003315013860040        3445           722           3445 0.000530972920769
+  diagnostics: S=2401 predecessor k=595 margin_lo=-0.000126920166605; cutoff predecessor S=3443, k=722, margin_lo=-0.001674657193356
+43     3 6      606          594    2401 0.000684777792175        3483           741           3483 0.001549347266113
+  diagnostics: S=2401 predecessor k=606 margin_lo=-0.002584099575749; cutoff predecessor S=3481, k=741, margin_lo=-0.000513788894329
+
+CERTIFICATE: PASS

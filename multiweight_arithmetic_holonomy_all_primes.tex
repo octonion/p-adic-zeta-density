@@ -1,0 +1,4056 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=27mm]{geometry}
+\emergencystretch=3em
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{enumitem}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor,xurl}
+\usepackage{aliascnt}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+\hypersetup{
+ colorlinks=true,
+ linkcolor=blue!55!black,
+ citecolor=blue!55!black,
+ urlcolor=blue!55!black,
+ pdftitle={Multiweight arithmetic holonomy and density-one irrationality of p-adic zeta values},
+ pdfauthor={Christopher D. Long}
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\newaliascnt{claim}{theorem}
+\newtheorem{claim}[claim]{Claim}
+\aliascntresetthe{claim}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\theoremstyle{remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\newaliascnt{warning}{theorem}
+\newtheorem{warning}[warning]{Warning}
+\aliascntresetthe{warning}
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{claim}{Claim}{Claims}
+\crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\crefname{warning}{Warning}{Warnings}
+
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\C}{\mathbf C}
+\newcommand{\R}{\mathbf R}
+\newcommand{\F}{\mathbf F}
+\newcommand{\Qp}{\mathbf Q_p}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\lcmop}{\operatorname{lcm}}
+\newcommand{\Ann}{\operatorname{Ann}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\calE}{\mathcal E}
+\newcommand{\calF}{\mathcal F}
+\newcommand{\calG}{\mathcal G}
+\newcommand{\calW}{\mathcal W}
+\newcommand{\calH}{\mathcal H}
+\newcommand{\calA}{\mathcal A}
+\newcommand{\calM}{\mathcal M}
+\newcommand{\calO}{\mathcal O}
+\newcommand{\calV}{\mathcal V}
+\newcommand{\widehatdeg}{\widehat{\deg}}
+\newcommand{\Energy}{\mathscr H}
+\newcommand{\LambdaAH}{\Lambda}
+\newcommand{\floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1\right\rceil}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\positivepart}[1]{\left(#1\right)_+}
+\newcommand{\T}{\mathbb T}
+
+\title{Multiweight arithmetic holonomy and\\
+density-one irrationality of $p$-adic zeta values}
+\author{Christopher D. Long}
+\date{All-prime dependency-audited exact-capacity revision --- 26 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For each genus-zero prime
+\[
+ \mathcal P_0=\{2,3,5,7,13\}
+\]
+and each finite set $\mathcal S$ of distinct odd integers at least $3$, we
+combine the Eisenstein--Eichler extensions attached to the values
+$\zeta_p(s)$, $s\in\mathcal S$, using one common homogenizing coordinate.
+Under the joint rationality hypothesis the resulting rank-$m$ horizontal
+leaf, where $m=1+\sum_{s\in\mathcal S}s$, has full functional rank.  The
+blockwise genuine-source Hasse kernels and a common torsor-valued Cartier
+argument give the Hasse-improved multiweight type
+\[
+ \tau^{\mathrm H}_{p,\mathcal S}(\xi)
+ =\frac{2}{m^2}\left[
+ \xi\sum_{s\in\mathcal S}s^2
+ -\left(\sum_{s\in\mathcal S}(s-1)\right)J_p(\xi)
+ +(\max\mathcal S)I^m_\xi(\xi)
+ \right].
+\]
+A thickness-sensitive Fitting refinement replaces the rectangular pole bound
+by a denominator polygon.  The certified finite conclusions are unchanged:
+among the first $1200$ positive odd arguments, at least
+\[
+1194,\quad1191,\quad1185,\quad1180,\quad1061
+\]
+of the values $\zeta_p(s)$ are irrational for
+$p=2,3,5,7,13$, respectively.
+
+We then develop an intrinsic-curve version that no longer assumes
+$X_0(p)\simeq\mathbf P^1$.  On the fixed coarse modular curve, after
+removing the finite elliptic locus, a finite-map restriction-of-scalars
+argument gives a Shidlovsky zero estimate and exact
+$q\mapsto q^\ell$ divided Frobenius gives a general-curve $q$-jet Cartier
+window.  A normalization-robust slopes argument applies finite-order
+capacitary estimates only after contraction to a scalar section.  It yields
+\[
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ \ge \Lambda_p^\circ-\frac{C_p}{m},
+\]
+where $\Lambda_p^\circ>0$ comes from the strict capacitary gain of a
+$p$-adic annular collar and $C_p$ is independent of the packet.
+
+We also construct the canonical exact metric.  Its finite components are the
+Bost--Chambert-Loir capacitary $\Q$-model metrics, while its Archimedean
+components are the Bost--Charles direct-image Green functions of the chosen
+continuation maps.  After clearing the finitely many rational exponents, the
+capacitary tangent line is the normal line of a pseudoconcave formal-analytic
+surface.  The Chen--Moriwaki determinant Hilbert--Samuel theorem and a
+uniform finite-order Green--Jensen estimate then give the exact source formula
+and the target-normal cancellation
+\[
+ \widehatdeg M_D=\frac m2\Energy_\alpha D^2+o(D^2),
+ \qquad
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ \ge \LambdaAH_\alpha-\frac{\Energy_\alpha}{m}.
+\]
+The stronger exact theorem is not needed for the normalization-robust
+qualitative proof.  We then compute the maximal modular capacity pair exactly
+at every prime.  For $0<Y<1/p$,
+\[
+ (\Lambda_p(Y),\Energy_p(Y))=
+ \left(\frac{12\log p}{p-1}-2\pi Y,
+       \frac{12\log p}{p-1}-2\pi Y+C_p(Y)\right).
+\]
+For $p\ge5$ the finite contribution is the effective resistance of the
+supersingular reduction graph, evaluated by the Eichler--Deuring mass formula;
+$p=2,3$ are treated directly with their integral Hauptmodul lemniscates.  If
+$d_p$ is the degree of the finite map used in the general-curve zero estimate,
+then
+\[
+ R_p(X):=\#\{3\le s\le X:\ s\text{ odd and }\zeta_p(s)\in\mathbf Q\}
+ \le\left(\frac{e\,d_p(p-1)}{12\log p}+o_p(1)\right)(\log X)^2.
+\]
+Thus the irrational values have natural density one with an explicit leading
+constant at every fixed prime.  A fixed-point finite-packet certificate gives,
+among the first $1200$ odd arguments, at least
+\[
+ 1010,974,963,823,786,775,743,605,594
+\]
+irrational values for $p=11,17,19,23,29,31,37,41,43$, respectively.
+\end{abstract}
+
+\medskip
+\noindent\textbf{Audit status.}
+The genus-zero part isolates the same published interfaces as the underlying
+single-weight arithmetic-holonomy construction: Calegari's Eisenstein family,
+Buzzard continuation, Katz's Hasse invariant, the de Rham frame torsor of
+Graham--Pilloni--Rodrigues Jacinto, and the Bost--Charles/CDT slopes and
+prime-window estimates.  The all-prime extension uses Bost--Chambert-Loir
+capacitary metrics and four internal bridges: coarse-moduli descent and
+finite-map Shidlovsky restriction of scalars, intrinsic $q$-jet Cartier
+strictness, scalar finite-order capacitary jet bounds with a fixed-twist
+source comparison, and strict positivity of the distinguished $p$-adic
+capacitary gain.  The compatibility of these bounds with the hybrid
+finite-prime lattices is proved explicitly.
+
+The exact normalization is proved separately in
+\cref{thm:curve-Bost-exact,app:exact-normalization}.  The audit distinguishes
+two assertions that had previously been conflated.  Bost--Chambert-Loir
+provides one adelic Arakelov $\Q$-divisor inducing all finite capacitary
+metrics; after denominator clearing, its metrized tangent line is realizable
+as the normal line of a pseudoconcave Bost--Charles formal-analytic surface.
+We do not assert that the entire finite vertical divisor is literally a
+Bost--Charles direct image, nor that matching the normal line automatically
+produces a Bost--Charles meromorphic map to the modular curve.  Instead, the
+exact source and jet formulas are proved directly on the modular curve for the
+canonical mixed capacitary/direct-image divisor, using the Chen--Moriwaki
+determinant Hilbert--Samuel theorem and a place-by-place finite-order
+Green--Jensen estimate.  The exact modular capacity pair is computed for every prime in
+\cref{thm:allprime-capacity-pair}.  Its maximal-domain passage uses the
+rational skeleton exhaustion of \cref{lem:maximal-capacity-exhaustion};
+Bost--Chambert-Loir Proposition~5.6 is used only to realize each fixed inner
+domain as a rational lemniscate, not as a continuity theorem.  Supersingular
+residue fields are split by normalized unramified base change.  Consequently
+the all-prime density coefficient is explicit in terms of the finite-map
+degree $d_p$.  The positive-genus finite-packet claims use the certified upper
+bound $2g_p\ge d_p$ and are independently fixed-point certified.  Independent
+specialist review remains appropriate before publication.
+\tableofcontents
+
+\section{Introduction and main results}\label{sec:intro}
+
+For an odd integer $s\ge3$, let $\zeta_p(s)$ denote the Kubota--Leopoldt
+$p$-adic zeta value in Calegari's normalization.  The single-weight
+Eisenstein--Eichler method starts from
+\[
+ K_{p,s}(q)=\frac{\zeta_p(s)}2+
+ \sum_{n\ge1}\sigma_{-s}^{(p)}(n)q^n,
+ \qquad
+ \sigma_{-s}^{(p)}(n)=\sum_{\substack{d\mid n\\p\nmid d}}d^{-s}.
+\]
+Under the contrary hypothesis $\zeta_p(s)\in\Q$, this is an arithmetic
+horizontal leaf of a rank-$(s+1)$ algebraic connection.  The present paper
+uses several such blocks simultaneously but shares their scalar coordinate.
+The resulting rank is essentially the sum of the weights, while the largest
+large-prime pole grade is only their maximum.
+
+Let $\mathcal S$ be a finite nonempty set of distinct odd integers $s\ge3$.
+Put
+\begin{equation}\label{eq:packet-data}
+ m=1+\sum_{s\in\mathcal S}s,
+ \qquad Q_{\mathcal S}=\sum_{s\in\mathcal S}s^2,
+ \qquad B_{\mathcal S}=\sum_{s\in\mathcal S}(s-1),
+ \qquad s_*=\max\mathcal S.
+\end{equation}
+For $p\in\{2,3,5,7,13\}$, define
+\begin{equation}\label{eq:Jp}
+ c_p=\frac{p+1}{12},
+ \qquad
+ J_p(\xi)=\int_0^\xi(1-c_px)_+\,\dd x.
+\end{equation}
+Thus
+\[
+ J_p(\xi)=
+ \begin{cases}
+ \xi-\dfrac{p+1}{24}\xi^2,&c_p\xi\le1,\\[2mm]
+ \dfrac{6}{p+1},&c_p\xi\ge1.
+ \end{cases}
+\]
+In particular, because $c_{13}=7/6$, every admissible cutoff $\xi>1$ satisfies
+\begin{equation}\label{eq:J13}
+ J_{13}(\xi)=\frac37.
+\end{equation}
+
+For $m\ge2$ and $1<\xi<m$, put
+\begin{equation}\label{eq:I-def}
+ K_m(\xi)=\floor{\frac{m-1}{\xi}},
+\end{equation}
+and
+\begin{equation}\label{eq:I}
+ I^m_\xi(\xi)=
+ \left(m-\frac12\right)H_{K_m(\xi)}-K_m(\xi)\xi
+ +\frac{\positivepart{m-(K_m(\xi)+1)\xi}^2}{2(K_m(\xi)+1)}.
+\end{equation}
+
+\begin{theorem}[Hasse-improved multiweight arithmetic holonomy]
+\label{thm:multiweight}
+Fix $p\in\{2,3,5,7,13\}$ and a finite set $\mathcal S$ as above.  Assume
+\[
+ \zeta_p(s)\in\Q\qquad(s\in\mathcal S).
+\]
+Let $\boldsymbol\phi$ be admissible adelic continuation templates for the
+simultaneous Eisenstein--Eichler leaf, with derivative width
+$\LambdaAH(\boldsymbol\phi)$ and Bost--Charles energy
+$\Energy(\boldsymbol\phi)$.  For every $1<\xi<m$,
+\begin{equation}\label{eq:multiweight-holonomy}
+ m\left(\LambdaAH(\boldsymbol\phi)
+ -\tau^{\mathrm H}_{p,\mathcal S}(\xi)\right)
+ \le\Energy(\boldsymbol\phi),
+\end{equation}
+where
+\begin{equation}\label{eq:tau-rect}
+ \boxed{
+ \tau^{\mathrm H}_{p,\mathcal S}(\xi)
+ =\frac{2}{m^2}\left[
+ \xi Q_{\mathcal S}-B_{\mathcal S}J_p(\xi)
+ +s_*I^m_\xi(\xi)
+ \right].}
+\end{equation}
+\end{theorem}
+
+The large-prime term in \eqref{eq:tau-rect} is deliberately rectangular: it
+charges every vulnerable pivot at the largest possible pole grade $s_*$.  A
+stronger theorem records the finite $\ell$-adic thickness available above
+each pole grade.
+
+For $1\le b\le s_*$ put
+\begin{equation}\label{eq:rho-b}
+ \rho_b=\sum_{\substack{s\in\mathcal S\\s\ge b}}s(s-b+1).
+\end{equation}
+Let
+\[
+ w_m(x)=K_x+\positivepart{m-(K_x+1)x},
+ \qquad
+ K_x=\floor{\frac{m-1}{x}},
+\]
+and define the capped window
+\begin{equation}\label{eq:I-cap-def}
+ I^{m,\rho}_\xi(\xi)=\int_\xi^m\min\{w_m(x),\rho\}\,\dd x.
+\end{equation}
+
+\begin{theorem}[Thickness-sensitive denominator polygon]
+\label{thm:polygon}
+Under the hypotheses of \cref{thm:multiweight}, joint rationality also forces
+\begin{equation}\label{eq:poly-holonomy}
+ m\left(\LambdaAH(\boldsymbol\phi)
+ -\tau^{\mathrm{poly}}_{p,\mathcal S}(\xi)\right)
+ \le\Energy(\boldsymbol\phi),
+\end{equation}
+where
+\begin{equation}\label{eq:tau-poly}
+ \boxed{
+ \tau^{\mathrm{poly}}_{p,\mathcal S}(\xi)
+ =\frac{2}{m^2}\left[
+ \xi Q_{\mathcal S}-B_{\mathcal S}J_p(\xi)
+ +\sum_{b=1}^{s_*}I^{m,\rho_b}_\xi(\xi)
+ \right].}
+\end{equation}
+Moreover
+\begin{equation}\label{eq:I-cap-explicit}
+ I^{m,\rho}_\xi(\xi)=
+ \begin{cases}
+ \displaystyle
+ \left(m-\frac12\right)H_\rho-\rho\xi,
+ &1<\xi<\dfrac{m}{\rho+1},\\[3mm]
+ I^m_\xi(\xi),&\xi\ge\dfrac{m}{\rho+1}.
+ \end{cases}
+\end{equation}
+In particular, $\tau^{\mathrm{poly}}_{p,\mathcal S}(\xi)
+\le\tau^{\mathrm H}_{p,\mathcal S}(\xi)$.
+\end{theorem}
+
+The counting statements are certified from \cref{thm:multiweight}, not from
+the refinement.
+
+\begin{theorem}[Explicit simultaneous irrationality bounds]
+\label{thm:counts}
+Among the $1200$ values
+\[
+ \zeta_p(3),\zeta_p(5),\ldots,\zeta_p(2401),
+\]
+the following numbers are irrational:
+\begin{center}
+\begin{tabular}{@{}crrr@{}}
+\toprule
+$p$&max. rational&min. irrational&cutoff for $1000$\\
+\midrule
+$2$&$6$&$1194$&$s\le2013$\\
+$3$&$9$&$1191$&$s\le2019$\\
+$5$&$15$&$1185$&$s\le2029$\\
+$7$&$20$&$1180$&$s\le2039$\\
+$13$&$139$&$1061$&$s\le2279$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The cutoff in the last column means that at least $1000$ of the positive odd
+values with argument at most that cutoff are irrational.  The first four rows
+are certified by the branch-and-bound program; the $p=13$ row follows from
+the elementary uniform estimate in \cref{prop:p13-finite}.
+\end{theorem}
+
+\begin{theorem}[Certified positive-genus finite-packet bounds]
+\label{thm:positive-genus-counts}
+For the positive-genus prime levels $p\le43$, the following bounds hold among
+\[
+ \zeta_p(3),\zeta_p(5),\ldots,\zeta_p(2401).
+\]
+The quantity $\bar d$ is the safe upper bound
+$\bar d=2g_p$ for the finite-map degree $d_p$ supplied by
+\cref{thm:finite-map-zero}.
+\begin{center}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$p$&$g_p$&$\bar d$&max. rational&min. irrational&cutoff for $1000$\\
+\midrule
+$11$&$1$&$2$&$190$&$1010$&$s\le2379$\\
+$17$&$1$&$2$&$226$&$974$&$s\le2459$\\
+$19$&$1$&$2$&$237$&$963$&$s\le2483$\\
+$23$&$2$&$4$&$377$&$823$&$s\le2823$\\
+$29$&$2$&$4$&$414$&$786$&$s\le2921$\\
+$31$&$2$&$4$&$425$&$775$&$s\le2951$\\
+$37$&$2$&$4$&$457$&$743$&$s\le3039$\\
+$41$&$3$&$6$&$595$&$605$&$s\le3445$\\
+$43$&$3$&$6$&$606$&$594$&$s\le3483$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The last column means that the prefix ending at the displayed odd argument
+contains at least $1000$ irrational values.  These bounds use only the exact
+all-prime capacity pair, the general-curve arithmetic type, and the elementary
+packet majorants of \cref{prop:finite-packet-certificate}; they do not use an
+unproved low-degree map or a genus-zero Hasse saving.
+\end{theorem}
+
+For every prime $p$, put
+\begin{equation}\label{eq:Rp-def}
+ R_p(X)=\#\{3\le s\le X:\ s\text{ odd and }\zeta_p(s)\in\Q\}.
+\end{equation}
+
+\begin{theorem}[Quantitative genus-zero density one]\label{thm:density-genus-zero}
+For $p\in\{2,3,5,7,13\}$, one has
+\begin{equation}\label{eq:density-genus-zero}
+ \boxed{
+ R_p(X)\le
+ \left(\frac{e(p-1)}{12\log p}+o(1)\right)(\log X)^2.}
+\end{equation}
+Consequently
+\[
+ \#\{3\le s\le X:\ s\text{ odd and }\zeta_p(s)\notin\Q\}
+ =\frac X2-O_p((\log X)^2),
+\]
+and the irrational values have natural density one among the positive odd
+arguments.
+\end{theorem}
+
+\begin{theorem}[Explicit density-one irrationality at every fixed prime]
+\label{thm:density-all-primes}
+Let $d_p$ be the degree of the finite map in
+\cref{thm:finite-map-zero}; one may take $d_p=1$ when $g_p=0$ and
+$d_p\le2g_p$ when $g_p\ge1$.  For every fixed prime $p$,
+\begin{equation}\label{eq:density-all-primes}
+ \boxed{
+ R_p(X)\le
+ \left(\frac{e\,d_p(p-1)}{12\log p}+o_p(1)\right)(\log X)^2.}
+\end{equation}
+In particular, when $g_p\ge1$,
+\begin{equation}\label{eq:density-all-primes-genus}
+ R_p(X)\le
+ \left(\frac{e\,g_p(p-1)}{6\log p}+o_p(1)\right)(\log X)^2.
+\end{equation}
+Consequently
+\[
+ \#\{3\le s\le X:\ s\text{ odd and }\zeta_p(s)\notin\Q\}
+ =\frac X2-O_p((\log X)^2),
+\]
+and the irrational values have natural density one among the positive odd
+arguments.  At genus zero, $d_p=1$ and the leading coefficient agrees with
+\eqref{eq:density-genus-zero}.
+\end{theorem}
+
+The induction begins with the following individual theorem, which is also a
+special case of the single-weight machinery developed below.
+
+\begin{theorem}[Base individual values]\label{thm:individual}
+The following values are irrational:
+\[
+ \zeta_2(s)\quad(s=3,5,\ldots,29),
+ \qquad
+ \zeta_3(s)\quad(s=3,5,\ldots,11),
+\]
+\[
+ \zeta_5(3),\quad\zeta_5(5),\quad\zeta_7(3).
+\]
+\end{theorem}
+
+\begin{warning}[Logical scope]\label{warn:scope}
+All asymptotics are for a fixed finite packet $\mathcal S$ while $D\to\infty$.
+The constants and exceptional primes may depend on $p$ and $\mathcal S$.
+This is sufficient for every counting contradiction: after assuming that a
+specified number of rational values exist, one fixes one such finite set and
+then runs the asymptotic argument.
+\end{warning}
+
+\section{Published inputs and normalization}\label{sec:inputs}
+
+We use the following external results.
+
+\begin{enumerate}[label=\textup{(E\arabic*)},leftmargin=3em]
+\item \textbf{Overconvergent Eisenstein families.}
+For $s=2n+1$, Calegari's specialization at the character
+$\kappa(a)=a^{1-s}$ gives a weight-$(1-s)$ overconvergent eigenform whose
+nonconstant coefficients are $\sigma_{-s}^{(p)}(n)$ and whose constant term is
+$\zeta_p(s)/2$; see \cite[Theorem~2.3 and Lemma~2.4]{Calegari2005}.
+
+\item \textbf{Finite-slope continuation.}
+Buzzard's theorem extends a finite-slope overconvergent form across the
+wide-open $W_0(p)$; see \cite[Theorem~5.2]{Buzzard2003}.  The relevant radii
+for $p=2,3,5,7,13$ are recalled in \cref{sec:analytic}.
+
+\item \textbf{Hasse invariants.}
+We use Katz's geometric Hasse invariant and $q$-expansion principle
+\cite{Katz1973}, together with
+\[
+ E_{\ell-1}\equiv1\pmod\ell,
+ \qquad E_{\ell+1}\equiv E_2\pmod\ell.
+\]
+
+\item \textbf{De Rham frame torsor and Gauss--Manin connection.}
+We use the Hodge-compatible $B$-torsor and connection of
+\cite[Propositions~A.14--A.15]{GPRJ2025}.  The descent to one fixed coarse
+modular curve and the uniform spreading-out statements used below are proved
+internally.
+
+\item \textbf{Arithmetic holonomy.}
+We use Bost's slopes inequality \cite{Bost2001}; the capacitary metrics
+and model-theoretic Dirichlet problem of \cite{BostChambertLoir2009}; the
+theta Hilbert--Samuel, overflow, and direct-image divisor formulas of
+\cite{BostCharles2022}; the determinant vector-bundle Hilbert--Samuel theorem
+of \cite[Corollary~4.5.2]{ChenMoriwaki2024}; and the zero-estimate,
+source-degree, evaluation-height, and prime-window formulas in
+\cite{CDT2024,CDT2025}.
+Regularity of the modular stack at the cusps is taken from
+\cite{Cesnavicius2017}.  The genus-zero fixed-bundle bridge and all
+intrinsic-curve passages needed at arbitrary prime level are proved
+internally in \cref{sec:bost,sec:curve-zero,sec:qjet,sec:curve-bost}.
+\end{enumerate}
+
+Put
+\begin{equation}\label{eq:f}
+ f_p(\tau)=\left(\frac{\Delta(p\tau)}{\Delta(\tau)}\right)^{1/(p-1)}.
+\end{equation}
+For $p\in\{2,3,5,7,13\}$ this is a Hauptmodul at the cusp
+$P=\infty$.  For $p=13$, Maier's normalization \cite[(3.2) and Table~4]{Maier2009}
+gives the canonical Hauptmodul
+$t_{13}=13[13]^2/[1]^2=13f_{13}$ and its degree-$14$ map to the
+$j$-line.  In all five
+cases
+\begin{equation}\label{eq:f-product}
+ f_p(q)=q\prod_{n\ge1}
+ \left(1+q^n+\cdots+q^{(p-1)n}\right)^{24/(p-1)}
+ \in q+q^2\Z[[q]].
+\end{equation}
+Its inverse satisfies
+\begin{equation}\label{eq:q-inverse}
+ q(f_p)\in f_p+f_p^2\Z[[f_p]].
+\end{equation}
+Throughout the genus-zero sections we write $f=f_p$.  In the
+arbitrary-prime sections no Hauptmodul is used; all local arithmetic is
+performed in the width-one Tate parameter $q$.  In either notation,
+\[
+ D=q\frac{\dd}{\dd q}.
+\]
+
+For admissible adelic continuation templates
+$\boldsymbol\phi=(\phi_v)_v$, centered at $P$, define
+\begin{equation}\label{eq:Lambda}
+ \LambdaAH(\boldsymbol\phi)=\sum_v\log\abs{\phi_v'(0)}_v
+\end{equation}
+and
+\begin{equation}\label{eq:Energy}
+ \Energy(\boldsymbol\phi)=
+ \sum_{v\mid\infty}\iint_{\T_v^2}
+ \log\abs{\phi_v(z)-\phi_v(w)}_v\,\dd m(z)\dd m(w)
+ +\sum_{v\nmid\infty}\sup_{z\in\T_v}\log\abs{\phi_v(z)}_v.
+\end{equation}
+These are normalized as in \cite[Section~7.3]{CDT2024} and
+\cite[Section~2]{CDT2025}.
+
+\section{Single-weight Eisenstein--Eichler blocks}\label{sec:blocks}
+
+Fix an odd $s\ge3$.  Define
+\begin{equation}\label{eq:J-def}
+ J_{p,s}(q)=\sum_{n\ge1}\sigma_{-s}^{(p)}(n)q^n,
+ \qquad
+ \sigma_{-s}^{(p)}(n)=\sum_{\substack{d\mid n\\p\nmid d}}d^{-s},
+\end{equation}
+and, for a scalar $\eta$,
+\[
+ K_{p,s,\eta}=J_{p,s}+\eta.
+\]
+At $\eta=\zeta_p(s)/2$, input (E1) identifies this with the distinguished
+overconvergent form of weight $1-s$.
+
+\begin{lemma}[$U_p$ eigenvalue]\label{lem:Up}
+For every $n\ge1$,
+\[
+ \sigma_{-s}^{(p)}(pn)=\sigma_{-s}^{(p)}(n).
+\]
+Consequently
+\[
+ U_pK_{p,s,\zeta_p(s)/2}=K_{p,s,\zeta_p(s)/2}.
+\]
+\end{lemma}
+
+\begin{proof}
+The divisors of $pn$ prime to $p$ are exactly the divisors of $n$ prime to
+$p$.  The usual $q$-expansion definition of $U_p$ gives the assertion,
+including the constant term.
+\end{proof}
+
+For $1\le e\le s$ put
+\begin{equation}\label{eq:R-def}
+ R_{s,e}=D^{s-e}J_{p,s}.
+\end{equation}
+When no confusion is possible we write $R_e$.
+
+\begin{lemma}[Raw integration depth]\label{lem:raw-depth}
+For every $n\ge1$,
+\begin{equation}\label{eq:raw-depth}
+ n^e[q^n]R_{s,e}
+ =\sum_{\substack{d\mid n\\p\nmid d}}(n/d)^s\in\Z.
+\end{equation}
+If $L_N=\lcmop(1,\ldots,N)$, then
+\[
+ L_N^eR_{s,e}(q(f))\pmod{f^{N+1}}
+ \in\Z[[f]]/(f^{N+1}).
+\]
+\end{lemma}
+
+\begin{proof}
+The coefficient of $q^n$ is $n^{s-e}\sigma_{-s}^{(p)}(n)$, which gives
+\eqref{eq:raw-depth}.  Since $n\mid L_N$ for $n\le N$, the $q$-integrality
+follows.  The integral tangent-to-identity substitution \eqref{eq:q-inverse}
+uses only coefficients of index at most the target index and preserves the
+cumulative cutoff.
+\end{proof}
+
+\begin{lemma}[Exact divided Frobenius]\label{lem:Dwork}
+Let $\ell\ne p$ be prime.  For $1\le e\le s$,
+\begin{equation}\label{eq:Dwork-q}
+ R_{s,e}(q)-\ell^{-e}R_{s,e}(q^\ell)\in\Z_\ell[[q]].
+\end{equation}
+After $q=q(f)$,
+\begin{equation}\label{eq:Dwork-f}
+ R_{s,e}(q(f))-\ell^{-e}R_{s,e}(q(\varphi_\ell(f)))
+ \in\Z_\ell[[f]],
+\end{equation}
+where
+\[
+ \varphi_\ell(f)=f(q(f)^\ell).
+\]
+Moreover, outside a fixed exceptional set,
+\begin{equation}\label{eq:Frob-expansion}
+ \varphi_\ell(f)=f^\ell+\ell\Delta_\ell(f),
+ \qquad
+ \Delta_\ell(f)\in f^{\ell+1}\Z_\ell[[f]].
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+If $\ell\mid n$, the $q^n$ coefficient of the left side of
+\eqref{eq:Dwork-q} is
+\[
+ n^{s-e}\left(\sigma_{-s}^{(p)}(n)
+ -\ell^{-s}\sigma_{-s}^{(p)}(n/\ell)\right)
+ =n^{s-e}\sum_{\substack{d\mid n\\p\nmid d\\\ell\nmid d}}d^{-s},
+\]
+which is $\ell$-integral; the case $\ell\nmid n$ is immediate.  Substitution
+gives \eqref{eq:Dwork-f}.  Finally, in characteristic $\ell$,
+$f(q)^\ell=f(q^\ell)$.  Substituting $q=q(f)$ gives
+$\varphi_\ell(f)\equiv f^\ell\pmod\ell$; the two sides have the same order
+and leading coefficient, proving \eqref{eq:Frob-expansion}.
+\end{proof}
+
+Let $\calH$ be the rank-two de Rham bundle of the universal elliptic curve and
+put
+\[
+ V_s=\Sym^{s-1}\calH.
+\]
+In a local oper frame $v_0,\ldots,v_{s-1}$ with
+\[
+ \nabla_\partial v_j=(s-1-j)v_{j+1},
+ \qquad v_s=0,
+\]
+define
+\begin{equation}\label{eq:BGG-def}
+ \operatorname{spl}_s(F)=
+ \sum_{j=0}^{s-1}(-1)^j\frac{(s-1)!}{(s-1-j)!}
+ \partial^{s-1-j}F\,v_j.
+\end{equation}
+
+\begin{lemma}[Canonical BGG lift]\label{lem:BGG}
+The expression \eqref{eq:BGG-def} glues to an algebraic differential operator
+\[
+ \operatorname{spl}_s:\omega^{1-s}\longrightarrow V_s
+\]
+and satisfies
+\begin{equation}\label{eq:BGG}
+ \nabla_{V_s}\operatorname{spl}_s(F)=\iota_s(\operatorname{Bol}_sF).
+\end{equation}
+On the Tate disc, $\operatorname{Bol}_sF=D^sF$.
+\end{lemma}
+
+\begin{proof}
+Write $c_j=(-1)^j(s-1)!/(s-1-j)!$.  In
+$\nabla_\partial\operatorname{spl}_s(F)$, the coefficient of
+$\partial^{s-j}Fv_j$ for $j\ge1$ is
+$c_j+(s-j)c_{j-1}=0$.  Only the top-oper term remains.  The formula is
+characterized by this property and its bottom quotient, hence glues.
+The Tate normalization is the standard dual-BGG/Bol normalization; compare
+\cite[Proposition~2.4.3]{RodriguezCamargo2023} and
+\cite[Proposition~2.4.1]{Urban2013}.
+\end{proof}
+
+Put
+\begin{equation}\label{eq:Eevil}
+ E_{p,s+1}^{\mathrm{evil}}=D^sJ_{p,s}.
+\end{equation}
+It is the algebraic $p$-stabilized Eisenstein form of weight $s+1$ and is
+independent of $\eta$.
+
+\begin{proposition}[Split Eisenstein--Eichler connection]
+\label{prop:block-connection}
+On
+\[
+ \calE_{p,s}=\calO\oplus V_s
+\]
+define
+\begin{equation}\label{eq:block-connection}
+ \nabla_{\calE}(a,v)=
+ \left(\dd a,\nabla_{V_s}v-a\,\iota_s(E_{p,s+1}^{\mathrm{evil}})\right).
+\end{equation}
+This is an algebraic regular-singular connection, and
+\begin{equation}\label{eq:block-leaf}
+ S_{p,s,\eta}=(1,\operatorname{spl}_s(K_{p,s,\eta}))
+\end{equation}
+is horizontal on the Tate disc.
+\end{proposition}
+
+\begin{proof}
+The connection is algebraic because $E_{p,s+1}^{\mathrm{evil}}$ is algebraic;
+integrability is automatic on a curve.  Equation \eqref{eq:BGG} gives
+horizontality.
+\end{proof}
+
+\begin{proposition}[Single-weight functional rank]\label{prop:block-rank}
+The complex monodromy orbit of $S_{p,s,\eta}$ spans a space of dimension
+$s+1$.
+\end{proposition}
+
+\begin{proof}
+The period-polynomial cocycle is nonzero.  Otherwise one could subtract a
+polynomial of degree at most $s-1$ from the Eichler primitive and obtain a
+moderate-growth modular form of weight $1-s<0$, hence zero, contradicting
+$D^sK=E_{p,s+1}^{\mathrm{evil}}\ne0$.  The span of the cocycle values is
+$\Gamma_0(p)$-stable.  Since $\Gamma_0(p)$ is Zariski dense in
+$\mathrm{SL}_2$ and $\Sym^{s-1}(\C^2)$ is irreducible, that span is the full
+$s$-dimensional representation.  Adjoining the scalar coordinate gives rank
+$s+1$.
+\end{proof}
+
+\section{The simultaneous packet and its zero estimate}\label{sec:simultaneous}
+
+Assume from now on that $\mathcal S$ is fixed and that
+\begin{equation}\label{eq:joint-rationality}
+ \eta_s=\frac{\zeta_p(s)}2\in\Q
+ \qquad(s\in\mathcal S).
+\end{equation}
+Define
+\begin{equation}\label{eq:sim-connection}
+ \calE_{p,\mathcal S}=\calO\oplus\bigoplus_{s\in\mathcal S}V_s
+\end{equation}
+with
+\begin{equation}\label{eq:sim-connection-formula}
+ \nabla_{\mathcal S}(a,(v_s)_s)=
+ \left(\dd a,
+ \left(\nabla_{V_s}v_s-a\,\iota_s(E_{p,s+1}^{\mathrm{evil}})\right)_s
+ \right).
+\end{equation}
+Then
+\begin{equation}\label{eq:sim-leaf}
+ S_{p,\mathcal S}=
+ \left(1,(\operatorname{spl}_s(K_{p,s,\eta_s}))_{s\in\mathcal S}\right)
+\end{equation}
+is horizontal.
+
+\begin{theorem}[Joint functional rank]\label{thm:joint-rank}
+The complex monodromy orbit of $S_{p,\mathcal S}$ spans the full fibre of
+$\calE_{p,\mathcal S}$.  Its dimension is
+\[
+ m=1+\sum_{s\in\mathcal S}s.
+\]
+\end{theorem}
+
+\begin{proof}
+Fix a basepoint and put
+\[
+ V_{\mathcal S}=\bigoplus_{s\in\mathcal S}V_s.
+\]
+Let $W\subset V_{\mathcal S}$ be the span of all differences
+\[
+ \rho_{\mathcal S}(\gamma)S_{p,\mathcal S}-S_{p,\mathcal S}.
+\]
+The scalar coordinate of each difference is zero.  For
+$\alpha,\gamma\in\Gamma_0(p)$,
+\[
+ \rho_V(\alpha)
+ \left(\rho_{\mathcal S}(\gamma)S-S\right)
+ =\left(\rho_{\mathcal S}(\alpha\gamma)S-S\right)
+ -\left(\rho_{\mathcal S}(\alpha)S-S\right),
+\]
+so $W$ is $\Gamma_0(p)$-stable.  Projection to the $s$-block is the span of
+the orbit differences of the single-weight leaf; by
+\cref{prop:block-rank}, it is all of $V_s$.
+
+The stabilizer of a linear subspace is Zariski closed, so density of
+$\Gamma_0(p)$ makes $W$ an $\mathrm{SL}_2$-subrepresentation.  The
+representations $V_s=\Sym^{s-1}(\C^2)$ are pairwise nonisomorphic irreducibles
+because the weights in $\mathcal S$ are distinct.  Their direct sum is
+multiplicity-free.  A subrepresentation surjecting onto every summand must be
+the entire direct sum.  Hence $W=V_{\mathcal S}$.  One branch of $S$ has
+scalar coordinate $1$, so it is independent of $W$ and completes the span.
+\end{proof}
+
+\begin{corollary}[Joint functional independence]\label{cor:joint-independence}
+In any rational algebraic frame, the $m$ coordinate functions of
+$S_{p,\mathcal S}$ are linearly independent over the function field
+$\C(X_0(p))$.  For $p\in\mathcal P_0$ this is $\C(f_p)$, and hence the
+coordinates are also independent over $\Q(f_p)$.
+\end{corollary}
+
+\begin{proof}
+A rational covector over $\C(X_0(p))$ annihilating one branch is
+single-valued, hence annihilates all analytic continuations.  At a generic
+basepoint those continuations span the full fibre by \cref{thm:joint-rank};
+the covector is zero.
+\end{proof}
+
+Choose a fixed divisor $B$, disjoint from $P$, clearing all fixed poles, and
+put
+\begin{equation}\label{eq:source}
+ M_D=H^0\left(X_0(p),\calE_{p,\mathcal S}^\vee(DP+B)\right).
+\end{equation}
+
+\begin{corollary}[Genus-zero joint Bost pivot set]\label{cor:joint-zero}
+For every $\varepsilon>0$,
+\begin{equation}\label{eq:joint-zero}
+ \#V_D=mD+O_{p,\mathcal S}(1),
+ \qquad
+ V_D\subset[0,(m+\varepsilon)D+O_{p,\mathcal S,\varepsilon}(1)].
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Since $X_0(p)\simeq\mathbf P^1$ for the five primes in $\mathcal P_0$,
+Riemann--Roch gives $\dim M_D=mD+O(1)$.  A fixed rational frame and fixed
+normalizer embed $M_D$ into
+\[
+ (\Q[f]_{\le D+C})^m.
+\]
+The coordinate functions are holonomic and independent over $\C(f)$ by
+\cref{cor:joint-independence}.  The Chudnovsky--Osgood estimate in
+\cite[Theorem~3.2.13]{CDT2024} bounds the order of a nonzero evaluation by
+$(m+\varepsilon)D+O(1)$.  Evaluation is injective, and every nonzero graded
+piece of the one-variable vanishing filtration has dimension one, so the
+number of jumps equals the source rank.
+\end{proof}
+
+\section{Global sources and the blockwise Hasse saving}\label{sec:hasse}
+
+The split bundle yields
+\begin{equation}\label{eq:source-split}
+ M_D=M_D^0\oplus\bigoplus_{s\in\mathcal S}M_{D,s}^+,
+\end{equation}
+where
+\[
+ M_D^0=H^0(X_0(p),\calO(DP+B)),
+ \qquad
+ M_{D,s}^+=H^0(X_0(p),V_s^\vee(DP+B)).
+\]
+Riemann--Roch gives
+\begin{equation}\label{eq:block-source-rank}
+ \rank M_{D,s}^+=sD+O_{p,s}(1).
+\end{equation}
+After enlarging one fixed exceptional set, this decomposition and the relevant
+filtrations are saturated over every good $\Z_\ell$.
+
+We recall the blockwise Hasse mechanism in a form that can be summed over
+$\mathcal S$.  Write $s=2r+1$ and
+\[
+ H=D\log f.
+\]
+On a fixed algebraic Hodge splitting, let $X$ be Urban's unipotent coordinate
+and put $x=X/H$.
+
+\begin{proposition}[Single unipotent action]\label{prop:single-action}
+For every $D\gg1$ and every $\lambda\in M_{D,s}^+$, the multiplier of the
+normalized undifferentiated row $H^rK_{p,s,\eta_s}$ in the genuine scalar
+contraction has the form
+\begin{equation}\label{eq:q0}
+ q_{0,s,\lambda}(f,x)=\sum_{j=0}^{s-1}Q_{j,s,\lambda}(f)x^j.
+\end{equation}
+There are a fixed polynomial $g_s(f)$, with $g_s(0)$ a unit, and a constant
+$C_s$ such that
+\begin{equation}\label{eq:q0-degree}
+ g_sQ_{j,s,\lambda}\in\Z[\Sigma^{-1}][f],
+ \qquad
+ \deg(g_sQ_{j,s,\lambda})\le D+C_s.
+\end{equation}
+Only one degree-$(s-1)$ unipotent matrix occurs.
+\end{proposition}
+
+\begin{proof}
+In the monomial basis of $\Sym^{s-1}\calH$, the matrix of
+$\left(\begin{smallmatrix}1&x\\0&1\end{smallmatrix}\right)$ and its dual have
+entries in $\Z[x]$ of degree at most $s-1$.  Keep the source covector in the
+fixed algebraic dual frame and transport the BGG section once.  Equivariance
+of contraction moves that one unipotent matrix to either factor; it does not
+create a second action.  The undifferentiated $K$ occurs only in the bottom
+extremal BGG component.  Multiplication by $f^D$ clears the variable pole at
+$P$, while one fixed polynomial clears all remaining poles and the fixed
+normalization by $H^{-r}$.
+\end{proof}
+
+On the chosen splitting,
+\begin{equation}\label{eq:x-sigma}
+ x_\sigma=-\frac{E_2}{12H}+r_\sigma(f),
+ \qquad r_\sigma(f)\in\Q(f).
+\end{equation}
+
+\begin{lemma}[Hasse algebraization]\label{lem:Hasse-degree}
+For every sufficiently good auxiliary prime $\ell$, the reduction of
+$x_\sigma$ lies in $\F_\ell(f)$.  If
+\[
+ \bar x_\sigma=\frac{a_\ell(f)}{b_\ell(f)}
+\]
+is in lowest terms and $b_\ell(0)\ne0$, then
+\begin{equation}\label{eq:Hasse-degree}
+ \delta_\ell:=\max\{\deg a_\ell,\deg b_\ell\}
+ \le c_p\ell+C_s.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Modulo $\ell$, represent $E_2$ by $E_{\ell+1}/E_{\ell-1}$.  Equation
+\eqref{eq:x-sigma} becomes a weight-zero modular function.  The valence formula
+on $X_0(p)$ bounds the zero and pole degree by
+$[\mathrm{SL}_2(\Z):\Gamma_0(p)](\ell+1)/12=(p+1)(\ell+1)/12$; the fixed
+rational correction and elliptic-point conventions change only $O_{p,s}(1)$.
+Regularity at the Tate cusp gives $b_\ell(0)\ne0$.
+\end{proof}
+
+\begin{theorem}[Blockwise genuine-source Hasse kernel]
+\label{thm:block-Hasse}
+There are constants $D_0,C_s$, independent of $D$ and of every good $\ell$,
+such that the reduction of $M_{D,s}^+$ contains a subspace
+$\overline K_{D,\ell,s}$ of dimension at least
+\begin{equation}\label{eq:block-Hasse-rank}
+ (s-1)\max\{0,D-\ceil{c_p\ell}-C_s\}
+\end{equation}
+for which
+\begin{equation}\label{eq:q0-zero}
+ q_{0,s,\bar\lambda}
+ \left(f,\frac{a_\ell}{b_\ell}\right)=0
+ \quad\text{in }\F_\ell[[f]].
+\end{equation}
+It lifts to a saturated direct summand $K_{D,\ell,s}\subset M_{D,s,\ell}^+$
+with
+\begin{equation}\label{eq:q0-divisible}
+ q_{0,s,\lambda}(f,x_\sigma(f))\in\ell\Z_\ell[[f]].
+\end{equation}
+The construction is independent of $\eta_s$.
+\end{theorem}
+
+\begin{proof}
+After multiplying by $g_s b_\ell^{s-1}$, substitution of
+$x=a_\ell/b_\ell$ in \eqref{eq:q0} defines an $\F_\ell$-linear map
+\[
+ \overline M_{D,s}^+
+ \longrightarrow
+ \F_\ell[f]_{\le D+(s-1)\delta_\ell+O_s(1)}.
+\]
+The source has dimension $sD+O_s(1)$, while the target has dimension at most
+$D+(s-1)\delta_\ell+O_s(1)$.  Rank--nullity and
+\cref{lem:Hasse-degree} give \eqref{eq:block-Hasse-rank}.  Since
+$g_s(0)b_\ell(0)$ is a unit, vanishing after clearing denominators implies
+\eqref{eq:q0-zero}.  Lift a basis and extend it to an integral basis to obtain
+a saturated summand.  The connection and multiplier are independent of the
+constant $\eta_s$.
+\end{proof}
+
+The genuine contraction separates the unique depth-$s$ row from the remaining
+rows:
+\begin{equation}\label{eq:deepest-decomp}
+ f^D\langle\lambda,S_{p,s,\eta_s}\rangle
+ =G_{s,\lambda}+q_{0,s,\lambda}H^rJ_{p,s}
+ +\eta_sq_{0,s,\lambda}H^r
+ +\sum_{e=1}^{s-1}\widetilde Q_{s,e,\lambda}R_{s,e}.
+\end{equation}
+Every remaining nonalgebraic row has depth at most $s-1$.
+
+Fix $1<\xi<m$ and put
+\[
+ N^\sharp=\floor{\xi D}+C_{\mathrm{sh}},
+ \qquad a_{\ell,D}=v_\ell(L_{N^\sharp}).
+\]
+For each good small prime and each $s\in\mathcal S$, choose a complement
+$K^c_{D,\ell,s}$ and define the block lattice
+\begin{equation}\label{eq:block-hybrid-lattice}
+ M_{D,\ell,s}^{\mathrm H}
+ =\ell^{sa_{\ell,D}-1}K_{D,\ell,s}
+ \oplus\ell^{sa_{\ell,D}}K^c_{D,\ell,s}.
+\end{equation}
+Together with the unscaled scalar block and the direct sum over $s$, this is
+the multiweight small-prime lattice.
+
+\begin{proposition}[Multiweight small-prime cost]\label{prop:small-cost}
+The lattice \eqref{eq:block-hybrid-lattice} has integral evaluation through
+$f^{\floor{\xi D}}$, and
+\begin{equation}\label{eq:small-cost}
+ \sum_{\ell\le N^\sharp}
+ \log[M_{D,\ell}:M^{\mathrm H}_{D,\ell}]
+ =\left(\xi Q_{\mathcal S}-B_{\mathcal S}J_p(\xi)\right)D^2+o(D^2).
+\end{equation}
+The residual small-prime evaluation heights are $o(D^2)$.
+\end{proposition}
+
+\begin{proof}
+On $K_{D,\ell,s}$, \eqref{eq:q0-divisible} restores the one missing power of
+$\ell$ on the unique depth-$s$ row.  Since
+$sa_{\ell,D}-1\ge ea_{\ell,D}$ for $e\le s-1$, every other row is integral as
+well.  The block index is
+\[
+ s^2Da_{\ell,D}
+ -(s-1)\max\{0,D-\ceil{c_p\ell}-C_s\}
+ +O_s(a_{\ell,D}).
+\]
+Sum over $s\in\mathcal S$.  The prime number theorem and partial summation give
+\[
+ \sum_{\ell\le\xi D}a_{\ell,D}\log\ell=\xi D+o(D)
+\]
+and
+\[
+ \sum_{\ell\le\xi D}
+ \max\{0,D-c_p\ell\}\log\ell
+ =D^2J_p(\xi)+o(D^2).
+\]
+The finite exceptional set and proper-prime-power residuals contribute only
+$O_{p,\mathcal S}(D\log D)=o(D^2)$.
+\end{proof}
+
+\section{Multiweight Cartier strictness at large primes}\label{sec:Cartier}
+
+On one fixed flat torsor chart, the normalized simultaneous contraction has
+the form
+\begin{equation}\label{eq:multi-torsor}
+ F_\lambda(f)=H_\lambda(f,u)+
+ \sum_{s\in\mathcal S}\sum_{e=1}^s
+ Q_{s,e,\lambda}(f,u)R_{s,e}(f),
+\end{equation}
+where every multiplier has $f$-support in $[-C,D+C]$ and fixed fibre degree.
+Inserting \cref{lem:Dwork} gives
+\begin{equation}\label{eq:multi-Dwork}
+ F_\lambda=H_\lambda^\flat+
+ \sum_{s\in\mathcal S}\sum_{e=1}^s
+ \ell^{-e}Q_{s,e,\lambda}(f,u)
+ R_{s,e}(\varphi_\ell(f)),
+\end{equation}
+with integral $H_\lambda^\flat$.
+
+\begin{lemma}[Coefficient-ring Taylor no-backflow]\label{lem:no-backflow}
+Let $A$ be an $\F_\ell$-algebra and
+\[
+ \Gamma(f,z)=\sum_{j=0}^df^jP_j(z),
+ \qquad d<\ell,
+ \qquad P_j(z)\in A[[z]].
+\]
+If $\Gamma(f,f^\ell)\in f^nA[[f]]$ and
+$\Delta(f)\in f^{\ell+1}A[[f]]$, then for every $t\ge0$,
+\begin{equation}\label{eq:no-backflow}
+ \Delta(f)^t
+ \left.\partial_z^t\Gamma(f,z)\right|_{z=f^\ell}
+ \in f^{n+t}A[[f]].
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write $P_j(z)=\sum_rp_{j,r}z^r$.  Since $0\le j<\ell$, the exponent
+$j+\ell r$ uniquely determines $(j,r)$, so no cancellation between different
+pairs is possible, even when $A$ has zero divisors.  A nonzero coefficient
+therefore satisfies $j+\ell r\ge n$.  After $t$ derivatives and multiplication
+by $\Delta^t$, its order is at least
+\[
+ j+\ell(r-t)+t(\ell+1)=j+\ell r+t\ge n+t.
+\]
+\end{proof}
+
+Let
+\[
+ F_\lambda(f)=c_nf^n+O(f^{n+1}),\qquad c_n\ne0,
+\]
+be a Bost pivot.  Since $n=O_{\mathcal S}(D)$ by
+\cref{cor:joint-zero} and $\ell>\xi D$, terms of $z$-degree at least $\ell$ in
+\eqref{eq:multi-Dwork} lie beyond the pivot range.  Truncate every raw row
+below $z^\ell$ and shift by $f^C$.  Put
+\begin{equation}\label{eq:Bse}
+ B_{s,e}(f,u,z)=f^CQ_{s,e,\lambda}(f,u)R_{s,e,<\ell}(z).
+\end{equation}
+Then
+\[
+ \deg_fB_{s,e}<\ell,
+ \qquad \deg_zB_{s,e}<\ell,
+ \qquad B_{s,e}(f,u,0)=0.
+\]
+Choose digits
+\begin{equation}\label{eq:digits}
+ B_{s,e}\equiv\sum_{\nu=0}^{e-1}\ell^\nu B_{s,e,\nu}
+ \pmod{\ell^e}.
+\end{equation}
+For $1\le b\le s_*$ define
+\begin{equation}\label{eq:Gamma-b}
+ \Gamma_b(f,z)=
+ \sum_{s\in\mathcal S}\sum_{e=b}^s
+ \overline B_{s,e,e-b}(f,u,z).
+\end{equation}
+If $\Pi_b$ denotes the pole-grade-$b$ symbol of the shifted truncated
+expression, Taylor expansion gives
+\begin{equation}\label{eq:pole-symbol}
+ \boxed{
+ \Pi_b(f)=\sum_{t=0}^{s_*-b}
+ \frac{\overline\Delta_\ell(f)^t}{t!}
+ \left.\partial_z^t\Gamma_{b+t}(f,z)\right|_{z=f^\ell}.}
+\end{equation}
+All factorials are units after excluding the finite set $\ell\le s_*$.
+
+\begin{proposition}[Multiweight torsor Cartier strictness]
+\label{prop:multi-Cartier}
+If $v_\ell(c_n)<0$ and $a=-v_\ell(c_n)$, then
+\[
+ 1\le a\le s_*
+\]
+and there exist
+\[
+ -C\le j\le D+C,
+ \qquad r\ge1,
+ \qquad n=j+\ell r.
+\]
+Consequently
+\begin{equation}\label{eq:rect-local}
+ \delta_\ell(\psi_D^{(n)})
+ \le s_*v_\ell
+ \left(\lcmop\{\max(n-D-C,1),\ldots,n+C\}\right)\log\ell.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+After truncation, the only negative powers of $\ell$ are the explicit
+$\ell^{-e}$ with $e\le s_*$, so $a\le s_*$.  Every coefficient below the
+pivot order vanishes.  Taking pole-grade symbols gives
+$\Pi_b\in f^{n+C}A[[f]]$.  Descending induction on $b$, using
+\cref{lem:no-backflow} in \eqref{eq:pole-symbol}, proves
+\[
+ \Gamma_b(f,f^\ell)\in f^{n+C}A[[f]],
+ \qquad
+ \Pi_b\equiv\Gamma_b(f,f^\ell)\pmod{f^{n+C+1}}.
+\]
+At the actual pole grade $a$, the coefficient of $f^{n+C}$ in $\Pi_a$ is the
+nonzero reduction of $\ell^ac_n$.  Hence the same coefficient in
+$\Gamma_a(f,f^\ell)$ is nonzero.  Some contributing monomial has
+\[
+ n+C=j'+\ell r,
+ \qquad0\le j'\le D+2C,
+ \qquad r\ge1.
+\]
+Set $j=j'-C$.  Then $\ell r=n-j$ lies in the displayed interval.  Since
+$a\le s_*$, \eqref{eq:rect-local} follows.
+\end{proof}
+
+\begin{proposition}[Rectangular large-prime cost]\label{prop:rect-large}
+The total positive denominator penalty at primes $\ell>N^\sharp$ satisfies
+\begin{equation}\label{eq:rect-large}
+ \mathscr A_D^{\mathrm{large}}
+ \le s_*I^m_\xi(\xi)D^2+o(D^2).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Apply \cref{prop:multi-Cartier} and the CDT packing sum for the
+$mD+O(1)$ distinct pivots contained in an interval of normalized length
+$m+o(1)$.  Fixed shifts by $C$ and $C_{\mathrm{sh}}$ contribute
+$O(D\log D)=o(D^2)$.
+\end{proof}
+
+\subsection{The thickness-sensitive Fitting refinement}
+
+Let $L_{D,\ell}$ be the integral simultaneous source lattice at a good large
+prime and
+\[
+ L_{D,\ell}^{(n)}=
+ L_{D,\ell}\cap\{\lambda:\ord_f\langle\lambda,S\rangle\ge n\}
+\]
+its saturated vanishing filtration.  At a pivot $n$, write
+\[
+ a_{\ell,n}=\max\{0,-v_\ell(c_n)\}.
+\]
+For $1\le b\le s_*$ define
+\begin{equation}\label{eq:Qb}
+ \mathcal Q_{b,\ell}=
+ \bigoplus_{\substack{s\in\mathcal S\\s\ge b}}
+ L^+_{D,s,\ell}/\ell^{s-b+1}L^+_{D,s,\ell}.
+\end{equation}
+Its length is
+\[
+ \operatorname{length}_{\Z_\ell}\mathcal Q_{b,\ell}
+ =\rho_bD+O_{p,\mathcal S}(1),
+\]
+with $\rho_b$ as in \eqref{eq:rho-b}.
+
+\begin{proposition}[Pole-grade Fitting bound]\label{prop:Fitting}
+For every good large prime $\ell$ and $1\le b\le s_*$,
+\begin{equation}\label{eq:Fitting}
+ \#\{n\in V_D:a_{\ell,n}\ge b\}
+ \le\rho_bD+O_{p,\mathcal S}(1).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let $U_{b,n}$ be the image of $L_{D,\ell}^{(n)}$ in
+$\mathcal Q_{b,\ell}$.  These form a descending chain.  Suppose
+$a_{\ell,n}\ge b$, and choose a primitive lift $\lambda_n$ of the rank-one
+pivot quotient.  If its image in $\mathcal Q_{b,\ell}$ belonged to
+$U_{b,n+1}$, there would be $\mu\in L_{D,\ell}^{(n+1)}$ such that
+\[
+ (\lambda_n-\mu)_s\in\ell^{s-b+1}L^+_{D,s,\ell}
+ \qquad(s\ge b).
+\]
+The $s$-block has maximum pole depth $s$, so these components now have depth
+at most $b-1$; blocks with $s<b$ already have depth at most $b-1$, and the
+scalar block has depth zero.  Since $\mu$ vanishes through the pivot order,
+$\lambda_n-\mu$ has the same leading coefficient $c_n$, forcing
+$v_\ell(c_n)\ge-(b-1)$, a contradiction.  Therefore
+$U_{b,n+1}\subsetneq U_{b,n}$.  Each grade-$\ge b$ pivot consumes at least one
+unit of the total length of $\mathcal Q_{b,\ell}$, proving
+\eqref{eq:Fitting}.
+\end{proof}
+
+\begin{remark}[Why rank alone is insufficient]
+One depth-$s$ source direction may successively consume several powers of
+$\ell$.  This is why the correct cap is the length
+$s-b+1$ per direction, not merely the rank of the deep source.  The quotient
+\eqref{eq:Qb} records exactly that thickness.
+\end{remark}
+
+\begin{proposition}[Capped prime-window sum]\label{prop:capped-window}
+For every integer $\rho\ge1$, the function \eqref{eq:I-cap-def} satisfies
+\eqref{eq:I-cap-explicit}.  Moreover the pole-grade Fitting bounds imply
+\begin{equation}\label{eq:poly-large}
+ \mathscr A_D^{\mathrm{large}}
+ \le\left(\sum_{b=1}^{s_*}I^{m,\rho_b}_\xi(\xi)\right)D^2+o(D^2).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+At a prime $\ell=xD$, the usual degree-$D$ multiplier window contains at most
+$w_m(x)D+o(D)$ pivots.  By \cref{prop:Fitting}, at most
+$\rho_bD+o(D)$ of them can have pole grade at least $b$.  Hence the grade-$b$
+contribution is bounded by
+$\min\{w_m(x),\rho_b\}D+o(D)$.  Prime-number-theorem summation yields
+\eqref{eq:poly-large}.
+
+The function $w_m$ is decreasing and equals $\rho$ at
+$x=m/(\rho+1)$.  If $\xi$ is below that point, the cap contributes
+$\rho(m/(\rho+1)-\xi)$ before the ordinary tail begins.  Evaluating
+$I^m_\xi$ at $m/(\rho+1)$ gives \eqref{eq:I-cap-explicit}.  If the cutoff is
+already beyond the crossing, the cap is inactive.
+\end{proof}
+
+\section{Bost--slopes assembly}\label{sec:bost}
+
+We record the fixed-bundle bridge needed for literal application of the scalar
+CDT estimates.
+
+\begin{lemma}[Adelic fixed-bundle comparison]\label{lem:fixed-bundle}
+Let $\calV$ be a fixed rank-$m$ vector bundle on $\mathbf P^1_\Q$ with fixed
+adelic models and metrics, and put
+\[
+ N_D=H^0(\mathbf P^1,\calV(DP+B)).
+\]
+Suppose scalar contraction with a fixed horizontal leaf is injective and its
+pivot set satisfies a linear zero estimate.  Then fixed changes of frame,
+normalizer, bundle splitting, local model, or scalar row degree change the
+source degree and summed evaluation heights by $o(D^2)$.  In particular,
+\begin{equation}\label{eq:fixed-degree}
+ \widehatdeg N_D=\frac m2\Energy D^2+o(D^2),
+\end{equation}
+and
+\begin{equation}\label{eq:fixed-heights}
+ \sum_{n\in V_D}\sum_vh_v(\psi_D^{(n)})
+ \le\left(-\frac{m^2}{2}\LambdaAH+m\Energy\right)D^2
+ +\mathscr A_D+o(D^2).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By Birkhoff--Grothendieck, after a fixed twist
+$\calV\simeq\bigoplus_i\calO(a_i)$.  The original and transported adelic norms
+are uniformly equivalent; the determinant distortion is $O(D)$.  The scalar
+arithmetic Hilbert--Samuel formula gives
+$\frac12\Energy(D+a_i)^2$ on each summand, proving
+\eqref{eq:fixed-degree}.  Fixed analytic matrices and normalizers contribute
+$O(\log D)$ per pivot, hence $O(D\log D)=o(D^2)$ in total.  The scalar CDT
+height estimate contributes $-n\LambdaAH+D\Energy$ at each pivot.  Since the
+$mD+O(1)$ pivot orders are distinct and nonnegative,
+\[
+ \sum_{n\in V_D}n\ge\frac12m^2D^2+o(D^2),
+\]
+which proves \eqref{eq:fixed-heights}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:multiweight}]
+By \cref{prop:small-cost,prop:rect-large,lem:fixed-bundle}, the multiweight
+Hasse lattice satisfies
+\[
+ \widehatdeg M_D^{\mathrm H}
+ =\left(\frac m2\Energy-
+ \xi Q_{\mathcal S}+B_{\mathcal S}J_p(\xi)\right)D^2+o(D^2)
+\]
+and
+\[
+ \sum_{n\in V_D}\sum_vh_v(\psi_D^{(n)})
+ \le\left(-\frac{m^2}{2}\LambdaAH+m\Energy
+ +s_*I^m_\xi(\xi)\right)D^2+o(D^2).
+\]
+Bost's slopes inequality gives the first expression no larger than the
+second.  Rearranging yields \eqref{eq:multiweight-holonomy} with
+\eqref{eq:tau-rect}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:polygon}]
+Replace \cref{prop:rect-large} by \cref{prop:capped-window}.  The small-prime
+lattice and every other Bost term are unchanged.  The same rearrangement gives
+\eqref{eq:tau-poly}.
+\end{proof}
+
+\section{Common analytic continuation and collision energy}\label{sec:analytic}
+
+We first close the extra continuation interface required at $p=13$.
+
+\begin{lemma}[The $13$-adic supersingular annulus]\label{lem:p13-annulus}
+Put $t=13f_{13}$.  Then the unique supersingular annulus of $X_0(13)$ is
+\[
+ 0<v_{13}(t)<1.
+\]
+The wide-open $W_0(13)$ containing the Tate cusp is therefore
+\begin{equation}\label{eq:W013}
+ W_0(13)=\{v_{13}(t)>0\}=\{|f_{13}|_{13}<13\}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+By \cite[(3.2) and Table~4]{Maier2009}, Maier's canonical Hauptmodul is
+$t=t_{13}=13f_{13}$ and the degree-$14$ map to the $j$-line is
+\begin{equation}\label{eq:j13}
+ j=\frac{(t^2+5t+13)
+ (t^4+7t^3+20t^2+19t+1)^3}{t}.
+\end{equation}
+Deuring's count \cite{Deuring1941} gives a single supersingular
+$j$-invariant in characteristic $13$.  It is $j=5$: the curve
+\[
+ E:y^2=x^3+x+4
+\]
+has $j(E)=5$ in $\F_{13}$, and the exact quadratic-character sum
+\[
+ \sum_{x\in\F_{13}}\left(\frac{x^3+x+4}{13}\right)=0
+\]
+gives $\#E(\F_{13})=14$.  Its Frobenius trace is therefore zero, so $E$ is
+supersingular.
+
+Write $v=v_{13}(t)$.  If $v<0$, the highest-degree terms in the two factors
+of the numerator of \eqref{eq:j13} dominate, and
+$v_{13}(j)=13v<0$.  If $0<v<1$, the terms $5t$ and $1$ dominate, so
+$v_{13}(j)=0$ and
+\[
+ j\equiv5\pmod{13}.
+\]
+If $v>1$, the terms $13$ and $1$ dominate, and
+$v_{13}(j)=1-v<0$.  Thus the open tube with supersingular reduction is
+$0<v<1$; the loci $v=0$ and $v=1$ are its two boundary ends and are not part
+of the strict wide-open.  The cusp $\infty$ satisfies $v(t)>1$; adjoining the
+supersingular annulus to its ordinary component gives $v(t)>0$, which is
+\eqref{eq:W013} because $t=13f_{13}$.
+\end{proof}
+
+\begin{theorem}[Common continuation]\label{thm:continuation}
+For $p\in\{2,3,5,7,13\}$ and every finite packet $\mathcal S$, the
+simultaneous horizontal leaf extends over the same domains as its individual
+blocks.  At the distinguished $p$-adic place it extends over
+\[
+ \abs{f_p}_p<p^{12/(p-1)}.
+\]
+At every finite place $\ell\ne p$, under joint rationality it is meromorphic
+on $\abs{f_p}_\ell<1$.  At the complex place it is meromorphic on every
+modular template used below.
+\end{theorem}
+
+\begin{proof}
+Each block has $U_p$-eigenvalue $1$ by \cref{lem:Up}.  Inputs (E1)--(E2)
+extend it across the Buzzard wide-open $W_0(p)$.  For $p=2,3$ the explicit radii are the calculations of
+\cite[Lemma~3.1 and the proof of Theorem~3.5]{Calegari2005}.  For
+$p=5,7$ the identification of that wide-open with
+$|f_p|_p<p^{12/(p-1)}$ is the one used in the underlying single-weight
+argument.  For $p=13$ it is \cref{lem:p13-annulus}.  The BGG operator applies
+only finitely many Gauss--Manin derivatives and does not shrink the base
+domain.  A finite direct sum has the intersection of the blockwise domains,
+which here is the same common domain.
+\end{proof}
+
+For $0<Y<1/p$, put
+\[
+ \phi_{p,Y}(z)=f_p(e^{-2\pi Y}z)
+\]
+and
+\begin{equation}\label{eq:Cp}
+ C_p(Y)=4\pi
+ \sum_{\substack{c\ge1\\p\mid c\\cY<1}}
+ \frac{\varphi(c)}{c^2}
+ \left(\arccos(cY)-cY\sqrt{1-c^2Y^2}\right).
+\end{equation}
+The expression $C_p(Y)$ itself makes sense for every prime;
+\cref{thm:allprime-capacity-pair} below identifies it intrinsically as the
+Archimedean modular collision term at arbitrary prime level.
+
+\begin{proposition}[Modular Jensen formula]\label{prop:Jensen}
+For every $p\in\{2,3,5,7,13\}$ one has
+\begin{equation}\label{eq:Jensen}
+ \iint_{\T^2}\log\abs{\phi_{p,Y}(z)-\phi_{p,Y}(w)}\,\dd m(z)\dd m(w)
+ =-2\pi Y+C_p(Y).
+\end{equation}
+Consequently
+\begin{equation}\label{eq:analytic-data}
+ \Lambda_p(Y)=\frac{12\log p}{p-1}-2\pi Y,
+ \qquad
+ \Energy_p(Y)=\Lambda_p(Y)+C_p(Y).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For all five primes $f_p$ is a Hauptmodul.  The nonidentity collisions are
+therefore parametrized by primitive bottom rows $(c,d)$ with $c>0$ and
+$p\mid c$.  For
+$\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$,
+\[
+ \Im(\gamma(x+iY))=\frac{Y}{(cx+d)^2+c^2Y^2}.
+\]
+Jensen contributes $2\pi(\Im(\gamma\tau)-Y)_+$.  Unfolding the sum over
+primitive $d$ and evaluating the elementary integral gives the summand in
+\eqref{eq:Cp}.  The leading $q$ contributes $-2\pi Y$, while the eta-product
+factors have logarithmic mean zero.  Adding the distinguished $p$-adic radius
+from \cref{thm:continuation} gives \eqref{eq:analytic-data}.
+\end{proof}
+
+Combining \cref{thm:multiweight,prop:Jensen}, joint rationality forces
+\begin{equation}\label{eq:margin}
+ (m-1)\Lambda_p(Y)-m\tau^{\mathrm H}_{p,\mathcal S}(\xi)-C_p(Y)\le0.
+\end{equation}
+The branch-and-bound certificates prove strict positivity of the left side
+for every forbidden aggregate state at $p=2,3,5,7$; the $p=13$ finite example
+below uses a separate elementary bound.
+
+\section{Explicit individual and counting applications}\label{sec:applications}
+
+\subsection{The base individual theorem}
+
+For completeness, \cref{tab:individual} records exact rational witnesses for
+\cref{thm:individual}.  The margins are rigorous outward interval lower
+bounds from the single-weight certificate.
+
+\begingroup\small
+\begin{longtable}{@{}rrrrrl@{}}
+\caption{Single-weight witnesses used to start the counting induction.}
+\label{tab:individual}\\
+\toprule
+$p$&$s$&$\xi$&$\tau_{p,s}(\xi)$&$Y$&certified lower margin\\
+\midrule
+\endfirsthead
+\toprule
+$p$&$s$&$\xi$&$\tau_{p,s}(\xi)$&$Y$&certified lower margin\\
+\midrule
+\endhead
+2&3&$22/19$&$1321/608$&$16/79$&$9.745786633966$\\
+2&5&$29/26$&$18445/5616$&$6/49$&$13.454727090366$\\
+2&7&$110/101$&$105585/25856$&$1/11$&$15.805524331097$\\
+2&9&$89/83$&$10906993/2324000$&$3/43$&$17.190005995811$\\
+2&11&$262/247$&$464385991/89631360$&$3/52$&$17.790824360622$\\
+2&13&$181/172$&$144989487/25958240$&$2/41$&$17.737379764768$\\
+2&15&$478/457$&$16666007411/2810615808$&$3/71$&$17.124944575766$\\
+2&17&$305/293$&$12175769323/1954839744$&$3/80$&$16.023242852853$\\
+2&19&$758/731$&$11693630797/1801184000$&$1/30$&$14.484310655378$\\
+2&21&$461/446$&$536638388131/79764338368$&$1/33$&$12.553794492186$\\
+2&23&$1102/1069$&$22108077629089/3185347156992$&$1/36$&$10.264641765760$\\
+2&25&$649/631$&$21299386717285/2985462031552$&$1/39$&$7.646580292916$\\
+2&27&$1510/1471$&$456079886220493/62372115303680$&$1/42$&$4.724811329943$\\
+2&29&$869/848$&$14321093408042087/1915475381820000$&$1/46$&$1.522247623229$\\
+3&3&$33/29$&$2029/928$&$4/27$&$6.200294149415$\\
+3&5&$87/79$&$112477/34128$&$7/73$&$6.941905556192$\\
+3&7&$55/51$&$53435/13056$&$1/15$&$6.163732078651$\\
+3&9&$267/251$&$33037241/7028000$&$1/19$&$4.332047506141$\\
+3&11&$393/373$&$702154669/135354240$&$3/70$&$1.679644254174$\\
+5&3&$11/10$&$177/80$&$7/71$&$2.515479614080$\\
+5&5&$29/27$&$12899/3888$&$1/16$&$0.131799356827$\\
+7&3&$33/31$&$2219/992$&$1/14$&$0.436413057785$\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\subsection{The finite branch-and-bound certificate}
+
+For each $p$, list the rational arguments in increasing order as
+$r_{p,1}<r_{p,2}<\cdots$.  The individual theorem gives the first lower bound.
+At the $k$th stage, fix a proposed upper bound $x$ for $r_{p,k}$.  For each
+possible sum $T$ of the previous $k-1$ entries, the margin depends on those
+entries only through
+\[
+ m=1+T+x,
+ \qquad Q=\sum_{i<k}r_{p,i}^2+x^2,
+ \qquad B=m-1-k,
+ \qquad s_*=x.
+\]
+For fixed $T$ and $x$, the arithmetic type is increasing in $Q$.  The following
+majorization lemma therefore reduces the search to one extremal configuration
+per aggregate state.
+
+\begin{lemma}[Reverse-greedy square-sum maximizer]\label{lem:convex-search}
+Let $a_1<\cdots<a_n<x$ be odd integers with prescribed lower bounds and
+prescribed total sum.  Among all such tuples, $\sum a_i^2$ is maximized by
+allocating the available excess successively to $a_n,a_{n-1},\ldots$, subject
+to the gaps $a_i\le a_{i+1}-2$ and $a_n\le x-2$.
+\end{lemma}
+
+\begin{proof}
+If $i<j$, $a_i$ can be decreased by $2$, and $a_j$ increased by $2$ without
+violating the constraints, then the square sum changes by
+\[
+ (a_i-2)^2+(a_j+2)^2-a_i^2-a_j^2=4(a_j-a_i)+8>0.
+\]
+Repeated exchanges force all available excess as far to the right as the
+constraints allow, which is exactly the reverse-greedy configuration.
+\end{proof}
+
+The certificate evaluates \eqref{eq:margin} for every aggregate state with a
+fixed rational pair $(\xi,Y)$ at each stage.  All algebraic quantities are
+exact.  The values $\pi$ and $\log p$, square roots, inverse trigonometric
+functions, and collision sums are enclosed by outward-rounded fixed-point
+intervals.  No binary floating point is used.
+
+The resulting rational-index lower bounds are:
+\begin{align*}
+ p=2:\quad&31,105,261,553,1069,1937,>2401;\\
+ p=3:\quad&13,39,87,169,303,513,831,1301,1983,>2401;\\
+ p=5:\quad&7,15,29,51,81,127,189,275,391,547,751,1019,1365,1809,2373,>2401;\\
+ p=7:\quad&5,9,15,25,39,57,81,111,153,205,271,355,459,589,749,945,\\
+ &\hspace{17mm}1185,1477,1829,2255,>2401.
+\end{align*}
+Here the $j$th displayed finite number is a certified lower bound for
+$r_{p,j}$.
+
+\begin{table}[ht]
+\centering
+\caption{Explicit counting examples; the first four rows are interval-certified.}
+\label{tab:counts}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$p$&aggregate states&smallest stage margin&rational cap&irrational count&$1000$ cutoff\\
+\midrule
+2&$2{,}591{,}454$&$>2.507569047577$&6&1194&2013\\
+3&$4{,}136{,}947$&$>2.005014256508$&9&1191&2019\\
+5&$6{,}889{,}305$&$>0.687480581811$&15&1185&2029\\
+7&$9{,}493{,}807$&$>0.388266442986$&20&1180&2039\\
+13&--&$>0.008$&139&1061&2279\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{proposition}[A uniform finite bound at $p=13$]\label{prop:p13-finite}
+Among
+\[
+ \zeta_{13}(3),\zeta_{13}(5),\ldots,\zeta_{13}(2401),
+\]
+at most $139$ values are rational.  Hence at least $1061$ are irrational.  In
+the shorter list ending at $s=2279$, at least $1000$ are irrational.
+\end{proposition}
+
+\begin{proof}
+Suppose that $140$ values are rational and take them as $\mathcal S$.  Then
+\[
+ m=1+\sum_{s\in\mathcal S}s\ge1+(3+5+\cdots+281)=19881,
+ \qquad s_*\le2401,
+\]
+and $Q_{\mathcal S}\le s_*(m-1)$.  Drop the favorable Hasse subtraction in
+\eqref{eq:tau-rect} and let $\xi\downarrow1$.  Since
+\[
+ I_1^m(1)=\left(m-\frac12\right)H_{m-1}-(m-1),
+\]
+the terms $s_*(m-1)$ cancel.  Since the right-hand side has this finite
+right limit as $\xi\downarrow1$, an admissible $\xi>1$ may be chosen
+arbitrarily close to $1$, and
+\begin{equation}\label{eq:p13-tau-bound}
+ \inf_{\xi>1}\tau^{\mathrm H}_{13,\mathcal S}(\xi)
+ \le\frac{2s_*(m-\tfrac12)H_{m-1}}{m^2}.
+\end{equation}
+The sequence $H_n/(n+1)$ is decreasing for $n\ge2$, since
+$H_n>1$.  The classical bound $H_n<\log n+\gamma+1/(2n)$, together with
+$\gamma<289/500$ and $\log19880<10$, gives the exact rational estimate
+\[
+ \inf_{\xi>1}\tau^{\mathrm H}_{13,\mathcal S}(\xi)
+ <\frac{4802\cdot10579}{1000\cdot19881}
+ <\frac{255523}{100000}.
+\]
+
+Choose $Y=1/m$.  Since
+$0\le\arccos x-x\sqrt{1-x^2}\le\pi/2$ and
+$\varphi(c)\le c$,
+\[
+ C_{13}(1/m)
+ \le\frac{2\pi^2}{13}H_{\lfloor(m-1)/13\rfloor}.
+\]
+The functions $H_{m-1}/m$ and $(1+\log m)/m$ decrease for the present range;
+the first assertion follows from $H_{m-1}>1$, and the second by differentiation.
+Using
+\[
+ \log13>\frac{25649}{10000},\qquad \pi<\frac{22}{7},\qquad
+ H_n\le1+\log n,
+\]
+and again $\log19881<10$, the analytic lower bound is minimized at
+$m=19881$ and satisfies the exact rational estimate
+\begin{align*}
+ \frac{(m-1)\Lambda_{13}(1/m)-C_{13}(1/m)}m
+ &\ge \left(1-\frac1{19881}\right)
+       \left(\frac{25649}{10000}-\frac{44}{7\cdot19881}\right)\\
+ &\qquad-\frac{2(22/7)^2}{13\cdot19881}\cdot11
+ >\frac{256361}{100000}.
+\end{align*}
+The difference between this lower bound and the preceding arithmetic upper
+bound is greater than $8/1000$, contradicting \eqref{eq:margin}.  Thus at most $139$ values in the
+full list are rational.  The same proof applies to the prefix ending at
+$2279$, where $s_*$ is smaller; that prefix contains $1139$ odd arguments, so
+at least $1139-139=1000$ are irrational.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:counts}]
+The displayed rational-index bounds show that, up to $2401$, there can be at
+most $6,9,15,20$ rational values for $p=2,3,5,7$, respectively.  Subtracting
+from $1200$ gives the first four certified rows of \cref{tab:counts}.  For the
+$1000$ cutoffs, there are respectively $1006,1009,1014,1019$ positive odd
+arguments up to $2013,2019,2029,2039$.  The same rational-index lower bounds
+show that at most $6,9,14,19$ of those shorter lists can be rational.  The
+$p=13$ row is \cref{prop:p13-finite}.  Hence at least $1000$ are irrational in
+each of the five displayed cases.
+\end{proof}
+
+\subsection{Certificate files and manifests}\label{sec:certificate-files}
+
+The base individual margins in \cref{tab:individual} are reproduced by
+\path{hybrid_rational_interval_certificate.py}; its stored output and manifest
+are \path{hybrid_rational_interval_certificate_output.txt} and
+\path{hybrid_rational_interval_certificate_sha256.txt}.  The manifest records
+\begin{verbatim}
+1408c9092d0c34917253c8f520db56853112c58640d15c98d58b76a61a0478f5
+  hybrid_rational_interval_certificate.py
+9e1d8f74eb198c7e7b0c7420a1e8021d7bad4d2bc8014cc939b6b353111c0da0
+  hybrid_rational_interval_certificate_output.txt
+\end{verbatim}
+
+The multiweight program
+\path{multiweight_all_primes_interval_certificate.py} checks
+$23{,}111{,}513$ aggregate states.  Its stored output is
+\path{multiweight_all_primes_interval_certificate_output.txt}.  The manifest
+\path{multiweight_all_primes_interval_certificate_sha256.txt} records
+\begin{verbatim}
+4f9cfbfe9691447fb352a000b360029bdef46f4f66dea7fa4a45f414f247c1f0
+  multiweight_all_primes_interval_certificate.py
+46b3325cd5a9e6e81b7dfa565361d845e1480aa8f7c3251727b81ca4b583e89b
+  multiweight_all_primes_interval_certificate_output.txt
+\end{verbatim}
+
+
+The positive-genus exact-capacity bounds in
+\cref{thm:positive-genus-counts} are checked by
+\path{allprime_capacity_finite_packet_certificate.py}.  The script uses
+outward-rounded integer fixed-point intervals only; its stored output is
+\path{allprime_capacity_finite_packet_certificate_output.txt}.  The manifest
+\path{allprime_capacity_finite_packet_certificate_sha256.txt} records
+\begin{verbatim}
+52e404ad0ea803526a0f682cb0f9e8049ff34d29f32bbd1c590925d421c1168f
+  allprime_capacity_finite_packet_certificate.py
+3e2a4104ab71582b5ed1873805c2ccdd9f2d867d54a9669fda1a43be6574f75b
+  allprime_capacity_finite_packet_certificate_output.txt
+\end{verbatim}
+
+\section{Quantitative density one at genus-zero prime level}\label{sec:density}
+
+Put
+\[
+ L_p=\frac{12\log p}{p-1}.
+\]
+We now prove \cref{thm:density-genus-zero}.  Only the rectangular multiweight theorem
+is needed; in particular, neither the Hasse subtraction nor the Fitting
+polygon is load-bearing.
+
+\begin{proof}[Proof of \cref{thm:density-genus-zero}]
+Fix $\beta>1$.  For integers $j\ge1$, let $\mathcal S_j$ be the set of
+rational odd arguments in the multiplicative shell
+\[
+ \beta^j\le s<\beta^{j+1},
+\]
+and put $k_j=\#\mathcal S_j$.  Empty shells may be ignored.  Set
+$A=\beta^j$ and form the simultaneous packet attached to $\mathcal S_j$.
+Then
+\[
+ k_jA\le m-1<k_j\beta A,
+ \qquad s_*<\beta A,
+ \qquad Q_{\mathcal S_j}\le s_*(m-1)<\beta A m.
+\]
+Choose $\xi=1+1/\log A$ for $A$ sufficiently large, drop the favorable
+Hasse term, and use
+\[
+ I_\xi^m(\xi)\le I_1^m(1)<mH_{m-1}.
+\]
+The arithmetic type therefore satisfies
+\begin{equation}\label{eq:shell-type}
+ \tau^{\mathrm H}_{p,\mathcal S_j}(\xi)
+ \le\frac{2\beta}{k_j}\bigl(\xi+H_{m-1}\bigr).
+\end{equation}
+
+For the analytic template take $Y=1/m$.  Since
+\[
+ 0\le\arccos x-x\sqrt{1-x^2}\le\frac\pi2
+\]
+and $\varphi(c)\le c$, the collision formula gives
+\begin{equation}\label{eq:collision-log-bound}
+ C_p(1/m)
+ \le\frac{2\pi^2}{p}H_{\lfloor(m-1)/p\rfloor}
+ =O_p(\log m).
+\end{equation}
+Hence the rationality inequality \eqref{eq:margin} implies
+\begin{equation}\label{eq:analytic-shell-lower}
+ \tau^{\mathrm H}_{p,\mathcal S_j}(\xi)
+ \ge L_p-O_p\left(\frac{\log m}{m}\right).
+\end{equation}
+Initially $k_j=O_\beta(A)$, so $m=O_\beta(A^2)$ and
+$H_{m-1}=O_\beta(\log A)$.  For all sufficiently large $j$,
+\eqref{eq:analytic-shell-lower} is at least $L_p/2$; combining it with
+\eqref{eq:shell-type} therefore first gives
+$k_j=O_{p,\beta}(\log A)$.  Substitution back into the source-rank bound gives
+\[
+ m=O_{p,\beta}(A\log A),
+ \qquad
+ H_{m-1}=\log A+O_{p,\beta}(\log\log A).
+\]
+Consequently
+\begin{equation}\label{eq:shell-count}
+ k_j\le
+ \left(\frac{2\beta}{L_p}+o(1)\right)\log A
+ =\left(\frac{2\beta\log\beta}{L_p}+o(1)\right)j.
+\end{equation}
+
+If $\beta^J\le X<\beta^{J+1}$, summing
+\eqref{eq:shell-count} over $j\le J$ yields
+\[
+ R_p(X)
+ \le\left(\frac{\beta}{L_p\log\beta}+o(1)\right)(\log X)^2.
+\]
+The function $\beta/\log\beta$ has its minimum $e$ at $\beta=e$.  This proves
+\eqref{eq:density-genus-zero}.  There is no hidden uniformity assumption in this
+passage: for each fixed shell, the finite packet $\mathcal S_j$ is fixed while
+the source degree $D$ tends to infinity; only after the exact multiweight
+inequality has been obtained do we let $j$ tend to infinity.  Packet-dependent
+exceptional primes and lower-order constants have therefore disappeared before
+the shell summation.  Since the number of positive odd integers at most $X$ is
+$X/2+O(1)$, the density assertion follows.
+\end{proof}
+
+\begin{remark}[Why this does not give all but finitely many]\label{rem:not-cofinite}
+The estimate permits an infinite exceptional set with only
+$O_p((\log X)^2)$ elements up to $X$.  The multiweight mechanism gains rank
+only from values simultaneously assumed rational, so it cannot by itself
+exclude an arbitrarily sparse sequence of rational exceptions.  This is the
+precise motivation for the anchor-packet problem.
+\end{remark}
+
+
+
+\section{Arbitrary prime level: finite-map restriction of scalars}
+\label{sec:curve-zero}
+
+Fix an arbitrary prime $p$, put $X_p=X_0(p)_{\Q}$, and let $P=\infty$ be
+the width-one Tate cusp.  Add the finite elliptic locus and every fixed pole
+to a divisor $B$ disjoint from $P$.
+
+\begin{lemma}[Coarse-curve descent at arbitrary prime level]
+\label{lem:allprime-descent}
+For every finite packet of odd weights, the bundle
+\[
+ \calO\oplus\bigoplus_{s\in\mathcal S}\Sym^{s-1}\calH,
+\]
+its simultaneous Eisenstein--Eichler connection, canonical BGG lifts,
+horizontal germ, and contraction pairing descend from one fixed neat cover
+to $X_p\setminus|B|$.  After enlarging a fixed exceptional set, all these
+objects and the source lattices spread over $\Z[\Sigma^{-1}]$, uniformly in
+$D$.  The descended horizontal leaf has functional rank
+$m=1+\sum_{s\in\mathcal S}s$ and independent coordinates over
+$\C(X_p)$.
+\end{lemma}
+
+\begin{proof}
+The frame torsor and Gauss--Manin structures are functorial on a fixed neat
+cover, so their two pullbacks to the fibre square agree and satisfy the cocycle
+condition.  Away from the elliptic points the coarse-moduli morphism still has
+the residual generic $\{\pm1\}$-inertia; the stack is not literally equal to
+its coarse curve.  However, $-1$ acts trivially on
+$\Sym^{s-1}\calH$ because $s-1$ is even, and it acts trivially on the scalar
+summand, connection, BGG operator, and contraction pairing.  Coherent bundles
+with trivial inertia descend along the tame coarse-moduli morphism.  Removing
+the finitely many elliptic points eliminates the additional inertia, so these
+objects descend to $X_p\setminus|B|$.  The BGG lift is characterized
+intrinsically by its bottom quotient and top-oper derivative and is therefore
+compatible with descent.  Clearing the finitely many coefficients and fixed
+poles gives a model over $\Z[\Sigma^{-1}]$.
+
+The joint monodromy proof of \cref{thm:joint-rank} is genus-independent: each
+nonzero Eichler cocycle spans the irreducible module
+$\Sym^{s-1}(\C^2)$, and the distinct modules form a multiplicity-free direct
+sum.  The functional-independence argument of
+\cref{cor:joint-independence} then applies over $\C(X_p)$.
+\end{proof}
+
+Let $g_p$ be the genus of $X_p$.  The second cusp $Q=0$ is rational and
+distinct from $P$.
+
+\begin{theorem}[Finite-map Shidlovsky zero estimate]
+\label{thm:finite-map-zero}
+There is a finite map
+\[
+ \pi_p:X_p\longrightarrow\mathbf P^1_{\Q}
+\]
+unramified at $P$, of a fixed degree $d_p$, such that the source
+\[
+ M_D=H^0\!\left(X_p,\calE_{p,\mathcal S}^{\vee}(DP+B)\right)
+\]
+has
+\begin{equation}\label{eq:curve-pivot-count}
+ \#V_D=mD+O_{p,\mathcal S}(1)
+\end{equation}
+and
+\begin{equation}\label{eq:curve-pivot-range}
+ V_D\subset[0,d_pmD+O_{p,\mathcal S}(1)].
+\end{equation}
+One may take $d_p=1$ when $g_p=0$ and $d_p\le2g_p$ when $g_p\ge1$.
+\end{theorem}
+
+\begin{proof}
+Assume $g_p\ge1$ and put $A=(2g_p-1)Q$.  Riemann--Roch gives
+$\ell(A+P)=\ell(A)+1$, so there is
+$x\in L(A+P)\setminus L(A)$.  It has a simple pole at $P$, defines a finite
+map $\pi_p=x$ of degree at most $2g_p$, and is unramified at $P$.  Thus
+$t=x^{-1}$ and the Tate parameter $q$ are both uniformizers at $P$ and define
+the same order function.
+
+Write $\calF=\calE_{p,\mathcal S}^{\vee}(B)$ and
+$\pi_p^*(\infty)=P+E$.  Since $DP\le D\pi_p^*(\infty)$, projection formula
+gives an injection
+\[
+ M_D\hookrightarrow
+ H^0\!\left(\mathbf P^1,\pi_{p*}\calF\otimes\calO(D\infty)\right).
+\]
+The pushforward is a fixed rank-$d_pm$ vector bundle.  After one fixed
+Birkhoff--Grothendieck splitting, normalized contractions are polynomial
+combinations of degree $D+O(1)$ of $d_pm$ fixed formal functions.
+
+Let $k=\Q(t)$ and $K=\Q(X_p)$, choose a $k$-basis
+$y_1,\ldots,y_{d_p}$ of $K$, and extend scalars to $\C$.  If
+$f_1,\ldots,f_m$ are the horizontal coordinates, then the functions
+$y_jf_i$ are independent over $\C(t)$: a relation would be a
+$\C(X_p)$-linear relation among the $f_i$.  The derivation $d/dt$ extends
+uniquely to the finite separable extension $K/k$; after scalar extension,
+restricting the first-order connection system therefore gives a
+derivative-stable $d_pm$-dimensional $\C(t)$-space.  The sharp Shidlovsky
+estimate
+\cite[Theorem~3.2.8]{CDT2024} bounds every nonzero normalized contraction by
+$d_pmD+O(1)$.  Finally, Riemann--Roch gives
+$\dim M_D=mD+O(1)$, evaluation is injective by
+\cref{lem:allprime-descent}, and the nonzero graded quotients of a one-variable
+vanishing filtration are one-dimensional.  This proves both assertions.  The
+genus-zero case uses a degree-one coordinate.
+\end{proof}
+
+\begin{remark}[Why the covering degree enters only the range]
+The map $\pi_p$ multiplies the number of auxiliary holonomic functions by
+$d_p$, but it does not multiply the polynomial degree $D$.  The genuine
+source retains rank $mD+O(1)$; only the ambient pivot interval grows to
+$d_pmD+O(1)$.
+\end{remark}
+
+\section{Intrinsic \texorpdfstring{$q$}{q}-jet Cartier strictness}
+\label{sec:qjet}
+
+The genus-zero proof uses a Hauptmodul and a Taylor correction for its
+coordinate Frobenius.  On $X_p$ we instead remain in the width-one Tate
+parameter.  For every auxiliary prime $\ell\ne p$ the exact relation is
+\begin{equation}\label{eq:q-Dwork-all}
+ R_{s,e}(q)-\ell^{-e}R_{s,e}(q^\ell)\in\Z_\ell[[q]].
+\end{equation}
+
+Fix an algebraic local frame of every coefficient bundle at $P$ and use the
+canonical local frame $q^{-D}$ of $\calO(DP)$.  If
+$h\in H^0(X_p,\calW(DP+B_0))$, its \emph{normalized $q$-germ} is
+$q^Dh$ after trivializing $B_0$ at $P$.  One further fixed shift $q^C$ may be
+used to remove the bounded negative support coming from the torsor chart.
+Every normalized coefficient and every normalized pivot below is understood
+in this sense.  This convention makes the order estimates independent of an
+unstated choice of pole-clearing coordinate.
+
+\begin{lemma}[Global coefficient bundle and jet injectivity]
+\label{lem:q-jet-injective}
+For a fixed packet there are a fixed vector bundle $\calW$, a fixed divisor
+$B_0$ disjoint from $P$, and a constant $C$ such that every coefficient of a
+normalized torsor multiplier is the $q$-germ of a section of
+\[
+ H^0(X_p,\calW(DP+B_0)).
+\]
+After excluding a fixed finite set of auxiliary primes, every nonzero reduced
+normalized coefficient has order at most $D+C$.  Consequently, for
+$\ell>D+C$, reduction followed by the $\ell$-jet map at $P$ is injective.
+\end{lemma}
+
+\begin{proof}
+The representation, BGG operators, bounded torsor-monomial degree, algebraic
+contraction, and frame changes are fixed.  Coefficient extraction is therefore
+an algebraic map from the source bundle to a fixed finite-rank coefficient
+bundle; poles outside the chosen chart are absorbed in $B_0$.
+
+Choose a fixed saturated injection
+$\calW(B_0)\hookrightarrow\calO(A)^{\oplus r}$ with $A$ disjoint from $P$.
+For a nonzero scalar component $h\in H^0(X_p,\calO(DP+A))$, write
+$h=q^{-D}u(q)$ in the chosen local frame.  If $h$ has a pole at $P$, then
+$\ord_qu<D$; if it is regular at $P$, the principal-divisor identity gives
+$\ord_Ph\le\deg A$ and hence $\ord_qu\le D+\deg A$.  Thus every nonzero
+normalized component has order at most $D+\deg A$.  After spreading out
+and excluding finitely many primes, the injection and the relevant section
+spaces remain saturated and commute with reduction; the same divisor-degree
+argument holds on the smooth geometrically integral special fibre.  A
+nonzero section in the kernel of the $\ell$-jet map would then have order at
+least $\ell>D+C$, a contradiction.
+\end{proof}
+
+\begin{lemma}[Exact $q$-block no-backflow]
+\label{lem:q-block}
+Let
+\[
+ \Gamma(q,z)=\sum_{r=0}^{\ell-1}w_r(q)z^r
+\]
+with coefficients in the reduced coefficient space of
+\cref{lem:q-jet-injective}, and suppose $\ell>D+C$.  If
+$\Gamma(q,q^\ell)\ne0$, then
+\[
+ \ord_q\Gamma(q,q^\ell)=j+\ell r_0
+\]
+for some $0\le j\le D+C$ and $0\le r_0<\ell$.  If the $z$-constant term is
+zero, then $r_0\ge1$.
+\end{lemma}
+
+\begin{proof}
+Let $r_0$ be the least index with $w_{r_0}\ne0$.  Jet injectivity gives
+$j=\ord_qw_{r_0}\le D+C<\ell$.  Its first term after substitution occurs
+strictly before $\ell(r_0+1)$, whereas every later $z$-block begins at least
+at $\ell(r_0+1)$.  No later block can cancel it.  This is valid over an
+arbitrary coefficient algebra, including one with zero divisors.
+\end{proof}
+
+\begin{proposition}[General-curve $q$-jet Cartier strictness]
+\label{prop:q-jet-Cartier}
+There are a fixed exceptional set and a constant $C$ such that, for
+$D\gg1$ and every good auxiliary prime satisfying
+\[
+ \ell>D+C,\qquad \ell>s_*,\qquad \ell\ne p,
+\]
+the following holds.  If a normalized Bost pivot
+\[
+ F_\lambda(q)=c_nq^n+O(q^{n+1}),\qquad c_n\ne0,
+\]
+has $v_\ell(c_n)<0$ and $a=-v_\ell(c_n)$, then
+\begin{equation}\label{eq:q-pole-grade}
+ 1\le a\le s_*
+\end{equation}
+and
+\begin{equation}\label{eq:q-window}
+ n=j+\ell r,
+ \qquad -C\le j\le D+C,
+ \qquad r\ge1.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:q-local-height}
+ \delta_\ell(\psi_D^{(n)})
+ \le s_*v_\ell\!\left(
+ \lcmop\{\max(n-D-C,1),\ldots,n+C\}\right)\log\ell.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Insert \eqref{eq:q-Dwork-all} into the genuine torsor decomposition.  By
+\cref{thm:finite-map-zero}, $n=O(D)$; for $\ell>D+C$ and $D\gg1$ one has
+$n+C<\ell^2$.  Terms of raw $z$-degree at least $\ell$ therefore lie beyond
+the pivot.  The coefficients below $z^\ell$ are $\ell$-integral, so the only
+negative powers are the explicit $\ell^{-e}$ with $e\le s_*$, proving
+\eqref{eq:q-pole-grade}.
+
+Digitize each complete truncated product, coefficientwise in the finite free
+global coefficient lattice.  For pole grade $b$ let $\Gamma_b(q,z)$ be the
+sum of the corresponding digits.  Because the substitution is exactly
+$q\mapsto q^\ell$, its associated-graded symbol is simply
+\[
+ \Pi_b(q)=\Gamma_b(q,q^\ell);
+\]
+there are no Taylor correction terms.  At the actual pole grade $a$, the
+$q^n$-coefficient is the nonzero reduction of $\ell^ac_n$, and every lower
+coefficient vanishes.  Thus $\ord_q\Gamma_a(q,q^\ell)=n$.  The raw rows have
+zero constant term, so \cref{lem:q-block} gives
+\eqref{eq:q-window}.  The positive integer $n-j=\ell r$ lies in the stated
+interval, and $a\le s_*$ gives \eqref{eq:q-local-height}.
+\end{proof}
+
+For $d,m\ge1$ and $1<\xi<dm$, put
+\begin{equation}\label{eq:Gdm}
+ G_{d,m}(\xi)=\int_\xi^{dm}\min\left\{1,\frac d x\right\}\,\dd x
+ =\begin{cases}
+ d-\xi+d\log m,&1<\xi<d,\\[1mm]
+ d\log\!\left(\dfrac{dm}{\xi}\right),&d\le\xi<dm.
+ \end{cases}
+\end{equation}
+
+\begin{proposition}[General-curve large-prime cost]
+\label{prop:curve-large}
+For the unmodified source at primes $\ell>\xi D$,
+\begin{equation}\label{eq:curve-large}
+ \mathscr A_D^{\mathrm{large}}
+ \le s_*mG_{d_p,m}(\xi)D^2+o(D^2).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+A prime $\ell=xD$ can affect only pivots lying in degree-$D$ windows ending
+at positive multiples of $\ell$.  By \eqref{eq:curve-pivot-range} there are
+at most $d_pm/x+O(1)$ such windows, while the total number of pivots is
+$mD+O(1)$.  Hence the vulnerable-pivot count is at most
+$mD\min\{1,d_p/x\}+o(D)$.  Apply \cref{prop:q-jet-Cartier} and the prime
+number theorem, and integrate over $x$.
+\end{proof}
+
+\section{Positive capacitary width and normalization-robust slopes}
+\label{sec:curve-bost}
+
+The arbitrary-prime density theorem needs only a positive tangent-degree term
+whose coefficient is quadratic in the source rank.  It does not require an
+exact Bost--Charles self-intersection normalization.  We therefore work
+directly with finite-order scalar capacitary estimates and keep every
+normalization-dependent term at size $O_p(mD^2)$.
+
+For a place $v$, let $(\Omega_v,o_v)$ be a pointed analytic curve and let
+\[
+ \iota_v:(\Omega_v,o_v)\longrightarrow (X_p^{\mathrm{an}},P)
+\]
+be nonconstant and unramified at $o_v$.  Transporting the capacitary norm on
+$T_{o_v}\Omega_v$ through $D\iota_v(o_v)$ gives a norm
+$\|\cdot\|_{v,\circ}$ on $T_PX_p$.  Put
+\begin{equation}\label{eq:robust-width}
+ \Lambda_p^\circ=
+ \widehatdeg\bigl(T_PX_p,(\|\cdot\|_{v,\circ})_v\bigr).
+\end{equation}
+
+\begin{lemma}[Strict capacitary collar]
+\label{lem:strict-cap-collar}
+Let $K$ be a non-Archimedean local field, let $X/K$ be a smooth projective
+curve, and let $P\in X(K)$ extend to a section meeting the special fibre of a
+normal projective model at a smooth point of an irreducible component $C_P$.
+Let $\Omega_0$ be the integral residue disc at $P$.  Let $\Omega_1$ be a
+connected wide-open containing $P$ for which, on an adapted model, the
+continuation-side vertical set contains $C_P$.  Then
+\[
+ \|\cdot\|^{\mathrm{cap}}_{P,\Omega_1}
+ <\|\cdot\|^{\mathrm{cap}}_{P,\Omega_0}
+\]
+on every nonzero vector of $T_PX$.
+\end{lemma}
+
+\begin{proof}
+Let $U_1=X^{\mathrm{an}}\setminus\Omega_1$.  On an adapted normal model, write
+the Bost--Chambert-Loir extension of the effective divisor $P$ as
+\[
+ \mathscr P_{\Omega_1}=\mathscr P+V,
+ \qquad V=\sum_C c_C C.
+\]
+The divisor $V$ is the unique solution of the graph-Dirichlet problem in
+\cite[Proposition~5.1]{BostChambertLoir2009}.  More is proved in the proof of
+\cite[Proposition~5.6]{BostChambertLoir2009}: if the effective divisor meets
+every connected component of the continuation domain, then
+\[
+ c_C=0\quad\text{on the excluded side},
+ \qquad c_C>0\quad\text{on the continuation side}.
+\]
+Here $\Omega_1$ is connected and contains $P$, while $C_P$ lies on its
+continuation side.  Hence
+\[
+ c_{C_P}>0.
+\]
+
+The strict norm comparison is local at the intersection of the section with
+$C_P$.  After clearing the denominator of $c_{C_P}$, choose local parameters
+$q,\varpi$ with $\mathscr P=(q)$ and $C_P=(\varpi)$.  Relative to the integral
+model, a local model frame of
+$\mathcal O(\mathscr P+c_{C_P}C_P)$ is
+$\varpi^{-c_{C_P}}q^{-1}$.  Under adjunction, $q^{-1}$ maps to
+$\partial/\partial q$, and therefore
+\begin{equation}\label{eq:strict-cap-factor}
+ \left\|\frac{\partial}{\partial q}\right\|^{\mathrm{cap}}_{P,\Omega_1}
+ =|\varpi|^{c_{C_P}}
+  \left\|\frac{\partial}{\partial q}\right\|^{\mathrm{int}}_P
+ <\left\|\frac{\partial}{\partial q}\right\|^{\mathrm{int}}_P.
+\end{equation}
+The same calculation after a finite extension, followed by the usual
+normalization of local degrees, gives the identical inequality when the
+coefficients are merely rational.  Finally,
+\cite[Example~5.11]{BostChambertLoir2009} identifies the integral tangent norm
+with the capacitary norm of the bare residue disc $\Omega_0$.  This proves the
+claim.
+\end{proof}
+
+\begin{proposition}[Positive common capacitary width]
+\label{prop:positive-width}
+For every fixed prime $p$, there is an adelic family
+$\boldsymbol\Omega_p^\circ=((\Omega_v,o_v,\iota_v))_v$ such that:
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=2.7em]
+\item every finite simultaneous Eisenstein--Eichler leaf continues along
+$\iota_v$ for every place $v$;
+\item at all but finitely many finite places, $\Omega_v$ is the integral Tate
+residue disc and $\iota_v$ is its inclusion;
+\item the tangent degree in \eqref{eq:robust-width} is strictly positive:
+\[
+ \Lambda_p^\circ>0;
+\]
+\item at the distinguished $p$-adic place there is a larger continuation
+wide-open $\Omega_p^+$ such that the affinoid closure of $\Omega_p^\circ$ is
+compactly contained in $\Omega_p^+$.  Moreover one may choose a rational
+function $u_p$ with polar divisor $a_pP$, $a_p\ge1$, for which
+\begin{equation}\label{eq:nested-lemniscate}
+ \Omega_p^\circ=\{|u_p|_p>1\},
+ \qquad
+ \{|u_p|_p\ge1\}\Subset\Omega_p^+\Subset W_0(p).
+\end{equation}
+At every Archimedean place the image of the closed pointed domain is likewise
+contained in a slightly larger continuation domain.
+\end{enumerate}
+The domains and $\Lambda_p^\circ$ depend only on $p$, not on the packet of
+weights.
+\end{proposition}
+
+\begin{proof}
+Work first on a fixed sufficiently fine tame level.  Buzzard's wide-open
+$W_0(p)$ is the continuation region through the Tate component, and
+\cite[Theorem~5.2]{Buzzard2003} extends every finite-slope overconvergent
+eigenform under consideration across it.  Each specialization used here has
+$U_p$-eigenvalue one, and applying the algebraic BGG operator does not shrink
+the base domain.
+
+Choose descent-invariant cuts strictly inside all supersingular boundary
+annuli and pass to the quotient on the coarse curve.  The resulting connected
+wide-open $\Omega_p^\circ\Subset W_0(p)$ contains the tube of the coarse
+component through $P$ and a positive annular collar at every boundary end.
+Choose a second set of cuts farther out in the same annuli; it gives a larger
+connected wide-open $\Omega_p^+$ with
+$\overline{\Omega_p^\circ}\Subset\Omega_p^+\Subset W_0(p)$.  The descended
+leaf continues on $\Omega_p^+$ for every weight.  By
+\cref{lem:strict-cap-collar}, the capacitary tangent metric of
+$\Omega_p^\circ$ has a strict gain over the integral Tate metric:
+\[
+ \lambda_p=-\log
+ \frac{\|t\|_{p,\Omega_p^\circ}^{\mathrm{cap}}}
+      {\|t\|_{p,\mathrm{int}}}>0.
+\]
+Applying the collar lemma after descent avoids any cusp-width or ramification
+normalization from the auxiliary tame cover.
+
+The complement of $\Omega_p^\circ$ is an affinoid meeting every connected
+component.  By \cite[Proposition~5.6]{BostChambertLoir2009}, it is a rational
+lemniscate: there is a rational function $u_p$, with polar divisor $a_pP$,
+such that its complement is $\{|u_p|_p\le1\}$.  Because the cuts defining
+$\Omega_p^\circ$ were chosen strictly inside those defining $\Omega_p^+$,
+the affinoid closure $\{|u_p|_p\ge1\}$ is compactly contained in
+$\Omega_p^+$.  This proves \eqref{eq:nested-lemniscate}.
+
+At every finite place different from $p$, use the integral Tate residue disc.
+At the complex place use the pointed unit disc with
+\[
+ \iota_\infty(z):q=e^{-2\pi Y}z.
+\]
+Choose it with a slightly larger concentric disc still contained in the
+$q$-coordinate continuation region.  Its transported tangent norm contributes
+$-2\pi Y$ to the Arakelov degree.  Choose $Y>0$ with
+$2\pi Y<\lambda_p$.  The width-one Tate parameter $q$ is an integral
+parameter on the fixed cusp model, so $\partial/\partial q$ generates the
+reference tangent lattice at every finite place; together with the unit
+complex $q$-disc this reference line has degree zero.  Consequently
+\[
+ \Lambda_p^\circ\ge\lambda_p-2\pi Y>0.
+\]
+Every domain and every larger continuation neighborhood depends only on $p$,
+and a finite direct sum of blocks continues on these same domains.
+\end{proof}
+
+Put
+\[
+ L=\calO_{X_p}(P),\qquad
+ \calF_{\mathcal S}=\calE_{p,\mathcal S}^{\vee}(B),\qquad
+ M_D=H^0(X_p,\calF_{\mathcal S}\otimes L^{\otimes D}).
+\]
+The support of $B$ is disjoint from $P$ and is fixed once the packet is fixed.
+On each chosen analytic domain, $\calO(B)$ is treated as a fixed line-bundle
+twist: after a fixed power and finitely many residue classes it has a
+nonvanishing analytic frame.  This contributes only packet-dependent
+lower-order constants.  Fix an adelic model of $L$ and a reference adelic
+norm $\|\cdot\|_{0,v}$ on $T_PX_p$; at every finite place take the
+reference tangent norm to be the integral Tate norm.  Riemann--Roch
+gives
+\begin{equation}\label{eq:robust-source-rank}
+ r_D:=\rank M_D=mD+O_{p,\mathcal S}(1).
+\end{equation}
+
+For the arbitrary-prime argument, choose the reference adelic source lattice
+blockwise from fixed algebraic presentations as in the next lemma.  All good
+prime coefficient lattices used in the Cartier argument are obtained from the
+same presentations; enlarging the packet-dependent exceptional set therefore
+introduces no second, incompatible source model.
+
+\begin{lemma}[Fixed-twist source and boundary comparison]
+\label{lem:robust-fixed-twist}
+There are constants $A_p,B_p\ge0$, depending only on $p$, with the following
+property.  For every fixed packet $\mathcal S$ there is a constant
+$C_{p,\mathcal S}$ such that
+\begin{equation}\label{eq:robust-source-lower}
+ \widehatdeg M_D\ge-A_pmD^2+o_{p,\mathcal S}(D^2),
+\end{equation}
+and, at the distinguished $p$-adic and complex domains,
+\begin{equation}\label{eq:robust-boundary-comparison}
+ \log\|\langle\lambda,S_{p,\mathcal S}\rangle\|_{\partial\Omega_v}
+ \le B_pD+C_{p,\mathcal S}\log(D+2)+\log\|\lambda\|_v.
+\end{equation}
+The boundary estimate remains valid after replacing any finite local source
+lattice by a sublattice.  The resulting loss of source degree is not hidden in
+\eqref{eq:robust-source-lower}; it is accounted for by its lattice index.
+\end{lemma}
+
+\begin{proof}
+Fix once and for all an adelic model of the scalar pair $(X_p,L)$.  After
+replacing $L$ by a fixed positive power and treating the finitely many residue
+classes as fixed twists, the graded section algebra
+\[
+ R_p=\bigoplus_{e\ge0}H^0(X_p,L^e)
+\]
+is generated by finitely many homogeneous scalar sections.  Choose integral
+lifts of these generators outside one fixed set of places.  In weighted degree
+$e$, the resulting monomials give a surjection from a free adelic module
+$P_e$ onto $E_e=H^0(X_p,L^e)$.  Equip $E_e$ with the quotient lattice and
+quotient norm.  The number of weighted monomials is polynomial in $e$, every
+monomial has Arakelov degree bounded below by $-A_pe-O_p(1)$, and its norm on
+each of the two fixed analytic boundaries is at most
+$\exp(B_pe+O_p(1))$.  Consequently
+\begin{equation}\label{eq:scalar-presentation-bounds}
+ \widehat\mu_{\min}(E_e)\ge-A_pe-O_p(\log(e+2)),
+ \qquad
+ \|E_e\longrightarrow H^0(\partial\Omega_v,L^e)\|_{\mathrm{op}}
+ \le\exp(B_pe+O_p(\log(e+2))).
+\end{equation}
+The first estimate is the finite-generation estimate used in
+\cite[Theorem~6.1, (6.8)]{BostChambertLoir2009}; the monomial presentation
+also makes the second estimate literal.  Replacing these quotient norms by any
+fixed standard model or $L^2$ norm changes only the constants $A_p,B_p$.
+
+Because $L$ is ample, for the fixed bundle $\calF_{\mathcal S}$ there are
+fixed integers $a_1,\ldots,a_u$ and a sheaf surjection
+\[
+ \bigoplus_{j=1}^uL^{-a_j}\longrightarrow\calF_{\mathcal S}.
+\]
+After tensoring by $L^D$, Serre vanishing for the fixed kernel gives a
+surjection
+\begin{equation}\label{eq:fixed-presentation}
+ \bigoplus_{j=1}^uE_{D-a_j}\longrightarrow M_D
+\end{equation}
+for $D\gg_{p,\mathcal S}1$.  Spread this one presentation out and use its
+quotient lattice and quotient norms.  It is chosen separately on the scalar
+block and on each positive block, so it respects the direct-sum source used in
+\cref{eq:curve-hybrid-lattice}.  After inverting a finite packet-dependent set,
+relative Serre vanishing and cohomology-and-base-change identify this quotient
+lattice with the corresponding integral section lattice.  At the remaining
+places we retain the presentation lattice itself.  Thus the same lattice is
+used in the source-degree, coefficient, and Cartier calculations.
+
+A quotient with its quotient norm has minimum slope no smaller than that of
+its source.  Applying \eqref{eq:scalar-presentation-bounds} to
+\eqref{eq:fixed-presentation}, the fixed shifts $a_j$, the fixed number $u$ of
+summands, and the fixed presentation maps contribute only
+$O_{p,\mathcal S}(\log(D+2))$.  Hence
+\[
+ \widehat\mu_{\min}(M_D)
+ \ge-A_pD-O_{p,\mathcal S}(\log(D+2)).
+\]
+Multiplication by \eqref{eq:robust-source-rank} proves
+\eqref{eq:robust-source-lower}.  In particular, the coefficient of $D$ is a
+scalar constant depending only on $p$; all packet dependence is lower order
+for a packet fixed before $D\to\infty$.
+
+Finally compose \eqref{eq:fixed-presentation} with restriction to a boundary
+and contraction with the horizontal leaf.  The scalar restriction norm is
+bounded by the second inequality in
+\eqref{eq:scalar-presentation-bounds}.  The finitely many presentation maps,
+the simultaneous leaf, and a fixed analytic frame for $\calO(B)$ have bounded
+norms depending on the packet but not on $D$.  The finite direct sum contributes
+at most another packet-dependent constant.  Passing to the quotient therefore
+gives \eqref{eq:robust-boundary-comparison}.  If a finite source lattice is
+replaced by a sublattice, its gauge norm increases, so the operator-norm upper
+bound can only improve.
+\end{proof}
+
+Let $V_D$ be the rational pivot set of the vanishing filtration and let
+$G_{D,n}$ be the saturated rank-one quotient at a pivot $n$, with its quotient
+adelic norms.  Denote its evaluation map by $\psi_D^{(n)}$.  For a finite
+place $v\ne p$, equip the graded target with its integral model and set
+$\delta_{v,D,n}=\max\{0,\log\|\psi_D^{(n)}\|_v\}$.  Thus
+$\delta_{v,D,n}$ is exactly the positive excess local height at $v$.  Put
+\[
+ \delta_{D,n}=\sum_{\substack{v\nmid\infty\\v\ne p}}
+                    \delta_{v,D,n}.
+\]
+The distinguished $p$-adic operator norm is controlled directly by capacity
+and is not counted again in $\delta_{D,n}$.
+
+\begin{lemma}[Finite-order scalar capacitary jet estimate]
+\label{lem:robust-cap-jet}
+There is a constant $B_p'\ge0$, depending only on $p$, such that, for every
+fixed packet, there is a constant $C'_{p,\mathcal S}$ satisfying
+\begin{equation}\label{eq:robust-single-jet}
+ \widehatdeg G_{D,n}
+ \le B_p'D-n\Lambda_p^\circ+\delta_{D,n}
+     +C'_{p,\mathcal S}\log(D+2)
+\end{equation}
+for every pivot $n$ and all sufficiently large $D$.  The same estimate holds
+for a finite adelic sublattice of the reference source, with its induced
+vanishing filtration and quotient norms.
+\end{lemma}
+
+\begin{proof}
+The vector bundle is removed before the analytic estimate is applied.
+Contraction sends $\lambda$ to an analytic section of
+$L^D\otimes\calO(B)$; after using the fixed frame of the second factor it is
+a scalar analytic section of $L^D$.  Thus the only vector-bundle input is the
+bounded contraction operator in \cref{lem:robust-fixed-twist}.
+
+At the $p$-adic place use the finite-order inequality derived inside the
+proof of \cite[Proposition~5.15]{BostChambertLoir2009}, not merely its
+limiting canonical-norm conclusion.  Before the limiting step, that proof uses
+only a trivialization of a fixed power of $L$ and the maximum principle for
+the resulting scalar analytic function.  It does not use that the section
+comes from a global scalar linear system, and therefore applies verbatim to
+the scalar section obtained after contraction.  On a rational inner
+lemniscate a fixed power of $L$ is trivial.  Taking $D$ first in the
+corresponding arithmetic progression and treating the remaining residue
+classes as fixed twists, the calculation bounds the $n$th divided jet by the
+boundary norm times
+\[
+ \|t\|_{p,\circ}^{\,n}\exp(O_p(D)),
+\]
+relative to a tangent vector $t$.  At the complex place the same assertion is
+ordinary Cauchy on the chosen $q$-disc.  Combining these estimates with
+\eqref{eq:robust-boundary-comparison} gives
+\begin{equation}\label{eq:robust-local-analytic}
+ \sum_{v\in\{p,\infty\}}\log\|\psi_D^{(n)}\|_v
+ \le B_pD
+ +n\sum_{v\in\{p,\infty\}}
+   \log\frac{\|t\|_{v,\circ}}{\|t\|_{0,v}}
+ +O_{p,\mathcal S}(\log(D+2)).
+\end{equation}
+The estimate is valid for the quotient $G_{D,n}$ because its quotient norm is
+the infimum of the norms of its lifts.
+
+At every remaining finite place one has
+$\log\|\psi_D^{(n)}\|_v\le\delta_{v,D,n}$ by definition.  The coherent
+models used to define these quantities are the same models used in the
+Cartier calculation below; fixed packet denominators are therefore included
+in the finite exceptional-place term there, rather than in an unrecorded
+analytic constant.  Since the capacitary and reference tangent norms agree at
+all finite places other than $p$, summing all places yields
+\begin{equation}\label{eq:robust-height}
+ h(\psi_D^{(n)})
+ \le B_pD-n\bigl(\Lambda_p^\circ-
+                   \widehatdeg(\overline T_0)\bigr)
+      +\delta_{D,n}+O_{p,\mathcal S}(\log(D+2)).
+\end{equation}
+
+The graded target is
+\[
+ \overline L_P^{\,D}\otimes
+ \overline T_0^{\vee\otimes n}\otimes\overline C_{\mathcal S},
+\]
+where $\overline C_{\mathcal S}$ is fixed with the packet.  The rank-one degree
+identity, in the normalization of
+\cite[Theorem~6.1, (6.7)]{BostChambertLoir2009}, gives
+\[
+ \widehatdeg G_{D,n}
+ =D\widehatdeg(\overline L_P)
+  -n\widehatdeg(\overline T_0)
+  +h(\psi_D^{(n)})+O_{p,\mathcal S}(1).
+\]
+Substituting \eqref{eq:robust-height} cancels the arbitrary reference tangent
+norm and proves \eqref{eq:robust-single-jet}.  This is only a formal change of
+reference metric; it is not the target-normal $\Theta$-cancellation proved
+in \cref{thm:curve-Bost-exact,app:exact-normalization}.  Passing to a finite sublattice increases its gauge norm and
+therefore cannot increase the analytic operator norm, proving the final
+assertion.
+\end{proof}
+
+Fix $1<\xi<d_pm$ and put
+\[
+ N=\floor{\xi D},\qquad L_N=\lcmop(1,\ldots,N).
+\]
+Using the blockwise reference lattices above, define
+\begin{equation}\label{eq:curve-hybrid-lattice}
+ M_D^{\mathrm{hyb}}=
+ M_D^0\oplus\bigoplus_{s\in\mathcal S}L_N^sM_{D,s}^+.
+\end{equation}
+At the finitely many packet-dependent bad places use the corresponding
+integral direct-sum presentation lattice.  We use this presentation lattice
+throughout.  If it is compared with, or saturated inside, any fixed geometric
+model, the quotient is killed by one packet-dependent integer because the
+presentation is fixed; since the rank is $O_{p,\mathcal S}(D)$, the resulting
+logarithmic index is $O_{p,\mathcal S}(D)=o(D^2)$.
+
+\begin{proposition}[Compatibility with the hybrid finite-prime lattices]
+\label{prop:curve-hybrid-compatibility}
+For every fixed packet,
+\begin{equation}\label{eq:curve-hybrid-degree}
+ \widehatdeg M_D^{\mathrm{hyb}}
+ \ge-A_pmD^2-\xi Q_{\mathcal S}D^2
+       +o_{p,\mathcal S}(D^2),
+\end{equation}
+and
+\begin{equation}\label{eq:curve-hybrid-delta}
+ \sum_{n\in V_D}\delta_{D,n}
+ \le s_*mG_{d_p,m}(\xi)D^2+o_{p,\mathcal S}(D^2).
+\end{equation}
+The scalar capacitary estimate \eqref{eq:robust-single-jet} remains valid for
+the quotient norms induced by $M_D^{\mathrm{hyb}}$.
+\end{proposition}
+
+\begin{proof}
+The positive weight-$s$ block has rank $sD+O_{p,s}(1)$.  Scaling it by
+$L_N^s$ therefore has logarithmic index
+\[
+ s^2D\log L_N+O_{p,s}(\log L_N).
+\]
+Since $\log L_N=N+o(N)$, summing over the blocks and using
+\eqref{eq:robust-source-lower} proves
+\eqref{eq:curve-hybrid-degree}.  The fixed bad-place and saturation
+adjustments are $o(D^2)$.
+
+We next bound the finite local heights away from $p$.  By
+\eqref{eq:curve-pivot-range} and the fixed multiplier shifts, every raw
+coefficient index entering a pivot is at most $K_{p,\mathcal S}D$ for a fixed
+constant $K_{p,\mathcal S}$.  For a prime $\ell\le N$, $\ell\ne p$, raw depth
+and multiplication by $L_N^s$ remove the full $\ell$-denominator unless
+$v_\ell(k)>v_\ell(L_N)$ for one of these indices $k$.  Up to the fixed factor
+$s_*$, the residual valuation at one pivot is bounded by
+\begin{align*}
+ &\sum_{\substack{\ell\le N\\\ell\ne p}}
+ \bigl(v_\ell(L_{\lfloor K_{p,\mathcal S}D\rfloor})
+       -v_\ell(L_N)\bigr)_+\log\ell\\
+ &\hspace{18mm}\le
+ \sum_{\substack{a\ge2\\N<\ell^a\le K_{p,\mathcal S}D}}\log\ell
+ =O_{p,\mathcal S}(D^{1/2}\log D).
+\end{align*}
+Only proper prime powers occur because $N> D$ for large $D$.  Since
+$\#V_D=O_{p,\mathcal S}(D)$, all residual small-prime heights total
+$O_{p,\mathcal S}(D^{3/2}\log D)=o(D^2)$.  The distinguished place $p$ is
+already controlled by the capacitary Cauchy estimate with the hybrid source
+norm and is not included in $\delta_{D,n}$.  At each of the finitely many other bad primes $\ell$, the raw-depth
+comparison is uniform in $D$.  Indeed,
+\[
+ \bigl(v_\ell(L_{\floor{K_{p,\mathcal S}D}})-v_\ell(L_N)\bigr)_+
+ =O_{p,\mathcal S,\xi}(1),
+\]
+because the ratio of the two cutoffs is fixed.  The frame, presentation, and
+torsor denominators likewise have bounded $\ell$-valuation.  Hence every
+fixed bad place contributes $O_{p,\mathcal S,\xi}(1)$ per pivot, and all
+such places together contribute $O_{p,\mathcal S,\xi}(D)=o(D^2)$.  The
+separate saturation adjustments in the source degree remain
+$O_{p,\mathcal S}(D\log(D+2))=o(D^2)$.
+
+For $\ell>N$, the hybrid lattice equals the reference lattice.  Since
+$\xi>1$, for the fixed packet and large $D$ one has $\ell>D+C$ and
+$\ell>s_*$.  Thus
+\cref{prop:q-jet-Cartier,prop:curve-large} applies; the at most one prime in
+the harmless floor interval between $N$ and $\xi D$ contributes $o(D^2)$.
+This proves \eqref{eq:curve-hybrid-delta}.
+
+Finally, $M_D^{\mathrm{hyb}}\subset M_D$ at every finite place.  Its gauge
+norm is therefore larger, and the analytic operator-norm estimates for the
+reference source can only improve.  The vanishing filtration uses the same
+rational subspaces and the quotient norms induced by this hybrid lattice, so
+the finite-height and capacitary calculations refer to the same rank-one
+quotients.  This proves the compatibility assertion.
+\end{proof}
+
+\begin{theorem}[Normalization-robust general-curve slopes]
+\label{thm:curve-holonomy}
+For every fixed prime $p$ there are constants
+\[
+ \Lambda_p^\circ>0,\qquad C_p>0,
+\]
+depending only on $p$, such that the following holds.  If a fixed finite packet
+$\mathcal S$ is jointly rational, then for every $1<\xi<d_pm$,
+\begin{equation}\label{eq:curve-tau}
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ =\frac{2}{m^2}\left[
+   \xi Q_{\mathcal S}+s_*mG_{d_p,m}(\xi)\right]
+\end{equation}
+satisfies
+\begin{equation}\label{eq:robust-curve-slopes}
+ \boxed{
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ \ge\Lambda_p^\circ-\frac{C_p}{m}.}
+\end{equation}
+The constants are independent of the packet.
+\end{theorem}
+
+\begin{proof}
+Use the vanishing filtration on $M_D^{\mathrm{hyb}}$.  Functional independence
+makes scalar contraction injective, so the filtration has exactly
+$r_D=mD+O_{p,\mathcal S}(1)$ saturated rank-one quotients.  Their Arakelov
+degrees add:
+\[
+ \widehatdeg M_D^{\mathrm{hyb}}
+ =\sum_{n\in V_D}\widehatdeg G_{D,n}.
+\]
+The pivot orders are distinct nonnegative integers, whence
+\begin{equation}\label{eq:robust-pivot-sum}
+ \sum_{n\in V_D}n
+ \ge\frac{r_D(r_D-1)}2
+ =\frac{m^2}{2}D^2+o_{p,\mathcal S}(D^2).
+\end{equation}
+Summing \eqref{eq:robust-single-jet}, using
+\eqref{eq:curve-hybrid-delta}, and observing that the packet-dependent
+$O(\log D)$ term at each of $O(D)$ pivots is $o(D^2)$, gives
+\[
+ \widehatdeg M_D^{\mathrm{hyb}}
+ \le B_p'mD^2-\frac{m^2}{2}\Lambda_p^\circ D^2
+ +s_*mG_{d_p,m}(\xi)D^2+o_{p,\mathcal S}(D^2).
+\]
+Compare with \eqref{eq:curve-hybrid-degree}, divide by $D^2$, and let
+$D\to\infty$.  Then
+\[
+ \frac{m^2}{2}\Lambda_p^\circ
+ \le(A_p+B_p')m+\xi Q_{\mathcal S}
+       +s_*mG_{d_p,m}(\xi).
+\]
+Multiplication by $2/m^2$ proves
+\eqref{eq:robust-curve-slopes} with $C_p=2(A_p+B_p')$.
+
+Every packet-dependent presentation, frame, bad-place, and boundary constant
+has disappeared into $o_{p,\mathcal S}(D^2)$ before the packet is varied.
+This is why $C_p$ is genuinely packet-independent, despite the absence of any
+uniform exceptional-prime set as the packet varies.
+\end{proof}
+
+The following theorem is the audited replacement for the former exact-normalization
+conjecture.  It proves the required source and jet formulas for a canonical
+mixed adelic metric on $X_p$.  Only the associated capacitary tangent line is
+realized as a Bost--Charles normal line; no whole-divisor direct-image map is
+part of the statement.
+
+\begin{theorem}[Exact mixed capacitary normalization and target-normal cancellation]
+\label{thm:curve-Bost-exact}
+Fix a prime $p$ and the continuation datum
+$\boldsymbol\alpha=\boldsymbol\Omega_p^\circ$ of
+\cref{prop:positive-width}.  There are a normal arithmetic model
+$\mathscr X_\alpha$ of $X_p$ and a semipositive, nef, and big adelic
+Arakelov $\Q$-divisor $\widehat P_\alpha$ extending $P$.  Put
+\begin{equation}\label{eq:exact-data}
+ \overline L_\alpha=\mathcal O(\widehat P_\alpha),\qquad
+ \Theta_\alpha=\widehatdeg P^*\overline L_\alpha,\qquad
+ \Energy_\alpha=\widehat P_\alpha^{\,2},\qquad
+ \LambdaAH_\alpha=\widehatdeg\overline T_\alpha>0,
+\end{equation}
+where $\overline T_\alpha$ is the source capacitary tangent line transported
+to $T_PX_p$.  These quantities depend only on $p$ and on the fixed
+continuation datum.
+
+Let $\mathcal S$ be a fixed jointly rational packet, and give the fixed
+coefficient bundle $\calF_{\mathcal S}$ any fixed dominated adelic metric
+compatible with its integral models.  Equip
+\[
+ M_D=H^0(X_p,\calF_{\mathcal S}\otimes\mathcal O(DP))
+\]
+with the induced adelic supremum norms, replacing each Archimedean norm by
+its John ellipsoid norm.  Then
+\begin{equation}\label{eq:exact-source}
+ \boxed{
+ \widehatdeg\overline M_D^\alpha
+ =\frac m2\Energy_\alpha D^2+o_{p,\mathcal S}(D^2).}
+\end{equation}
+The leading term is independent of the fixed metric on
+$\calF_{\mathcal S}$.
+
+For a pivot $n$, let $\overline G_{D,n}^\alpha$ be the saturated rank-one
+source quotient and let
+\[
+ \overline J_{D,n}^\alpha
+ =P^*\overline L_\alpha^{\,D}
+  \otimes\overline T_\alpha^{\vee\otimes n}
+  \otimes\overline C_{\mathcal S}
+\]
+be its natural jet target, where $\overline C_{\mathcal S}$ is fixed.  Denote
+by $h_\alpha^{\mathrm{nat}}(\psi_D^{(n)})$ the global operator height with
+this target metric.  After scalarizing the target by a nonzero rational
+vector, denote the resulting height by
+$h_\alpha^{\mathrm{sc}}(\psi_D^{(n)})$; it is independent of the chosen
+vector by the product formula.  For every $C>0$, uniformly for all pivots
+$0\le n\le CD$,
+\begin{align}
+ \widehatdeg\overline J_{D,n}^\alpha
+ &=D\Theta_\alpha-n\LambdaAH_\alpha+O_{p,\mathcal S}(1),
+ \label{eq:exact-target-degree}\\
+ h_\alpha^{\mathrm{nat}}(\psi_D^{(n)})
+ &\le D(\Energy_\alpha-\Theta_\alpha)+\delta_{D,n}
+       +O_{C,p,\mathcal S}(1),
+ \label{eq:exact-natural-height}\\
+ h_\alpha^{\mathrm{sc}}(\psi_D^{(n)})
+ &\le D\Energy_\alpha-n\LambdaAH_\alpha+\delta_{D,n}
+       +O_{C,p,\mathcal S}(1),
+ \label{eq:exact-scalar-height}\\
+ \widehatdeg\overline G_{D,n}^\alpha
+ &\le D\Energy_\alpha-n\LambdaAH_\alpha+\delta_{D,n}
+       +O_{C,p,\mathcal S}(1).
+ \label{eq:exact-graded-degree}
+\end{align}
+Thus the $D\Theta_\alpha$ contribution of the natural target cancels
+exactly with the $-D\Theta_\alpha$ part of the natural evaluation estimate.
+In particular,
+\begin{equation}\label{eq:exact-degree-sum}
+ \sum_{n\in V_D}\widehatdeg\overline G_{D,n}^\alpha
+ \le\left(-\frac{m^2}{2}\LambdaAH_\alpha
+          +m\Energy_\alpha\right)D^2
+    +\mathscr A_D+o_{p,\mathcal S}(D^2).
+\end{equation}
+
+For the hybrid source of \eqref{eq:curve-hybrid-lattice}, endowed with these
+metrics,
+\begin{equation}\label{eq:exact-hybrid-source}
+ \widehatdeg\overline M_D^{\alpha,\mathrm{hyb}}
+ =\left(\frac m2\Energy_\alpha-\xi Q_{\mathcal S}\right)D^2
+  +o_{p,\mathcal S}(D^2).
+\end{equation}
+Therefore joint rationality forces the exact general-curve inequality
+\begin{equation}\label{eq:exact-curve-slopes}
+ \boxed{
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ \ge\LambdaAH_\alpha-\frac{\Energy_\alpha}{m}.}
+\end{equation}
+All formulas are invariant under finite base change after normalized Arakelov
+degrees are divided by the extension degree.
+\end{theorem}
+
+\begin{proof}
+The canonical mixed divisor and its nefness and bigness are constructed in
+\cref{prop:exact-mixed-divisor}.  The denominator-cleared realization of the
+capacitary tangent line is \cref{prop:cap-normal-realization}; the base-change
+statement is \cref{lem:exact-base-change}.  The determinant source formula is
+\cref{prop:exact-source-formula}, and the uniform jet estimate and exact
+$D\Theta_\alpha$ cancellation are
+\cref{prop:exact-single-jet}.  Finally,
+\cref{prop:exact-hybrid-assembly} gives
+\eqref{eq:exact-hybrid-source}, \eqref{eq:exact-degree-sum}, and the slopes
+assembly \eqref{eq:exact-curve-slopes}.
+\end{proof}
+
+\begin{remark}[Exact versus robust normalization]
+The exact theorem strengthens but does not replace
+\cref{thm:curve-holonomy}.  The normalization-robust theorem still gives an
+independent qualitative proof that $R_p(X)=O_p((\log X)^2)$.  The explicit
+leading coefficient in \cref{thm:density-all-primes}, however, uses the exact
+modular capacity pair proved below.  The exact theorem removes the coarse
+source and boundary constants $A_p$ and $B_p'$ and replaces their contribution
+by the intrinsic self-intersection $\Energy_\alpha/m$.
+\end{remark}
+
+\begin{remark}[Scope of the realization bridge]
+The bridge proved below realizes the full metrized capacitary tangent line as
+the normal line of a pseudoconcave formal-analytic surface, after clearing
+rational finite-place exponents.  Matching this normal line does not determine
+the entire Bost--Chambert-Loir finite vertical divisor and does not by itself
+produce a Bost--Charles meromorphic map to $\mathscr X_\alpha$.  Neither
+stronger assertion is used.  The exact source and jet formulas are proved
+directly on $X_p$ for the canonical mixed finite-capacitary/Archimedean-direct-
+image metric.
+\end{remark}
+
+
+\subsection{The exact modular capacity pair at every prime}
+\label{sec:allprime-capacity}
+
+For $0<Y<1/p$, let the Archimedean pointed disc be
+\begin{equation}\label{eq:allprime-qdisc}
+ \iota_Y:\mathbb D\longrightarrow X_p(\C),
+ \qquad q=e^{-2\pi Y}z,
+\end{equation}
+and retain the integral Tate residue disc at every finite place $\ell\ne p$.
+At the distinguished place $p$, let $W_0(p)$ be Buzzard's maximal wide-open
+through the Tate component.
+
+\begin{lemma}[Rational skeleton exhaustion and exact finite capacity]
+\label{lem:maximal-capacity-exhaustion}
+For every prime $p$ there is an increasing sequence of connected wide-opens in
+$X_{p,\C_p}^{\mathrm{an}}$,
+\[
+ \Omega_{p,1}\Subset\Omega_{p,2}\Subset\cdots\Subset W_0(p),
+ \qquad \bigcup_{\nu\ge1}\Omega_{p,\nu}=W_0(p),
+\]
+such that every $\Omega_{p,\nu}$ descends to a finite extension of $\Q_p$,
+has affinoid complement, and is a rational wide-open: after that finite
+extension there is a rational function $u_{p,\nu}$, with polar divisor a
+positive multiple of $P$, for which
+\[
+ \Omega_{p,\nu}=\{|u_{p,\nu}|_p>1\}.
+\]
+If
+\begin{equation}\label{eq:inner-capacity-gain}
+ \lambda_{p,\nu}=
+ -\log\frac{\|\partial_q\|^{\mathrm{cap}}_{p,\Omega_{p,\nu}}}
+              {\|\partial_q\|_{p,\mathrm{int}}},
+\end{equation}
+then
+\begin{equation}\label{eq:inner-capacity-limit}
+ \lambda_{p,\nu}\longrightarrow
+ L_p=\frac{12\log p}{p-1}.
+\end{equation}
+Moreover $\Omega_{p,\nu+1}$ is a larger continuation neighborhood of the
+affinoid closure of $\Omega_{p,\nu}$, so every sufficiently large member,
+together with any fixed Archimedean $q$-disc of positive total tangent degree,
+is admissible for \cref{thm:curve-Bost-exact}.
+
+For $p\ge5$, after a finite unramified extension splitting the supersingular
+residue points, put
+\[
+ \vartheta_\nu=\frac{\nu}{\nu+1}.
+\]
+The domain $\Omega_{p,\nu}$ may be chosen by retaining, in the branch indexed
+by a geometric supersingular elliptic curve $E/\overline{\F}_p$, the initial
+skeleton segment of length $\vartheta_\nu i(E)$, where
+\[
+ i(E)=\frac{\#\operatorname{Aut}(E)}2.
+\]
+Its effective resistance and tangent gain are then
+\begin{equation}\label{eq:inner-resistance}
+ R_{p,\nu}
+ =\left(\sum_{[E]\ \mathrm{ss}}
+       \frac1{\vartheta_\nu i(E)}\right)^{-1}
+ =\vartheta_\nu\frac{12}{p-1},
+ \qquad
+ \lambda_{p,\nu}=R_{p,\nu}\log p.
+\end{equation}
+For $p=2,3$, one may instead take
+\begin{equation}\label{eq:wild-inner-discs}
+ \Omega_{p,\nu}
+ =\{|f_p|_p<p^{\vartheta_\nu 12/(p-1)}\},
+ \qquad
+ \lambda_{p,\nu}
+ =\vartheta_\nu\frac{12\log p}{p-1}.
+\end{equation}
+All normalized local and global Arakelov degrees are independent of the finite
+extensions used to define these cuts.
+\end{lemma}
+
+\begin{proof}
+Assume first that $p\ge5$.  Pass to a finite unramified extension over which
+all supersingular residue points split.  By
+\cite[\S2, citing Deligne--Rapoport VI.6.16]{ColemanMcMurdy2006}, the regular
+semistable skeleton between the two principal ordinary components consists of
+parallel paths indexed by the supersingular elliptic curves and having lengths
+$i(E)$.  After a further finite ramified extension whose ramification index is
+divisible by $\nu+1$, the point at distance $\vartheta_\nu i(E)$ on every
+path is a vertex of a semistable subdivision.  Retain the component through
+$P$ and the initial path segments up to those vertices.  The tube of this
+connected subgraph is $\Omega_{p,\nu}$; its complement is a connected affinoid
+neighborhood of the opposite ordinary component.  The inclusions are compact,
+and the retained lengths tend to the full branch lengths, so these domains
+increase to $W_0(p)$.  This agrees with the affinoid exhaustion of the maximal
+wide-open on a fine tame cover in \cite[Proposition~4.1]{Buzzard2003}.
+
+The domain $\Omega_{p,\nu}$ is connected and contains $P$, while its complement
+$U_{p,\nu}$ is affinoid.  Therefore
+\cite[Proposition~5.6]{BostChambertLoir2009}, applied with $D=P$, produces
+$u_{p,\nu}$ with polar divisor a positive multiple of $P$ and
+$U_{p,\nu}=\{|u_{p,\nu}|_p\le1\}$.  This is precisely the asserted rational
+lemniscate description.  Notice that Proposition~5.6 is being applied
+separately to each fixed domain; no continuity assertion is attributed to it.
+
+On the subdivided reduction graph, the vertical correction of
+\cite[Proposition~5.1]{BostChambertLoir2009} is the voltage generated by one
+unit of current inserted at the vertex through $P$ and grounded at the cut
+vertices.  Thus the coefficient at the source vertex is the effective
+resistance of the parallel paths of lengths $\vartheta_\nu i(E)$.  By the
+Eichler--Deuring mass formula \cite[\S5,\S10]{Deuring1941},
+\[
+ \sum_{[E]\ \mathrm{ss}}\frac1{i(E)}
+ =2\sum_{[E]\ \mathrm{ss}}
+   \frac1{\#\operatorname{Aut}(E)}
+ =\frac{p-1}{12}.
+\]
+This proves the resistance formula in \eqref{eq:inner-resistance}.  If the
+ramification index used for the subdivision is $e$, a retained branch of
+normalized length $\vartheta_\nu i(E)$ consists of
+$e\vartheta_\nu i(E)$ unit model edges, while each such edge contributes
+$\log p/e$ to the normalized local degree.  Adjunction, as in
+\eqref{eq:strict-cap-factor}, therefore gives
+$\lambda_{p,\nu}=R_{p,\nu}\log p$, independently of the chosen
+ramified extension, and proves the asserted limit.
+
+For $p=2,3$, the explicit calculations in
+\cite[Lemma~3.1 and the proof of Theorem~3.5]{Calegari2005} give
+\[
+ W_0(p)=\{|f_p|_p<p^{12/(p-1)}\}.
+\]
+The discs in \eqref{eq:wild-inner-discs} increase compactly to this domain.
+Their complements are affinoid, and
+\cite[Corollary~5.8]{BostChambertLoir2009}, together with
+$f_p=q+O(q^2)$ and adjunction, gives the tangent gain displayed there.
+
+For every $p$, the next member of the sequence supplies the larger compact
+continuation neighborhood required in the finite-order estimates.  Finally,
+the extensions above may depend on $\nu$.  Each prescribed finite local
+extension can be induced by a finite number-field base change; then
+\cref{lem:exact-base-change} shows that, after division by the extension
+degree, local degrees, determinant degrees, intersection numbers, and slopes
+inequalities are unchanged.  This proves the lemma.
+\end{proof}
+
+\begin{theorem}[Exact modular capacity pair at every prime]
+\label{thm:allprime-capacity-pair}
+For every prime $p$ and $0<Y<1/p$, the exhaustion of
+\cref{lem:maximal-capacity-exhaustion}, with normalized invariants after the
+harmless finite base changes used there, gives rational wide-opens
+\[
+ \Omega_{p,1}\Subset\Omega_{p,2}\Subset\cdots\Subset W_0(p)
+\]
+whose associated exact mixed continuation data $\alpha_\nu$ satisfy
+\begin{align}
+ \lim_{\nu\to\infty}\LambdaAH_{\alpha_\nu}
+ &=L_p-2\pi Y,\label{eq:capacity-pair-Lambda}\\
+ \lim_{\nu\to\infty}\Theta_{\alpha_\nu}
+ &=L_p-2\pi Y,\label{eq:capacity-pair-Theta}\\
+ \lim_{\nu\to\infty}\Energy_{\alpha_\nu}
+ &=L_p-2\pi Y+C_p(Y),\label{eq:capacity-pair-Energy}
+\end{align}
+where
+\[
+ L_p=\frac{12\log p}{p-1}
+\]
+and $C_p(Y)$ is defined by \eqref{eq:Cp}.  Equivalently, the maximal modular
+capacitary pair is
+\begin{equation}\label{eq:capacity-pair-box}
+ \boxed{
+ (\Lambda_p(Y),\Energy_p(Y))
+ =\left(
+ \frac{12\log p}{p-1}-2\pi Y,
+ \frac{12\log p}{p-1}-2\pi Y+C_p(Y)
+ \right).}
+\end{equation}
+For every jointly rational packet $\mathcal S$ and every $1<\xi<d_pm$,
+\begin{equation}\label{eq:allprime-explicit-slopes}
+ \boxed{
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ \ge
+ \left(1-\frac1m\right)
+ \left(\frac{12\log p}{p-1}-2\pi Y\right)
+ -\frac{C_p(Y)}m.}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By \cref{lem:maximal-capacity-exhaustion}, the distinguished finite-place
+contribution of the rational inner domains tends to
+\[
+ L_p=\frac{12\log p}{p-1}.
+\]
+At every finite place $\ell\ne p$ the chosen domain is the integral Tate
+residue disc, so \cite[Example~5.11]{BostChambertLoir2009} contributes zero
+relative tangent degree.  At infinity, \eqref{eq:allprime-qdisc} contributes
+$-2\pi Y$.  This proves \eqref{eq:capacity-pair-Lambda}.
+
+\smallskip
+\noindent\emph{Target normal and Archimedean overflow.}
+No interior point of the upper half-plane represents the cusp $P$.  Hence
+\[
+ \iota_Y^*P=o
+\]
+on the pointed disc.  The exact normal decomposition
+\eqref{eq:theta-minus-lambda} therefore has no additional target-normal
+collision, proving \eqref{eq:capacity-pair-Theta}.
+
+It remains to evaluate the Archimedean term $\mathscr W$.  On the boundary
+write $\tau=x+iY$, $0\le x<1$.  Nonidentity self-collisions of the modular
+$q$-disc are parametrized by primitive bottom rows $(c,d)$ with
+$c>0$ and $p\mid c$.  For
+$\gamma=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$,
+\[
+ \Im(\gamma\tau)=\frac{Y}{(cx+d)^2+c^2Y^2}.
+\]
+The source Green function is $2\pi(\Im\tau-Y)$, so the direct-image
+Green--Jensen formula gives
+\begin{equation}\label{eq:allprime-collision-unfold}
+ \mathscr W_p(Y)
+ =\sum_{\substack{c>0\\p\mid c}}
+   \sum_{\substack{d\in\Z\\(c,d)=1}}
+   \int_0^1 2\pi Y
+   \left(\frac1{(cx+d)^2+c^2Y^2}-1\right)_+\dd x.
+\end{equation}
+Elliptic stabilizers occur only over a measure-zero set and do not alter this
+integral.  For fixed $c$, the summand vanishes when $cY\ge1$.  When $cY<1$,
+unfolding the primitive residues $d\bmod c$ and putting
+$b_c=\sqrt{1-c^2Y^2}$ gives
+\begin{align*}
+ &\frac{2\pi Y\varphi(c)}c
+ \int_{-b_c}^{b_c}
+ \left(\frac1{u^2+c^2Y^2}-1\right)\dd u\\
+ &\qquad=
+ \frac{4\pi\varphi(c)}{c^2}
+ \left(\arccos(cY)-cY\sqrt{1-c^2Y^2}\right).
+\end{align*}
+Thus
+\begin{equation}\label{eq:allprime-W-C}
+ \mathscr W_p(Y)=C_p(Y).
+\end{equation}
+Together with \eqref{eq:energy-theta}, this proves
+\eqref{eq:capacity-pair-Energy}.
+
+The rational skeleton exhaustion of
+\cref{lem:maximal-capacity-exhaustion} supplies the required inner data.
+Use the same Archimedean disc for every member.  Its distinguished finite
+contribution tends to $L_p$, while the target-normal comparison has no extra
+cusp preimage and the Archimedean term is the fixed number $C_p(Y)$.
+Consequently the exact mixed invariants converge to
+\eqref{eq:capacity-pair-Lambda}--\eqref{eq:capacity-pair-Energy}.  Since
+$\log p>1-1/p$, one has
+$L_p>12/p>2\pi/p>2\pi Y$; hence every sufficiently large member is
+pseudoconcave.  Apply \cref{thm:curve-Bost-exact} to those members and pass
+to the limit.  The arithmetic type is independent of the continuation datum,
+so this yields \eqref{eq:allprime-explicit-slopes}.
+\end{proof}
+
+\begin{remark}[Why genus zero was inessential for the collision formula]
+The proof of \eqref{eq:allprime-W-C} uses only the uniformizing quotient
+$\Gamma_0(p)\backslash\mathfrak H$, the width-one cusp, and the source Green
+function.  A Hauptmodul is unnecessary.  Consequently the formula
+$\Energy_p(Y)=\Lambda_p(Y)+C_p(Y)$ from \cref{prop:Jensen} is intrinsic and
+extends to every prime level.
+\end{remark}
+
+\section{All-prime density one}
+\label{sec:allprime-density}
+
+\begin{proof}[Proof of \cref{thm:density-all-primes}]
+Fix $\beta>1$.  Let $\mathcal S_j$ be the rational odd arguments in the shell
+\[
+ A=\beta^j\le s<\beta A,
+\]
+and put $k_j=\#\mathcal S_j$.  Empty shells may be ignored.  For a nonempty
+shell,
+\[
+ k_jA\le m-1<k_j\beta A,
+ \qquad s_*<\beta A,
+ \qquad Q_{\mathcal S_j}<\beta A m.
+\]
+Choose $\xi=1+1/\log A$.  Since $d_p$ is fixed,
+\[
+ G_{d_p,m}(\xi)=d_p\log m+O_p(1),
+\]
+and \eqref{eq:curve-tau} gives
+\begin{equation}\label{eq:allprime-shell-upper}
+ \tau^{\mathrm{curve}}_{p,\mathcal S_j}(\xi)
+ \le\frac{2d_p\beta}{k_j}\log m
+ +O_{p,\beta}\!\left(\frac1{k_j}\right).
+\end{equation}
+
+In \cref{thm:allprime-capacity-pair} choose $Y=1/m$; for a nonempty shell
+this is $<1/p$ once $j$ is sufficiently large.  Since
+\[
+ 0\le\arccos x-x\sqrt{1-x^2}\le\frac\pi2,
+ \qquad \varphi(c)\le c,
+\]
+we have
+\begin{equation}\label{eq:allprime-C-bound}
+ C_p(1/m)
+ \le\frac{2\pi^2}{p}
+ H_{\floor{(m-1)/p}}
+ =O_p(\log m).
+\end{equation}
+The explicit exact inequality \eqref{eq:allprime-explicit-slopes} therefore
+gives
+\begin{equation}\label{eq:allprime-shell-lower}
+ \tau^{\mathrm{curve}}_{p,\mathcal S_j}(\xi)
+ \ge L_p-O_p\!\left(\frac{\log m}{m}\right),
+ \qquad
+ L_p=\frac{12\log p}{p-1}.
+\end{equation}
+
+Initially $k_j=O_\beta(A)$ and hence $m=O_\beta(A^2)$, so
+$\log m=O_\beta(\log A)$.  The right side of
+\eqref{eq:allprime-shell-lower} is at least $L_p/2$ for all sufficiently large
+$j$.  Combining the upper and lower estimates first gives
+\[
+ k_j=O_{p,\beta}(\log A).
+\]
+It follows that
+\[
+ m=O_{p,\beta}(A\log A),
+ \qquad
+ \log m=\log A+O_{p,\beta}(\log\log A).
+\]
+Substitution back yields
+\begin{equation}\label{eq:allprime-shell-count}
+ k_j\le
+ \left(\frac{2d_p\beta}{L_p}+o_p(1)\right)\log A.
+\end{equation}
+
+If $\beta^J\le X<\beta^{J+1}$, summing over $j\le J$ gives
+\begin{equation}\label{eq:allprime-explicit-constant}
+ R_p(X)\le
+ \left(\frac{d_p\beta}{L_p\log\beta}+o_p(1)\right)(\log X)^2.
+\end{equation}
+The function $\beta/\log\beta$ is minimized at $\beta=e$, so
+\[
+ \frac{ed_p}{L_p}=\frac{e\,d_p(p-1)}{12\log p},
+\]
+which proves \eqref{eq:density-all-primes}.  When $g_p\ge1$, substitute
+$d_p\le2g_p$ from \cref{thm:finite-map-zero} to obtain
+\eqref{eq:density-all-primes-genus}.
+
+For each shell, the packet is fixed before the source-degree limit
+$D\to\infty$ is taken.  Packet-dependent module generators, bad primes,
+metric comparisons, and boundary norms have therefore disappeared into
+$o(D^2)$ before $j\to\infty$.  The subsequent limits in the capacitary
+exhaustion and in $j$ introduce no packet-uniform auxiliary-prime assumption.
+\end{proof}
+
+\begin{remark}[What the all-prime theorem does not assert]
+The coefficient in \eqref{eq:density-all-primes} is explicit for any chosen
+finite map of degree $d_p$, but the general construction
+$d_p\le2g_p$ need not be gonality-optimal.  Improving the map can therefore
+improve the displayed constant and the finite-packet bounds below.  No
+uniformity as $p\to\infty$ beyond the stated formula is claimed, and the
+theorem still permits an infinite polylogarithmically sparse set of rational
+exceptions.
+\end{remark}
+
+
+
+\subsection{Certified finite packets at positive genus}
+\label{sec:positive-genus-finite}
+
+The exact capacity formula permits a finite-packet certificate that does not
+enumerate subsets.
+
+\begin{proposition}[One-dimensional finite-packet certificate]
+\label{prop:finite-packet-certificate}
+Fix a prime $p$, let $d_p$ be an admissible finite-map degree in
+\cref{thm:finite-map-zero}, and let $\bar d\ge d_p$ be a certified upper
+bound.  Fix an odd cutoff $S$ and an integer $k\ge1$.  Put
+\begin{align}
+ m_0(k,x)&=x+k^2,\label{eq:finite-cert-m0}\\
+ U_{\bar d,k}(x)&=2\bar d\left[
+ \frac{x-2+x\log m_0(k,x)}{m_0(k,x)}
+ +\frac{x+2}{m_0(k,x)^2}\right],\label{eq:finite-cert-U}\\
+ B_{p,k}(x)&=
+ \left(1-\frac1{m_0(k,x)}\right)
+ \left(L_p-\frac{2\pi}{m_0(k,x)}\right)
+ -\frac{2\pi^2}{p\,m_0(k,x)}
+ H_{\floor{(m_0(k,x)-1)/p}}.\label{eq:finite-cert-B}
+\end{align}
+Assume, for every relevant $x$, that
+\[
+ m_0(k,x)>\max\{p,\bar d\},
+ \qquad L_p-\frac{2\pi}{m_0(k,x)}>0.
+\]
+If
+\begin{equation}\label{eq:finite-cert-condition}
+ B_{p,k}(x)>U_{\bar d,k}(x)
+ \qquad(2k+1\le x\le S,\ x\text{ odd}),
+\end{equation}
+then among the odd arguments $3,5,\ldots,S$ at most $k-1$ values
+$\zeta_p(s)$ are rational.
+\end{proposition}
+
+\begin{proof}
+Suppose instead that $k$ distinct values are rational and let $\mathcal S$ be
+one such $k$-element packet, with $x=\max\mathcal S$.  The other $k-1$
+arguments are distinct positive odd integers at least $3$, so their sum is at
+least
+\[
+ 3+5+\cdots+(2k-1)=k^2-1.
+\]
+Thus
+\begin{equation}\label{eq:finite-cert-m-lower}
+ m=1+\sum_{s\in\mathcal S}s\ge x+k^2=m_0(k,x).
+\end{equation}
+For every $s\in\mathcal S\setminus\{x\}$ one has $s\le x-2$, and hence
+$s^2\le(x-2)s$.  Therefore
+\begin{equation}\label{eq:finite-cert-Q}
+ Q_{\mathcal S}
+ \le x^2+(x-2)(m-1-x)
+ =(x-2)m+x+2.
+\end{equation}
+Choose $\xi=\bar d$.  The assumption $\bar d<m_0(k,x)\le m$ makes
+this cutoff admissible.  Since $\bar d\ge d_p$, the second branch of
+\eqref{eq:Gdm} gives
+\[
+ G_{d_p,m}(\bar d)
+ =d_p\log\!\left(\frac{d_pm}{\bar d}\right)
+ \le d_p\log m\le\bar d\log m.
+\]
+Equations \eqref{eq:curve-tau} and \eqref{eq:finite-cert-Q} therefore give
+\[
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\bar d)
+ \le2\bar d\left[
+ \frac{x-2+x\log m}{m}+\frac{x+2}{m^2}\right].
+\]
+The derivative of the quantity in square brackets is
+\[
+ \frac{2-x\log m}{m^2}-\frac{2(x+2)}{m^3}<0
+\]
+for $x\ge3$ and $m\ge3$.  Hence \eqref{eq:finite-cert-m-lower} implies
+\begin{equation}\label{eq:finite-cert-tau-upper}
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\bar d)\le U_{\bar d,k}(x).
+\end{equation}
+
+On the analytic side use \cref{thm:allprime-capacity-pair} with the fixed
+choice $Y=1/m_0(k,x)$.  Write
+\[
+ A=L_p-\frac{2\pi}{m_0(k,x)}.
+\]
+For fixed $Y$, the exact lower side is
+\[
+ \left(1-\frac1m\right)A-\frac{C_p(Y)}m
+ =A-\frac{A+C_p(Y)}m,
+\]
+which is increasing in $m$ because $A>0$ and $C_p(Y)\ge0$.  Moreover
+\eqref{eq:allprime-C-bound}, with $m_0$ in place of $m$, gives
+\[
+ C_p(1/m_0)
+ \le\frac{2\pi^2}{p}
+ H_{\floor{(m_0-1)/p}}.
+\]
+Consequently joint rationality forces
+\begin{equation}\label{eq:finite-cert-analytic-lower}
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\bar d)\ge B_{p,k}(x).
+\end{equation}
+Equations \eqref{eq:finite-cert-tau-upper} and
+\eqref{eq:finite-cert-analytic-lower} contradict
+\eqref{eq:finite-cert-condition}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:positive-genus-counts}]
+Apply \cref{prop:finite-packet-certificate} with $S=2401$, $\bar d=2g_p$, and the values
+shown below.  The certificate checks every admissible odd largest argument
+$x$, using outward-rounded integer fixed-point intervals at scale $10^{45}$.
+The harmonic numbers in \eqref{eq:finite-cert-B} are enclosed by summing the
+individual rational terms outward; $\pi$ is enclosed by Machin's formula and
+alternating arctangent series, and logarithms are enclosed after dyadic range
+reduction by the positive $\operatorname{arctanh}$ series.  No binary
+floating-point value enters a certificate decision.
+
+\begin{center}
+\begin{tabular}{@{}crrrrr@{}}
+\toprule
+$p$&$\bar d$&excluded $k$&rational cap&worst $x$&certified margin\\
+\midrule
+$11$&$2$&$191$&$190$&$2401$&$>0.019624155425482$\\
+$17$&$2$&$227$&$226$&$2401$&$>0.006340667081541$\\
+$19$&$2$&$238$&$237$&$2401$&$>0.013201735527294$\\
+$23$&$4$&$378$&$377$&$2401$&$>0.006562285899278$\\
+$29$&$4$&$415$&$414$&$2401$&$>0.005457529203788$\\
+$31$&$4$&$426$&$425$&$2401$&$>0.002866264645707$\\
+$37$&$4$&$458$&$457$&$2401$&$>0.002720591459553$\\
+$41$&$6$&$596$&$595$&$2401$&$>0.003315013860040$\\
+$43$&$6$&$607$&$606$&$2401$&$>0.000684777792175$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Subtracting the rational caps from $1200$ gives the irrational counts in
+\cref{thm:positive-genus-counts}.
+
+For the final column of that theorem, if a prefix contains $N$ odd arguments,
+we apply the same certificate with $k=N-999$: excluding such a packet leaves
+at most $N-1000$ rational values.  The certified cutoffs are respectively
+\[
+ 2379,\ 2459,\ 2483,\ 2823,\ 2921,\ 2951,\ 3039,\ 3445,\ 3483.
+\]
+The stored certificate also checks the immediately preceding cutoff for this
+sufficient criterion and records a nonpositive lower margin there.  The
+certificate files are listed in \cref{sec:certificate-files}.
+\end{proof}
+
+\section{Logical dependency and adversarial audit}\label{sec:audit}
+
+\begingroup\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.20\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\raggedright\arraybackslash}p{0.39\textwidth}@{}}
+\toprule
+Gate&Input&Use and final audit conclusion\\
+\midrule
+Single blocks&Calegari; BGG/Bol; internal \cref{sec:blocks}&Constructs each algebraic extension and exact raw rows for general $p$.\\
+Joint rank and descent&Internal \cref{thm:joint-rank,lem:allprime-descent}&Even symmetric powers descend away from the fixed elliptic divisor; the multiplicity-free direct sum has full monodromy rank.\\
+Genus-zero zero estimate&CDT Theorem~3.2.13; \cref{cor:joint-zero}&Applies on $\mathbf P^1$ and retains the sharp normalized interval $m+o(1)$.\\
+General-curve zero estimate&CDT Theorem~3.2.8; \cref{thm:finite-map-zero}&Restriction of scalars gives a derivative-stable rank-$d_pm$ system; $d_p$ enlarges only the pivot range, not the genuine source rank.\\
+Hasse saving&Katz; \cref{prop:single-action,thm:block-Hasse}&Used only for the sharp genus-zero theorems; not load-bearing for arbitrary-$p$ density one.\\
+Genus-zero Cartier&Exact Dwork; \cref{lem:no-backflow,prop:multi-Cartier}&Common Hauptmodul Frobenius and full-product digitization give the CDT degree-$D$ window.\\
+General-curve Cartier&Exact $q$-Dwork; \cref{lem:q-jet-injective,lem:q-block,prop:q-jet-Cartier}&Global divisor control makes the short $q$-jet injective; exact $q\mapsto q^\ell$ removes all Taylor correction terms.\\
+Fitting polygon&Internal \cref{prop:Fitting,prop:capped-window}&Counts $\ell$-adic thickness $s-b+1$; used for strengthening, not for the certified finite counts.\\
+Genus-zero Bost bridge&Bost, Bost--Charles, CDT; \cref{lem:fixed-bundle}&The $\mathbf P^1$ fixed-bundle comparison changes only $o(D^2)$.\\
+General-curve fixed-twist bound&Finite generation; Bost--Chambert-Loir Theorem~6.1, (6.7)--(6.8); \cref{lem:robust-fixed-twist}&A fixed packet is a quotient of finitely many fixed scalar twists.  Relative Serre vanishing identifies the quotient lattices with the good-prime coefficient lattices.  Packet dependence is $O(\log D)$ per pivot, while the coefficient of $D$ depends only on $p$.\\
+Scalar capacitary jets&Bost--Chambert-Loir Proposition~5.15; Cauchy; \cref{lem:robust-cap-jet}&Contraction is performed first, leaving a scalar section.  The arbitrary reference tangent norm cancels formally and gives the term $-n\Lambda_p^\circ$.\\
+Hybrid compatibility&Raw depth; intrinsic Cartier; \cref{prop:curve-hybrid-compatibility}&Shrinking the finite source lattice improves analytic operator norms.  Small-prime residuals require proper prime powers; coherent models eliminate any hidden packet-dependent $D^2$ term at fixed bad primes.  Large primes give the stated window integral.\\
+$p=13$ continuation&Maier; Deuring; Buzzard; \cref{lem:p13-annulus}&Identifies $W_0(13)=\{|f_{13}|_{13}<13\}$ and permits explicit finite estimates.\\
+All-prime positive width&Buzzard; Bost--Chambert-Loir Proposition~5.1, the proof of Proposition~5.6, Example~5.11, and Proposition~5.15; \cref{lem:strict-cap-collar,prop:positive-width}&The capacitary vertical coefficient on the component met by the cusp is strictly positive, so adjunction makes the local tangent norm strictly smaller than the integral-disc norm; a complex $q$-disc consumes arbitrarily little of that gain.\\
+Exact mixed capacitary normalization&Bost--Chambert-Loir Propositions~5.1, 5.6, and~5.17, and Corollary~5.20; Bost--Charles Lemma~7.2.7, Proposition~7.2.10, and the meromorphicity criterion of \S7.3; Chen--Moriwaki Corollary~4.5.2; \cref{thm:curve-Bost-exact,app:exact-normalization}&The finite capacitary $\Q$-model and Archimedean direct-image Green functions define one nef and big mixed divisor.  Denominator clearing realizes the capacitary tangent line as a pseudoconcave normal line, but neither a whole-divisor direct image nor a meromorphic map is inferred from that normal-line isometry.  The exact source formula uses the Chen--Moriwaki determinant theorem; Bost--Charles Theorem~8.2.5 is a theta formula and is not used as a determinant formula.  A nested lemniscate gives the uniform finite-order estimate and the exact target-normal $\Theta$-cancellation.\\
+Exact modular capacity pair&Buzzard Proposition~4.1; Coleman--McMurdy; Eichler--Deuring mass formula; Bost--Chambert-Loir Propositions~5.1 and~5.6; \cref{lem:maximal-capacity-exhaustion,thm:allprime-capacity-pair}&After an unramified splitting extension, the supersingular annuli for $p\ge5$ are parallel resistors of widths $\#\operatorname{Aut}(E)/2$.  Rational skeleton cuts give inner wide-opens whose effective resistances converge to $12/(p-1)$; Proposition~5.6 is used only to realize each cut-domain as a rational lemniscate.  The wild primes $2,3$ use their explicit Hauptmodul discs.  The Archimedean collision sum is intrinsic to the $\Gamma_0(p)$ quotient and is genus-independent.\\
+Quantitative genus-zero density&Internal \cref{sec:density}&Uses exact modular width and collision formula, yielding the coefficient $e(p-1)/(12\log p)$.\\
+All-prime density&Internal \cref{thm:allprime-capacity-pair,sec:allprime-density}&Uses the exact capacity pair with $Y=1/m$ and multiplicative shells, yielding the explicit coefficient $e d_p(p-1)/(12\log p)$.  The robust theorem remains an independent qualitative proof.\\
+Numerics&Independent fixed-point certificates; \cref{prop:p13-finite,prop:finite-packet-certificate}&The genus-zero counts retain their original certificates.  The new positive-genus table uses the certified upper bound $\bar d=2g_p$, checks every possible largest packet argument with outward-rounded integer fixed-point arithmetic, and uses no binary floating point.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\begin{warning}[Distinct weights]
+The functional-rank proof uses that the representations
+$\Sym^{s-1}(\C^2)$ occur with multiplicity one.  Repeated copies of the same
+weight can support diagonal subrepresentations and do not automatically add
+functional rank.
+\end{warning}
+
+\begin{warning}[No scalarization]
+The proof does not construct global scalar coordinates carrying literal depths
+$0,1,\ldots,s$.  The small-prime saving uses only the mod-$\ell$ Hasse
+comparison of the genuine deepest multiplier.  The large-prime argument stays
+on the de Rham frame torsor and digitizes the complete truncated products.
+\end{warning}
+
+\begin{warning}[Counting versus individual identification]
+\Cref{thm:counts,thm:positive-genus-counts} bound the number of rational
+values in finite ranges but
+does not identify every possible exception.  Proving long explicit lists of
+individual irrational values requires a different amplification: an
+unconditional arithmetic anchor packet that contributes functional rank under
+the rationality assumption for one target only.
+\end{warning}
+
+\begin{warning}[All-prime scope]
+The all-prime theorem is a fixed-$p$ assertion.  Its leading density
+coefficient is now explicit once a finite map degree $d_p$ is chosen, and the
+safe construction $d_p\le2g_p$ is uniform at fixed level.  The coefficient is
+not claimed optimal: the displayed choice $2g_p$ is only an upper bound for the actual degree, and a lower-degree map unramified at the Tate cusp improves
+both the density constant and the finite-packet arithmetic cost.  The sharp
+Hasse-improved type and denominator polygon remain genus-zero results, whereas
+the exact modular capacity and collision formulas are valid at every prime.
+\end{warning}
+
+\begin{warning}[Exact-normalization scope]
+The normalization-robust theorem still supplies an independent qualitative
+proof of density one, but the explicit leading coefficient in
+\cref{thm:density-all-primes} uses the exact mixed normalization and the
+capacity exhaustion of \cref{thm:allprime-capacity-pair}.  The exact result
+\cref{thm:curve-Bost-exact} realizes the metrized tangent line, not the entire
+finite vertical Bost--Chambert-Loir divisor, as the normal line of a
+formal-analytic surface.  It also does not infer a Bost--Charles meromorphic
+map from an arbitrary identification of generic formal discs.  The finite
+divisor is used directly in the mixed canonical metric, and the determinant
+source formula is supplied by Chen--Moriwaki rather than by the Bost--Charles
+theta Hilbert--Samuel theorem.  These distinctions are recorded explicitly in
+\cref{warn:normal-line-only}.
+\end{warning}
+
+\appendix
+
+
+\section{Exact mixed capacitary normalization and the normal-line bridge}
+\label{app:exact-normalization}
+
+This appendix proves \cref{thm:curve-Bost-exact}.  The construction is
+adelic but deliberately asymmetric.  At finite places we use the
+Bost--Chambert-Loir capacitary $\Q$-model itself.  At Archimedean places we
+use the direct-image Green function of the chosen continuation map in the
+sense of Bost--Charles.  The first audit point is that these two pieces define
+one semipositive adelic divisor on the modular curve.  The second is that the
+capacitary tangent line, after denominator clearing, is a genuine normal line
+of a pseudoconcave formal-analytic surface.
+
+No compatible Bost--Charles meromorphic map from that formal-analytic surface
+to the modular curve is asserted or needed.  Such a map is a separate
+fraction-field condition in the formal category and does not follow merely
+from an identification of generic formal discs.  Likewise, an isometry of
+normal lines does not identify the full finite vertical divisor.  The exact
+source and jet formulas below are therefore proved directly on $X_p$, rather
+than by invoking an unproved whole-divisor direct-image realization.
+
+\subsection{The canonical mixed capacitary divisor}
+
+Fix $p$ and the continuation datum
+\[
+ \boldsymbol\alpha=
+ ((\Omega_v,o_v,\iota_v))_v=\boldsymbol\Omega_p^\circ
+\]
+of \cref{prop:positive-width}.  At a finite place, $\iota_v$ is the inclusion
+of a connected wide-open neighborhood of $P$ in $X_p^{\mathrm{an}}$; at all
+but finitely many places it is the integral Tate residue disc.  At an
+Archimedean place $\sigma$, write
+\[
+ g_{\sigma}=g_{\Omega_\sigma,o_\sigma},\qquad
+ \mu_\sigma=\mu_{\Omega_\sigma,o_\sigma}
+\]
+for the equilibrium Green function and harmonic measure.  The map
+$\iota_\sigma$ is nonconstant and unramified at $o_\sigma$.
+
+At the finite places, \cite[Propositions~5.1 and~5.17]
+{BostChambertLoir2009} supplies a normal flat projective model
+$\mathscr X_\alpha$ of $X_p$ and a vertical $\Q$-divisor
+$V_\alpha^{\mathrm{fin}}$ such that
+\[
+ \mathscr P_\alpha^{\mathrm{fin}}
+ =\mathscr P+V_\alpha^{\mathrm{fin}}
+\]
+induces the capacitary metric of $\Omega_v$ on $\mathcal O(P)$ at every finite
+place.  After one fixed birational refinement, which does not change these
+metrics or their intersection numbers, we may and do assume that the section
+$P$ lies in the regular locus of $\mathscr X_\alpha$; thus adjunction and
+$P^*\mathcal O(P)$ are literal near the section.  The adelic tube is defined
+using the integral Tate cusp model at every
+finite place other than $p$ and an adapted model of the chosen rational
+wide-open at $p$.  Proposition~5.17, through its Raynaud comparison and
+Moret--Bailly descent step, places these local data on one global model.  The
+corresponding vertical correction is zero at every integral Tate place.  In
+\cref{prop:exact-hybrid-assembly} the coefficient-bundle models used in
+\cref{sec:qjet} are chosen from this same model after one common refinement
+and enlargement of the fixed exceptional set.  The finite vertical divisor is
+independent of the auxiliary Archimedean components by the local uniqueness in
+Proposition~5.1.
+
+For an Archimedean embedding $\sigma$, let
+\begin{equation}\label{eq:direct-image-green}
+ g_{\alpha,\sigma}=\iota_{\sigma*}g_\sigma
+\end{equation}
+be the direct-image Green function for $P$ in the sense of
+\cite[Sections~5.1 and~7.2]{BostCharles2022}.  It has logarithmic singularity
+of multiplicity one at $P$, because $\iota_\sigma$ is unramified at
+$o_\sigma$.  Its curvature measure is the positive direct image of the
+source equilibrium measure.
+
+\begin{definition}[Canonical mixed divisor]\label{def:mixed-divisor}
+Define
+\begin{equation}\label{eq:mixed-divisor}
+ \widehat P_\alpha=
+ \left(\mathscr P_\alpha^{\mathrm{fin}},
+       (g_{\alpha,\sigma})_{\sigma}\right)
+ \in\widehat{\operatorname{Div}}(\mathscr X_\alpha)_\Q
+\end{equation}
+and put
+\[
+ \overline L_\alpha=\mathcal O(\widehat P_\alpha).
+\]
+Let $\overline T_\alpha$ denote the line $T_PX_p$ with the finite
+Bost--Chambert-Loir capacitary metrics and, at infinity, the source
+capacitary metric on $T_{o_\sigma}\Omega_\sigma$ transported through
+$D\iota_\sigma(o_\sigma)$.  Finally put
+\begin{equation}\label{eq:mixed-invariants}
+ \LambdaAH_\alpha=\widehatdeg\overline T_\alpha,
+ \qquad
+ \Theta_\alpha=\widehatdeg P^*\overline L_\alpha,
+ \qquad
+ \Energy_\alpha=\widehat P_\alpha^{\,2}.
+\end{equation}
+\end{definition}
+
+The distinction between $\LambdaAH_\alpha$ and $\Theta_\alpha$ is essential.
+The former is a source-tangent degree.  The latter is the degree of the target
+normal line determined by the direct-image Green function.  Other preimages
+of $P$ under $\iota_\sigma$ may make the two different.
+
+\begin{lemma}[Base-change and denominator invariance]
+\label{lem:exact-base-change}
+Let $K/\Q$ be a finite extension.  Pull back all models, $\Q$-divisors,
+metrized lines, sources, and jet targets to $\mathcal O_K$.  Then every
+Arakelov degree and arithmetic intersection number is multiplied by
+$[K:\Q]$.  Consequently all identities and inequalities in this appendix are
+unchanged after division by $[K:\Q]$.  The same conclusions hold for an
+Arakelov $\Q$-divisor after multiplying by a common denominator and dividing
+the resulting degree or intersection number by the corresponding first or
+second power.
+\end{lemma}
+
+\begin{proof}
+The local degree at a place $v$ is repeated with the usual local-degree
+weights over the places of $K$ above $v$; their sum is $[K:\Q]$.  This proves
+the assertion for metrized lines and for determinant degrees.  The projection
+formula gives the same scaling for arithmetic intersections.  Homogeneity in
+a common denominator gives the final assertion.
+\end{proof}
+
+\begin{proposition}[Nefness, bigness, and the exact normal decomposition]
+\label{prop:exact-mixed-divisor}
+The divisor $\widehat P_\alpha$ is effective, nef, and big.  Moreover
+\begin{equation}\label{eq:theta-minus-lambda}
+ \Theta_\alpha-\LambdaAH_\alpha
+ =\sum_{\sigma}
+   \int_{\Omega_\sigma}g_\sigma\,
+   \delta_{\iota_\sigma^*P-o_\sigma}\ge0
+\end{equation}
+and
+\begin{equation}\label{eq:energy-theta}
+ \boxed{
+ \Energy_\alpha=\Theta_\alpha+\mathscr W_\alpha,\qquad
+ \mathscr W_\alpha=
+ \sum_\sigma\int_{X_{p,\sigma}(\C)}
+ g_{\alpha,\sigma}\,c_1(\overline L_{\alpha,\sigma})
+ =\sum_\sigma\int_{\Omega_\sigma}
+ g_\sigma\,\iota_\sigma^*c_1(\overline L_{\alpha,\sigma})\ge0.}
+\end{equation}
+In particular,
+\[
+ \Theta_\alpha\ge\LambdaAH_\alpha>0,
+ \qquad
+ \Energy_\alpha>0.
+\]
+The finite capacitary corrections occur in $\Theta_\alpha$ exactly once; the
+term $\mathscr W_\alpha$ is purely Archimedean.
+\end{proposition}
+
+\begin{proof}
+At each finite place, the vertical correction in
+$\mathscr P_\alpha^{\mathrm{fin}}$ is the solution of the graph Dirichlet
+problem of \cite[Proposition~5.1]{BostChambertLoir2009}.  The resulting
+$\Q$-divisor is effective.  It has intersection zero with every vertical
+component occurring in its support and nonnegative intersection with every
+other vertical component.  At infinity, the direct-image Green function is
+nonnegative and its curvature is the positive direct image of the source
+equilibrium measure.  Hence $\widehat P_\alpha$ is effective and defines a
+semipositive adelic metric on $\mathcal O(P)$.
+
+At a finite place the continuation map is the inclusion, so the source and
+target capacitary tangent metrics agree.  At an Archimedean place, the local
+normal comparison in the proof of
+\cite[Lemma~7.2.7 and Proposition~7.2.10]{BostCharles2022}, with ramification
+index one, gives
+\[
+ \widehatdeg_\sigma P^*\overline L_\alpha
+ -\widehatdeg_\sigma\overline T_\alpha
+ =\int_{\Omega_\sigma}g_\sigma\,
+   \delta_{\iota_\sigma^*P-o_\sigma}.
+\]
+The divisor $\iota_\sigma^*P-o_\sigma$ is effective.  Summing proves
+\eqref{eq:theta-minus-lambda}, so the horizontal component $P$ has strictly
+positive arithmetic degree.  The numerical criterion of
+\cite[Proposition~6.9]{Bost1999}, used in
+\cite[Proposition~7.7]{BostChambertLoir2009}, now proves nefness.  Indeed, the
+curvature is nonnegative, the degree on $P$ is positive, the degree on every
+vertical component in the support is zero, and the remaining vertical degrees
+are nonnegative; every horizontal curve different from $P$ has nonnegative
+degree because both the finite divisor and the Green functions are
+effective.
+
+Write $\mathscr P_\alpha^{\mathrm{fin}}=\mathscr P+V$.  By the orthogonality
+in \cite[Proposition~5.1]{BostChambertLoir2009},
+$\mathscr P_\alpha^{\mathrm{fin}}\cdot V=0$.  The induction formula for
+the arithmetic intersection pairing, in the normalization used in the proof
+of \cite[Proposition~7.2.6]{BostCharles2022}, therefore gives
+\[
+ \widehat P_\alpha^{\,2}
+ =\widehatdeg P^*\overline L_\alpha
+  +\sum_\sigma\int_{X_{p,\sigma}(\C)}
+    g_{\alpha,\sigma}\,c_1(\overline L_{\alpha,\sigma}).
+\]
+The projection formula for direct-image Green functions gives the second
+expression in \eqref{eq:energy-theta}.  Both factors in its integrand are
+nonnegative.  Thus the self-intersection is positive.  We have already proved
+that $\overline L_\alpha$ is nef; a nef Arakelov divisor of positive
+self-intersection is nef and big in the sense of
+\cite[Section~8.2.2]{BostCharles2022}.  This proves the proposition.
+\end{proof}
+
+\subsection{The capacitary normal-line realization}
+
+The preceding proposition already constructs the exact target metric needed
+for arithmetic Hilbert--Samuel.  The following result closes the separate
+formal-analytic realization issue.  Its statement is intentionally about the
+normal line, not the entire finite vertical divisor.
+
+\begin{proposition}[Denominator-cleared capacitary normal realization]
+\label{prop:cap-normal-realization}
+After a finite extension $K/\Q$ clearing the rational finite-place exponents
+of $\overline T_\alpha$, there exists a smooth formal-analytic arithmetic
+surface
+\[
+ \widetilde{\mathscr V}_\alpha
+ =\left(\widehat{\mathscr V}_\alpha,
+       (\Omega_\sigma,o_\sigma,\gamma_\sigma)_\sigma\right)
+ \quad\text{over }\mathcal O_K
+\]
+whose metrized normal line along its canonical section is isometric to
+$\overline T_\alpha\otimes_\Q K$.  Consequently
+\begin{equation}\label{eq:normal-realization-degree}
+ \frac1{[K:\Q]}
+ \widehatdeg N_{P_K}\widetilde{\mathscr V}_\alpha
+ =\LambdaAH_\alpha>0,
+\end{equation}
+so $\widetilde{\mathscr V}_\alpha$ is pseudoconcave.
+\end{proposition}
+
+\begin{proof}
+By \cite[Propositions~5.1 and~5.17]{BostChambertLoir2009}, the finite metrics
+on $T_PX_p$ are $\Q$-model metrics and are integral at all but finitely many
+places.  Choose a common denominator for their valuation exponents and a
+finite extension $K/\Q$ whose ramification indices above the exceptional
+places are divisible by that denominator; one may take a compositum of
+suitable Eisenstein extensions at the finitely many rational primes involved.
+The unit balls of the pulled-back
+metrics are then honest rank-one $\mathcal O_{K,w}$-lattices.  Since only
+finitely many differ from the standard tangent lattice, they are the
+localizations of one invertible fractional $\mathcal O_K$-module
+$\mathcal N_\alpha\subset T_PX_p\otimes_\Q K$.
+
+Set
+\[
+ \widehat{\mathscr V}_\alpha
+ =\operatorname{Spf}
+   \widehat{\operatorname{Sym}}_{\mathcal O_K}
+   (\mathcal N_\alpha^\vee).
+\]
+This is a smooth one-dimensional formal scheme over $\mathcal O_K$, with
+zero section $P_K\simeq\operatorname{Spec}\mathcal O_K$ and normal module
+$\mathcal N_\alpha$.  For each embedding $\sigma:K\hookrightarrow\C$, choose
+a formal coordinate at $o_\sigma$ and a conjugation-compatible formal
+isomorphism
+\[
+ \gamma_\sigma:
+ \widehat{\mathscr V}_{\alpha,\sigma}
+ \xrightarrow{\sim}\widehat{\Omega}_{\sigma,o_\sigma}
+\]
+whose differential identifies the complex fibre of $\mathcal N_\alpha$ with
+$T_{o_\sigma}\Omega_\sigma$ after transport through
+$D\iota_\sigma(o_\sigma)$.  In dimension one the derivative may be prescribed
+by multiplying a local coordinate by a nonzero complex scalar; the choices
+may be paired under complex conjugation.  Equip the complex fibre of
+$\mathcal N_\alpha$ with the corresponding source capacitary norm.  The data
+then form a smooth formal-analytic arithmetic surface in the sense of
+\cite[Sections~6.1--6.2]{BostCharles2022}, and its metrized normal line is
+precisely $\overline T_\alpha\otimes_\Q K$.
+
+Taking normalized Arakelov degrees and applying
+\cref{lem:exact-base-change} gives
+\eqref{eq:normal-realization-degree}.  Positivity is
+\cref{prop:positive-width}; by definition, it is the pseudoconcavity of
+$\widetilde{\mathscr V}_\alpha$.
+\end{proof}
+
+\begin{warning}[Normal-line realization is not a map]
+\label{warn:normal-line-only}
+An isometry of metrized normal lines determines neither a vertical divisor on
+the whole special fibre nor a Bost--Charles meromorphic map to
+$\mathscr X_{\alpha,K}$.  In the formal category, meromorphicity requires the
+coordinate functions of the generic map to lie in the fraction field of the
+formal function ring and to become regular after a modification; an arbitrary
+identification of generic formal discs does not establish this condition.
+Accordingly, \cref{prop:cap-normal-realization} makes no such assertion.  The
+exact normalization below uses the Bost--Chambert-Loir finite divisor itself
+and is proved directly on the modular curve.
+\end{warning}
+
+\subsection{Exact arithmetic Hilbert--Samuel for the source}
+
+Regard $\overline L_\alpha$ as a semipositive adelic line bundle on the
+smooth projective curve $X_p/\Q$.  Its underlying line bundle
+$L=\mathcal O(P)$ has degree one and is therefore ample.  Give the fixed
+bundle $\calF_{\mathcal S}$ any fixed dominated adelic metric compatible with
+its integral models.  On spaces of sections use the induced supremum norms;
+at every Archimedean place replace the supremum unit ball by its John
+ellipsoid in order to obtain a Hermitian norm.
+
+\begin{proposition}[Exact determinant source formula]
+\label{prop:exact-source-formula}
+For every fixed packet $\mathcal S$,
+\begin{equation}\label{eq:appendix-exact-source}
+ \widehatdeg\overline M_D^\alpha
+ =\frac m2\Energy_\alpha D^2+o_{p,\mathcal S}(D^2).
+\end{equation}
+Replacing the supremum norms by the John norms changes the degree by
+$O_{p,\mathcal S}(D\log(D+2))$.  Changing the fixed adelic metric or the fixed
+saturated integral model on $\calF_{\mathcal S}$ changes it by
+$O_{p,\mathcal S}(D)$.
+\end{proposition}
+
+\begin{proof}
+The curve $X_p$ is geometrically integral and normal, the line
+$L=\mathcal O(P)$ is ample, and every local metric of
+$\overline L_\alpha$ is a dominated semipositive metric: at finite places
+it is a model metric, while at infinity it is the continuous Green metric of
+\cref{prop:exact-mixed-divisor}.  The vector-bundle arithmetic
+Hilbert--Samuel theorem
+\cite[Corollary~4.5.2]{ChenMoriwaki2024} therefore applies directly to the
+adelic vector bundle $\overline{\calF}_{\mathcal S}$ and gives
+\[
+ \lim_{D\to\infty}
+ \frac{\widehatdeg H^0(X_p,L^D\otimes\calF_{\mathcal S})}{D^2/2}
+ =\rank(\calF_{\mathcal S})
+   (\overline L_\alpha^{\,2})
+ =m\Energy_\alpha.
+\]
+This is \eqref{eq:appendix-exact-source} for the adelic supremum norms.
+
+If $r_D=\dim H^0(X_p,L^D\otimes\calF_{\mathcal S})$, John's theorem for a
+symmetric convex body gives a determinant distortion at most
+$\tfrac12r_D\log r_D$ at each Archimedean place.  Since $r_D=mD+O(1)$, this
+is $O(D\log D)$.  Two fixed dominated metrics on
+$\calF_{\mathcal S}$ are uniformly equivalent place by place and agree
+integrally outside a fixed finite set; their determinant distortion is
+$O(r_D)=O(D)$.  The same applies to two fixed saturated models of the
+coefficient bundle.  This proves all assertions.
+\end{proof}
+
+\begin{remark}[Determinant versus theta asymptotics]
+The input used here is the determinant-degree formula of
+\cite[Corollary~4.5.2]{ChenMoriwaki2024}.  The arithmetic Hilbert--Samuel
+formula in \cite[Theorem~8.2.5]{BostCharles2022} is instead a formula for a
+John-theta invariant.  No unproved identification of that theta invariant
+with the determinant degree of the present source lattice is used.
+\end{remark}
+
+\subsection{Uniform finite-order jets and the \texorpdfstring{$\Theta$}{Theta}-cancellation}
+
+Let $\overline C_{\mathcal S}$ denote the fixed metrized line obtained from
+$\calF_{\mathcal S}|_P$ and from the fixed contraction pairing.  For a pivot
+$n$, the natural target is
+\begin{equation}\label{eq:natural-jet-line-app}
+ \overline J_{D,n}^\alpha
+ =P^*\overline L_\alpha^{\,D}
+  \otimes\overline T_\alpha^{\vee\otimes n}
+  \otimes\overline C_{\mathcal S}.
+\end{equation}
+The source quotient is endowed with the quotient norm from
+$\overline M_D^\alpha$.  Choose any nonzero rational vector in
+$J_{D,n}^\alpha$ and use it to identify the target with the standard scalar
+line.  Denote the resulting local and global heights by
+$h_{v,\alpha}^{\mathrm{sc}}$ and $h_\alpha^{\mathrm{sc}}$.  The product
+formula gives the exact, trivialization-independent identity
+\begin{equation}\label{eq:scalarization-identity}
+ h_\alpha^{\mathrm{sc}}(\psi_D^{(n)})
+ =h_\alpha^{\mathrm{nat}}(\psi_D^{(n)})
+  +\widehatdeg\overline J_{D,n}^\alpha.
+\end{equation}
+
+At the distinguished place $p$ set $\delta_{p,D,n}=0$; its analytic
+operator norm is controlled directly by the capacitary metric.  At every
+finite place $v\ne p$, retain the coefficient excess
+$\delta_{v,D,n}$ defined in \cref{sec:curve-bost}.
+
+\begin{lemma}[Exact finite-place capacitary Schwarz estimate]
+\label{lem:finite-order-cap-exact}
+At the distinguished continuation place $p$, uniformly for all $D\ge0$ and
+all $n\ge0$,
+\begin{equation}\label{eq:finite-order-cap-local}
+ \log\|\psi_D^{(n)}\|_{p,\mathrm{nat}}
+ \le O_{p,\mathcal S}(1).
+\end{equation}
+At every finite place $v\ne p$,
+\begin{equation}\label{eq:finite-order-coeff-local}
+ \log\|\psi_D^{(n)}\|_{v,\mathrm{nat}}
+ \le\delta_{v,D,n}+O_{v,p,\mathcal S}(1),
+\end{equation}
+and outside a fixed finite set the error term is zero.
+\end{lemma}
+
+\begin{proof}
+At $p$ use the nested rational lemniscate
+\eqref{eq:nested-lemniscate}.  If $1_P$ is the canonical rational section of
+$\mathcal O(P)$ and the polar divisor of $u_p$ is $a_pP$, then
+\begin{equation}\label{eq:unit-lemniscate-frame}
+ \epsilon_p=u_p1_P^{a_p}
+\end{equation}
+is nonvanishing on $\Omega_p^\circ$ and has capacitary norm identically one
+there.  Indeed, \cite[Corollary~5.8]{BostChambertLoir2009} gives
+$\|1_P\|_p=|u_p|_p^{-1/a_p}$ on $\{|u_p|_p>1\}$.
+
+Let a source vector have norm at most one and contract it with the horizontal
+leaf.  Write $D=a_pk+b$, $0\le b<a_p$.  Dividing by $\epsilon_p^k$
+trivializes the growing power of $\mathcal O(P)$; the residual power
+$\mathcal O(bP)$, the coefficient bundle, and the contraction line are fixed.
+For $r>1$ in the divisible value group, the maximum-principle computation in
+the proof of \cite[Proposition~5.15]{BostChambertLoir2009}, applied on the
+affinoid $\{|u_p|_p\ge r\}$, gives
+\[
+ \log\|\psi_D^{(n)}\|_{p,\mathrm{nat}}
+ \le C_{p,\mathcal S}(r)+\frac{n}{a_p}\log r.
+\]
+By \eqref{eq:nested-lemniscate}, all these affinoids for $r>1$ sufficiently
+close to one lie in the fixed affinoid
+$\{|u_p|_p\ge1\}\Subset\Omega_p^+$.  The horizontal leaf and the fixed
+contraction pairing are bounded on a neighborhood of that affinoid, while the
+global source supremum norm bounds the coefficient section there.  Hence
+$C_{p,\mathcal S}(r)$ is bounded above by one constant independent of
+$r,D,n$.  Taking the infimum as $r\downarrow1$ removes the last term and
+proves \eqref{eq:finite-order-cap-local}.  This is the finite-order statement
+needed here; it is stronger than merely identifying the limiting canonical
+tangent norm.
+
+For $v\ne p$, the continuation domain is the integral Tate residue disc.  By
+the local model prescription in the construction of $\mathscr X_\alpha$, the
+finite metrics on $P^*\overline L_\alpha$ and $\overline T_\alpha$ are the
+same integral target metrics used to define $\delta_{v,D,n}$ in
+\cref{sec:curve-bost}.  Thus
+\eqref{eq:finite-order-coeff-local} is the definition of the positive excess,
+up to the bounded comparison of the fixed coefficient bundle and contraction
+line.  These comparisons are integral outside a fixed finite set.
+\end{proof}
+
+\begin{lemma}[Archimedean Green--Jensen estimate]
+\label{lem:arch-exact-jet}
+Uniformly for every divided jet occurring in the vanishing filtration,
+\begin{equation}\label{eq:arch-exact-jet}
+ \sum_{\sigma}
+ \log\|\psi_D^{(n)}\|_{\sigma,\mathrm{nat}}
+ \le D\mathscr W_\alpha+O_{p,\mathcal S}(1).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Contract first with the fixed horizontal leaf.  On $\Omega_\sigma$ this gives
+a scalar analytic section $s$ of $\iota_\sigma^*L_\alpha^D$ tensored with a
+fixed line.  Suppose that its first nonzero divided jet at $o_\sigma$ has
+order $n$.  Poincar\'e--Lelong and Green's identity for $g_\sigma$ give
+\begin{align*}
+ \log\|j_{o_\sigma}^ns\|_{\mathrm{nat}}
+ &\le
+ \int_{\partial\Omega_\sigma}\log\|s\|\,\dd\mu_\sigma
+ +D\int_{\Omega_\sigma}
+   g_\sigma\,\iota_\sigma^*c_1(\overline L_{\alpha,\sigma})
+ +O_{p,\mathcal S}(1).
+\end{align*}
+Every zero away from $o_\sigma$ occurs with the favorable sign and has been
+discarded.  The source capacitary tangent metric in
+\eqref{eq:natural-jet-line-app} is exactly the normalization that removes the
+local derivative term.  This is the intrinsic Green--Jensen calculation
+underlying \cite[Lemma~7.4.1]{CDT2024}.
+
+By \cref{prop:positive-width}, the image of the closed pointed domain lies in
+a slightly larger continuation domain.  The horizontal leaf and the fixed
+coefficient-bundle pairing are therefore bounded on a neighborhood of the
+boundary.  For a source vector of John norm at most one, its supremum norm is
+at most one because the John ellipsoid is contained in the supremum unit
+ball.  The boundary integral is consequently $O_{p,\mathcal S}(1)$,
+uniformly in $D$ and $n$.  Summing over $\sigma$ and using the projection
+formula in \eqref{eq:energy-theta} proves \eqref{eq:arch-exact-jet}.
+\end{proof}
+
+\begin{proposition}[Uniform single-pivot cancellation]
+\label{prop:exact-single-jet}
+Fix $C>0$.  Uniformly for pivots $0\le n\le CD$,
+\begin{align}
+ \widehatdeg\overline J_{D,n}^\alpha
+ &=D\Theta_\alpha-n\LambdaAH_\alpha+O_{p,\mathcal S}(1),
+ \label{eq:app-target-degree}\\
+ h_\alpha^{\mathrm{nat}}(\psi_D^{(n)})
+ &\le D(\Energy_\alpha-\Theta_\alpha)+\delta_{D,n}
+      +O_{C,p,\mathcal S}(1),
+ \label{eq:app-natural-height}\\
+ h_\alpha^{\mathrm{sc}}(\psi_D^{(n)})
+ &\le D\Energy_\alpha-n\LambdaAH_\alpha+\delta_{D,n}
+      +O_{C,p,\mathcal S}(1),
+ \label{eq:app-scalar-height}\\
+ \widehatdeg\overline G_{D,n}^\alpha
+ &\le D\Energy_\alpha-n\LambdaAH_\alpha+\delta_{D,n}
+      +O_{C,p,\mathcal S}(1).
+ \label{eq:app-graded-degree}
+\end{align}
+Thus the $D\Theta_\alpha$ target contribution cancels exactly with the
+$-D\Theta_\alpha$ part of the natural evaluation estimate.
+\end{proposition}
+
+\begin{proof}
+The target-degree identity follows immediately from
+\eqref{eq:natural-jet-line-app}.  Summing
+\cref{lem:finite-order-cap-exact} over the finite places contributes
+$\delta_{D,n}+O_{p,\mathcal S}(1)$.  Adding
+\cref{lem:arch-exact-jet} and using
+$\mathscr W_\alpha=\Energy_\alpha-\Theta_\alpha$ proves
+\eqref{eq:app-natural-height}.
+
+Combining \eqref{eq:scalarization-identity},
+\eqref{eq:app-target-degree}, and \eqref{eq:app-natural-height} cancels
+$D\Theta_\alpha$ and proves \eqref{eq:app-scalar-height}.  For the scalarized
+nonzero map from the rank-one source quotient to the standard degree-zero
+line, the rank-one degree identity is
+\[
+ \widehatdeg\overline G_{D,n}^\alpha
+ =h_\alpha^{\mathrm{sc}}(\psi_D^{(n)}).
+\]
+This proves \eqref{eq:app-graded-degree}.
+\end{proof}
+
+\begin{remark}[Where overflow is counted]
+The finite Bost--Chambert-Loir vertical corrections are contained in the target
+degree $D\Theta_\alpha$.  The Archimedean direct-image contribution enters
+$D\mathscr W_\alpha=D(\Energy_\alpha-\Theta_\alpha)$.  Their sum is
+$D\Energy_\alpha$.  No formal or Archimedean term is inserted a second time.
+This is the precise target-normal cancellation asserted in
+\cref{thm:curve-Bost-exact}.
+\end{remark}
+
+\subsection{Hybrid lattices and exact slopes}
+
+\begin{proposition}[Exact hybrid assembly]
+\label{prop:exact-hybrid-assembly}
+For the metrics above and the hybrid lattice
+\eqref{eq:curve-hybrid-lattice},
+\begin{equation}\label{eq:app-exact-hybrid}
+ \widehatdeg\overline M_D^{\alpha,\mathrm{hyb}}
+ =\left(\frac m2\Energy_\alpha-\xi Q_{\mathcal S}\right)D^2
+  +o_{p,\mathcal S}(D^2).
+\end{equation}
+Moreover
+\begin{equation}\label{eq:app-exact-degree-sum}
+ \sum_{n\in V_D}\widehatdeg\overline G_{D,n}^\alpha
+ \le\left(-\frac{m^2}{2}\LambdaAH_\alpha
+          +m\Energy_\alpha\right)D^2
+    +\mathscr A_D+o_{p,\mathcal S}(D^2),
+\end{equation}
+and joint rationality implies
+\begin{equation}\label{eq:app-exact-slopes}
+ \tau^{\mathrm{curve}}_{p,\mathcal S}(\xi)
+ \ge\LambdaAH_\alpha-\frac{\Energy_\alpha}{m}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Use the finite $\Q$-model of $\overline L_\alpha$ as the reference source
+model.  At every place $\ell\ne p$, choose the coefficient-bundle models in
+\cref{sec:qjet} from this same model, after enlarging the fixed exceptional
+set.  Only the fixed metric and integral model of
+$\calF_{\mathcal S}$ then require comparison, which changes determinant
+degrees and summed fixed-place heights by
+$O_{p,\mathcal S}(D\log(D+2))$.  At the distinguished place $p$ no comparison
+with a coefficient lattice is made: it is controlled by the capacitary
+estimate and is excluded from $\delta_{D,n}$.  Passing to a sublattice can
+only improve its analytic operator norm.
+
+The positive block of weight $s$ has rank $sD+O_{p,s}(1)$.  Replacing it by
+$L_N^sM_{D,s}^+$ therefore changes the degree by
+\[
+ -s^2D\log L_N+O_{p,s}(\log L_N).
+\]
+Since $\log L_N=\xi D+o(D)$, summing over $s$ and using
+\cref{prop:exact-source-formula} proves \eqref{eq:app-exact-hybrid}.
+Shrinking the finite source lattice increases its gauge norm, so the natural
+jet estimate of \cref{prop:exact-single-jet} remains valid.
+
+The residual small-prime heights are $o(D^2)$ by the proper-prime-power
+argument in \cref{prop:curve-hybrid-compatibility}.  At primes
+$\ell>\xi D$, one has $\ell\ne p$ for $D\gg1$, and the compatible coefficient
+models permit the literal application of
+\cref{prop:q-jet-Cartier,prop:curve-large}; hence
+\[
+ \sum_{n\in V_D}\delta_{D,n}
+ \le s_*mG_{d_p,m}(\xi)D^2+o_{p,\mathcal S}(D^2).
+\]
+By \cref{thm:finite-map-zero}, all pivots satisfy $n\le CD$ for one fixed
+$C=C_{p,\mathcal S}$.  Sum \eqref{eq:app-graded-degree} over the
+$mD+O(1)$ pivots.  Its uniform $O_{C,p,\mathcal S}(1)$ remainder contributes
+only $O_{p,\mathcal S}(D)$.  Together with
+\eqref{eq:robust-pivot-sum}, this proves
+\eqref{eq:app-exact-degree-sum}.
+
+The vanishing filtration has saturated rank-one quotients whose degrees add:
+\[
+ \widehatdeg\overline M_D^{\alpha,\mathrm{hyb}}
+ =\sum_{n\in V_D}\widehatdeg\overline G_{D,n}^\alpha.
+\]
+Comparing \eqref{eq:app-exact-hybrid} with
+\eqref{eq:app-exact-degree-sum} gives
+\[
+ \frac m2\Energy_\alpha-\xi Q_{\mathcal S}
+ \le m\Energy_\alpha-\frac{m^2}{2}\LambdaAH_\alpha
+    +s_*mG_{d_p,m}(\xi).
+\]
+Rearranging and using \eqref{eq:curve-tau} proves
+\eqref{eq:app-exact-slopes}.
+\end{proof}
+
+\begin{remark}[Logical role]
+The exact theorem is a canonical refinement of the general-curve slopes
+argument.  The proof of \cref{thm:density-all-primes} remains based on the
+robust inequality \eqref{eq:robust-curve-slopes}; hence no density conclusion
+depends on the more delicate exact-normalization appendix.
+\end{remark}
+
+\section{Derivation of the capped window}\label{app:capped}
+
+For completeness, let $m\ge2$ and $1<\xi<m$.  A prime
+$\ell=xD$ contributes when a pivot lies in a degree-$D$ interval ending at a
+positive multiple of $\ell$.  Maximal packing of distinct pivots gives
+\[
+ w_m(x)=K_x+\positivepart{m-(K_x+1)x},
+ \qquad K_x=\floor{\frac{m-1}{x}}.
+\]
+Integrating $w_m$ gives \eqref{eq:I}.  The function is decreasing and crosses
+the integer level $\rho$ at $x=m/(\rho+1)$.  Therefore
+\[
+ \int_\xi^m\min\{w_m(x),\rho\}\,\dd x
+ =\rho\left(\frac{m}{\rho+1}-\xi\right)
+ +I^m_{m/(\rho+1)}\left(\frac{m}{\rho+1}\right)
+\]
+when $\xi<m/(\rho+1)$.  At the crossing,
+$K=\rho$ and the final quadratic term vanishes, giving
+\[
+ I^m_{m/(\rho+1)}
+ =\left(m-\frac12\right)H_\rho-\frac{m\rho}{\rho+1}.
+\]
+This proves \eqref{eq:I-cap-explicit}.
+
+\section{Certificate methodology}\label{app:certificate}
+
+Real intervals are represented by integer endpoints at scale $10^{42}$ and
+every operation is rounded outward.  The constants are enclosed from
+\[
+ \pi=16\arctan\frac15-4\arctan\frac1{239},
+ \qquad
+ \log p=2\operatorname{arctanh}\frac{p-1}{p+1}.
+\]
+The alternating arctangent remainder is bounded by the first omitted term; the
+positive arctanh tail is bounded geometrically.  For rational $x\in(0,1)$,
+\[
+ \arccos x=2\arctan\sqrt{\frac{1-x}{1+x}},
+\]
+and square roots are enclosed by exact integer square root.  Harmonic sums and
+all algebraic terms are rational.  The active collision layers are selected
+by the exact test $cY<1$.
+
+For fixed $p$, stage $k$, largest candidate $x$, and previous-entry sum $T$,
+\cref{lem:convex-search} gives the exact maximal $Q$.  The program evaluates
+the upper endpoint of the arithmetic cost and the lower endpoint of the
+analytic margin.  A strictly positive lower endpoint excludes the entire
+aggregate state.  The stage witnesses and every worst state are printed in
+the stored output.
+
+\begin{thebibliography}{99}
+
+\bibitem{Bost1999}
+J.-B.~Bost,
+\newblock Potential theory and Lefschetz theorems for arithmetic surfaces,
+\newblock \emph{Ann. Sci. \`Ecole Norm. Sup. (4)} \textbf{32} (1999), no.~2,
+241--312.
+
+\bibitem{Bost2001}
+J.-B.~Bost,
+\newblock Algebraic leaves of algebraic foliations over number fields,
+\newblock \emph{Publ. Math. Inst. Hautes \`Etudes Sci.} \textbf{93} (2001),
+161--221.
+
+
+\bibitem{BostChambertLoir2009}
+J.-B.~Bost and A.~Chambert-Loir,
+\newblock Analytic curves in algebraic varieties over number fields,
+\newblock in \emph{Algebra, Arithmetic, and Geometry: In Honor of
+Yu.~I.~Manin}, vol.~I, Progress in Mathematics \textbf{269}, Birkh\"auser,
+2009; arXiv:math/0702593.
+
+\bibitem{BostCharles2022}
+J.-B.~Bost and F.~Charles,
+\newblock \emph{Quasi-Projective and Formal-Analytic Arithmetic Surfaces},
+\newblock Annals of Mathematics Studies \textbf{224}, Princeton University
+Press, 2026; arXiv:2206.14242v2.
+
+\bibitem{Buzzard2003}
+K.~Buzzard,
+\newblock Analytic continuation of overconvergent eigenforms,
+\newblock \emph{J. Amer. Math. Soc.} \textbf{16} (2003), 29--55.
+
+\bibitem{Calegari2005}
+F.~Calegari,
+\newblock Irrationality of certain $p$-adic periods for small $p$,
+\newblock \emph{Int. Math. Res. Not.} 2005, no.~20, 1235--1249.
+
+\bibitem{CDT2024}
+F.~Calegari, V.~Dimitrov and Y.~Tang,
+\newblock The linear independence of $1$, $\zeta(2)$, and $L(2,\chi_{-3})$,
+\newblock arXiv:2408.15403v2 (2024).
+
+\bibitem{CDT2025}
+F.~Calegari, V.~Dimitrov and Y.~Tang,
+\newblock Arithmetic holonomy bounds and effective Diophantine approximation,
+\newblock arXiv:2510.04156 (2025).
+
+\bibitem{ChenMoriwaki2024}
+H.~Chen and A.~Moriwaki,
+\newblock \emph{Positivity in Arakelov Geometry over Adelic Curves:
+Hilbert--Samuel Formula and Equidistribution Theorem},
+\newblock Progress in Mathematics \textbf{355}, Birkh\"auser, 2024;
+see also arXiv:2207.02033, Corollary~4.5.2.
+
+\bibitem{GPRJ2025}
+A.~Graham, V.~Pilloni and J.~Rodrigues Jacinto,
+\newblock $p$-adic interpolation of Gauss--Manin connections on nearly
+overconvergent modular forms and $p$-adic $L$-functions,
+\newblock \emph{Compos. Math.} \textbf{161} (2025), 2380--2441.
+
+\bibitem{Katz1973}
+N.~M.~Katz,
+\newblock $p$-adic properties of modular schemes and modular forms,
+\newblock in \emph{Modular Functions of One Variable III}, Lecture Notes in
+Math. \textbf{350}, Springer, 1973, pp.~69--190.
+
+
+\bibitem{Cesnavicius2017}
+K.~\v{C}esnavi\v{c}ius,
+\newblock A modular description of $\mathscr X_0(n)$,
+\newblock \emph{Algebra Number Theory} \textbf{11} (2017), no.~9, 2001--2089;
+\newblock arXiv:1511.07475.
+
+\bibitem{ColemanMcMurdy2006}
+R.~Coleman and K.~McMurdy,
+\newblock Fake CM and the stable model of $X_0(Np^3)$,
+\newblock \emph{Doc. Math.} 2006, Extra Volume, 261--300; in particular the
+review of the supersingular annuli of $X_0(p)$ in \S2.
+
+\bibitem{Deuring1941}
+M.~Deuring,
+\newblock Die Typen der Multiplikatorenringe elliptischer Funktionenk\"orper,
+\newblock \emph{Abh. Math. Sem. Univ. Hamburg} \textbf{14} (1941), 197--272.
+
+\bibitem{Maier2009}
+R.~S.~Maier,
+\newblock On rationally parametrized modular equations,
+\newblock \emph{J. Ramanujan Math. Soc.} \textbf{24} (2009), no.~1, 1--73;
+\newblock arXiv:math/0611041.
+
+\bibitem{RodriguezCamargo2023}
+J.~E.~Rodr\'iguez Camargo,
+\newblock $p$-adic Eichler--Shimura maps for the modular curve,
+\newblock \emph{Compos. Math.} \textbf{159} (2023), no.~6, 1214--1249.
+
+\bibitem{Urban2013}
+E.~Urban,
+\newblock Nearly overconvergent modular forms,
+\newblock in \emph{Iwasawa Theory 2012}, Contributions in Mathematical and
+Computational Sciences \textbf{7}, Springer, 2014, pp.~401--441.
+
+\end{thebibliography}
+
+\end{document}
