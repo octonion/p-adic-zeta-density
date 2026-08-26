@@ -69,7 +69,7 @@ $$
 For $p\ge5$ the finite contribution is the effective resistance of the supersingular reduction graph, evaluated by the Eichler--Deuring mass formula; $p=2,3$ are treated directly with their integral Hauptmodul lemniscates. If $d_p$ is the degree of the finite map used in the general-curve zero estimate, then
 
 $$
-R_p(X):=\#\{3\le s\le X:\ s\text{ odd and }\zeta_p(s)\in\mathbf Q\}
+R_p(X):=\text{\#}\{3\le s\le X:\ s\text{ odd and }\zeta_p(s)\in\mathbf Q\}
 \le\left(\frac{e\,d_p(p-1)}{12\log p}+o_p(1)\right)(\log X)^2.
 $$
 
